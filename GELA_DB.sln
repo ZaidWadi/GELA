@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GELA_DB", "GELA_DB.csproj", "{81089546-F457-4782-B4AF-C27BF1B2CD11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81089546-F457-4782-B4AF-C27BF1B2CD11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81089546-F457-4782-B4AF-C27BF1B2CD11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81089546-F457-4782-B4AF-C27BF1B2CD11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81089546-F457-4782-B4AF-C27BF1B2CD11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26E4198D-75C5-459F-B34A-8CA814E4EE5F}
+	EndGlobalSection
+EndGlobal

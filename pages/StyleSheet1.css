@@ -1,0 +1,183 @@
+﻿body {
+    background-image: url(background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: contain;
+    min-height: 600px;
+    max-height: 1080px;
+    font-weight: bold;
+}
+
+.table_background{
+    background-color:white
+}
+div {
+   
+}
+.Initial_button {
+    display: block;
+    padding: 4px 18px 4px 18px;
+    float: left;
+    background-color: mediumseagreen;
+    color: Black;
+    font-weight: bold;
+    border-radius: 2.5px;
+}
+
+    .Initial_button:hover {
+        color: White;
+        background-color: lightgreen;
+    }
+
+.Clicked_button {
+    float: left;
+    display: block;
+    background-color: lightgreen;
+    padding: 4px 18px 4px 18px;
+    color: Black;
+    font-weight: bold;
+    color: White;
+    border-radius: 2.5px;
+}
+.Initial_button_ar {
+    display: block;
+    padding: 4px 18px 4px 18px;
+    float: right;
+    background-color: mediumseagreen;
+    color: Black;
+    font-weight: bold;
+    border-radius: 2.5px;
+}
+
+    .Initial_button_ar:hover {
+        color: White;
+        background-color: lightgreen;
+    }
+
+.Clicked_button_ar {
+    float: right;
+    display: block;
+    background-color: lightgreen;
+    padding: 4px 18px 4px 18px;
+    color: Black;
+    font-weight: bold;
+    color: White;
+    border-radius: 2.5px;
+}
+.mydatagrid {
+    width: 80%;
+    border: solid 2px black;
+    min-width: 80%;
+    overflow:auto;
+}
+.mydatagrid_1 {
+    width: 100%;
+    border: solid 2px black;
+    min-width: 80%;
+    overflow: auto;
+}
+
+.header {
+    background-color: #646464;
+    font-family: Arial;
+    color: White;
+    border: none 0px transparent;
+    height: 25px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.rows {
+    background-color: #fff;
+    font-family: Arial;
+    font-size: 14px;
+    color: #000;
+    min-height: 25px;
+    text-align: center;
+    border: none 0px transparent;
+}
+
+    .rows:hover {
+        background-color: lightgreen;
+        font-family: Arial;
+        color: #fff;
+        text-align: center;
+    }
+
+.selectedrow {
+    background-color: lightgreen;
+    font-family: Arial;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mydatagrid a /** FOR THE PAGING ICONS **/ {
+    background-color: Transparent;
+    padding: 5px 5px 5px 5px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .mydatagrid a:hover /** FOR THE PAGING ICONS HOVER STYLES**/ {
+        background-color: #000;
+        color: #fff;
+    }
+
+.mydatagrid span /** FOR THE PAGING ICONS CURRENT PAGE INDICATOR **/ {
+    background-color: #c9c9c9;
+    color: #000;
+    padding: 5px 5px 5px 5px;
+}
+
+.pager {
+    background-color: #646464;
+    font-family: Arial;
+    color: White;
+    height: 30px;
+    text-align: center;
+}
+
+.mydatagrid td {
+    padding: 5px;
+}
+
+.mydatagrid th {
+    padding: 5px;
+}
+.wronginfo{
+    color:darkred
+}
+.loginpagefieldset{
+    background-color:whitesmoke
+}
+.borderspaces {
+    border-collapse: separate;
+    border-spacing:15px;
+}
+.td {
+    width: 150px;
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+}
+.tr {
+    height: 50px;
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+}
+.table {
+    border: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-collapse: collapse;
+    text-align:center;
+    height:50px;
+    padding:15px;
+    row-gap:10px;
+    column-gap:10px;
+
+}
