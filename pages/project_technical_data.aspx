@@ -257,9 +257,6 @@
             <asp:Table ID="btns" runat="server" CssClass="borderspaces">
                 <asp:TableRow>
                     <asp:TableCell>
-            <asp:Button ID="btn_AddCabinets" runat="server" text="Add Cabinets" OnClick="btn_AddCabinets_Click" CssClass="Initial_button" />
-               </asp:TableCell>
-                    <asp:TableCell>
                         <asp:Button ID="btn_done" runat="server" Text="Done" OnClick="btn_Done_Click" CssClass="Initial_button" />
                     </asp:TableCell>
                 </asp:TableRow>

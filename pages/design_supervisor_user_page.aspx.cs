@@ -245,6 +245,7 @@ namespace GELA_DB.pages
             GridViewRow project_row = projects_grid.SelectedRow;
             txtbx_selected_row_project_ID.Text = project_row.Cells[0].Text;
             txtbx_customer_id.Text = project_row.Cells[1].Text;
+            txtbx_selected_kitchen_type.Text = project_row.Cells[18].Text;
             btn_edit_project_1.Enabled = true;
             if (project_row.Cells[4].Text == "في الانتاج") 
             {
@@ -564,6 +565,19 @@ namespace GELA_DB.pages
         protected void btn_lang_Click(object sender, EventArgs e)
         {
             Response.Redirect("design_supervisor_user_page_ar.aspx");
+        }
+        protected void btn_AddCabinets_Click(object sender, EventArgs e)
+        {
+            Session["project_id"] = txtbx_selected_row_project_ID.Text;
+            if (!txtbx_selected_kitchen_type.Text.IsNullOrWhiteSpace() && txtbx_selected_kitchen_type.Text != "&nbsp;") { 
+            Session["kitchen_type"] = txtbx_selected_kitchen_type.Text;
+            string popup = "window.open ('order_details_input.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
+            ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
+            }
+            else
+            {
+                lbl_err_4.Visible = true;
+            }
         }
     }
 }

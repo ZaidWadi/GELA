@@ -1,14 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="customer_info_input_ar.aspx.cs" Inherits="GELA_DB.pages.WebForm38" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="edit_customer_ar.aspx.cs" Inherits="GELA_DB.pages.WebForm41" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
     <link href="StyleSheet1.css" rel="stylesheet" />
+    <title></title>
 </head>
 <body>
-    <form id="form1" runat="server" dir="rtl">
+    <form id="form8" runat="server" dir="rtl">
         <asp:ScriptManager ID="scrptmgr_project_data_input" runat="server"></asp:ScriptManager>
         <div>
             <br /><br /><br /><br /><br />
@@ -40,7 +40,7 @@
             <asp:TextBox ID="txtbx_PhoneNo_1" runat="server"></asp:TextBox>
                         </td>
                      <td>
-            <asp:Label ID="lbl_PhoneNo_2" runat="server">رقم هاتف ثانوي: </asp:Label>
+            <asp:Label ID="lbl_PhoneNo_2" runat="server">رقم الهاتف الثانوي: </asp:Label>
             <asp:TextBox ID="txtbx_PhoneNo_2" runat="server"></asp:TextBox>
                          </td>
                     </tr>
@@ -50,7 +50,7 @@
                             <asp:UpdatePanel ID="updt_city" runat="server">
                                 <ContentTemplate>
             <asp:Label ID="lbl_City" runat="server">المدينة: </asp:Label>
-            <asp:DropDownList ID="dlst_City" runat="server" OnSelectedIndexChanged="dlst_City_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+            <asp:DropDownList ID="dlst_City" runat="server" OnSelectedIndexChanged="dlst_City_SelectedIndexChanged" OnDataBound="dlst_City_DataBound" AutoPostBack="true"></asp:DropDownList>
                         </ContentTemplate>
                             </asp:UpdatePanel>
                                     </td>
@@ -89,7 +89,6 @@
                 <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
                 <tr>
                     <td>
-            <asp:TextBox ID="txtbx_correlation_status" runat="server" Visible="false"></asp:TextBox>
             <asp:Label ID="lbl_Notes" runat="server">ملاحظات: </asp:Label>
             <asp:TextBox ID="txtbx_Notes" runat="server"></asp:TextBox>
                         </td>
@@ -100,6 +99,7 @@
                          <asp:Button ID="btn_NextPage" runat="server" text="انتهى"  OnClick="btn_NextPage_Click" CssClass="Initial_button_ar"/>
                     </td>
                 </tr>
+           
                 </table>
                 </fieldset>
         </div>

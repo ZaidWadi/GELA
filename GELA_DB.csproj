@@ -183,7 +183,7 @@
     <Content Include="pages\add_sink.aspx" />
     <Content Include="pages\add_faucet.aspx" />
     <Content Include="pages\add_acc_ar.aspx" />
-    <Content Include="pages\add_dev_ar.aspx" />
+    <Content Include="pages\add_device_ar.aspx" />
     <Content Include="pages\add_faucet_ar.aspx" />
     <Content Include="pages\add_granite_ar.aspx" />
     <Content Include="pages\add_lighting_ar.aspx" />
@@ -195,7 +195,7 @@
     <Content Include="pages\customer_info_input_ar.aspx" />
     <Content Include="pages\design_supervisor_user_page_ar.aspx" />
     <Content Include="pages\designer_user_page_ar.aspx" />
-    <Content Include="pages\edit_cusomter_ar.aspx" />
+    <Content Include="pages\edit_customer_ar.aspx" />
     <Content Include="pages\edit_employee_ar.aspx" />
     <Content Include="pages\edit_project_ar.aspx" />
     <Content Include="pages\engineer_projects_ar.aspx" />
@@ -477,12 +477,12 @@
     <Compile Include="pages\add_acc_ar.aspx.designer.cs">
       <DependentUpon>add_acc_ar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\add_dev_ar.aspx.cs">
-      <DependentUpon>add_dev_ar.aspx</DependentUpon>
+    <Compile Include="pages\add_device_ar.aspx.cs">
+      <DependentUpon>add_device_ar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\add_dev_ar.aspx.designer.cs">
-      <DependentUpon>add_dev_ar.aspx</DependentUpon>
+    <Compile Include="pages\add_device_ar.aspx.designer.cs">
+      <DependentUpon>add_device_ar.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\add_faucet_ar.aspx.cs">
       <DependentUpon>add_faucet_ar.aspx</DependentUpon>
@@ -561,12 +561,12 @@
     <Compile Include="pages\designer_user_page_ar.aspx.designer.cs">
       <DependentUpon>designer_user_page_ar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\edit_cusomter_ar.aspx.cs">
-      <DependentUpon>edit_cusomter_ar.aspx</DependentUpon>
+    <Compile Include="pages\edit_customer_ar.aspx.cs">
+      <DependentUpon>edit_customer_ar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\edit_cusomter_ar.aspx.designer.cs">
-      <DependentUpon>edit_cusomter_ar.aspx</DependentUpon>
+    <Compile Include="pages\edit_customer_ar.aspx.designer.cs">
+      <DependentUpon>edit_customer_ar.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\edit_employee_ar.aspx.cs">
       <DependentUpon>edit_employee_ar.aspx</DependentUpon>
@@ -711,8 +711,8 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="C:\Users\GELA\source\repos\GELA_DB\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('C:\Users\GELA\source\repos\GELA_DB\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
-  <Import Project="C:\Users\GELA\source\repos\GELA_DB\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('C:\Users\GELA\source\repos\GELA_DB\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="..\..\..\Desktop\gela_db\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\..\..\Desktop\gela_db\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Import Project="..\..\..\Desktop\gela_db\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\..\..\Desktop\gela_db\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>

@@ -194,9 +194,11 @@
             <asp:Button ID="btn_contract" runat="server" Text="Contract" OnClick="btn_contract_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_production_order" runat="server" Text="Production Order" OnClick="btn_production_order_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_delte_project" runat="server" Text="Delete Project" OnClick="btn_delte_project_Click" CssClass="Initial_button" />  
+            <asp:Button ID="btn_AddCabinets" runat="server" text="Add Cabinets" OnClick="btn_AddCabinets_Click" CssClass="Initial_button" />
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
             <asp:Label ID="lbl_err_2" runat="server" Text="Please select a project!" Visible="False" CssClass="wronginfo"></asp:Label>
+            <asp:Label ID="lbl_err_4" runat="server" Text="Please fill out the project's technical details first!" Visible="false" CssClass="wronginfo"></asp:Label>
                                           </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
@@ -243,6 +245,16 @@
                     </asp:UpdatePanel>
                                </asp:View>
                 </asp:MultiView>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <asp:UpdatePanel runat="server">
+                <Triggers><asp:AsyncPostBackTrigger ControlID="projects_grid" /></Triggers>
+                <ContentTemplate>
+                    <asp:TextBox ID="txtbx_selected_kitchen_type" Visible="false" runat="server" AutoPostBack="true"></asp:TextBox>
+                </ContentTemplate>
+                </asp:UpdatePanel>
               </td>
           </tr>
     </table>

@@ -312,6 +312,15 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Button btn_add_technical_details;
 
         /// <summary>
+        /// btn_AddCabinets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_AddCabinets;
+
+        /// <summary>
         /// btn_price_offer control.
         /// </summary>
         /// <remarks>
@@ -337,5 +346,14 @@ namespace GELA_DB.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_err_2;
+
+        /// <summary>
+        /// lbl_err_4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_err_4;
     }
 }

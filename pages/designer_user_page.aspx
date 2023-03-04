@@ -181,11 +181,13 @@
                              </ContentTemplate>
                         </asp:updatepanel>
             <asp:Button ID="btn_add_technical_details" runat="server" Text="Add Technical Details" OnClick="btn_add_technical_details_Click" CssClass="Initial_button" />
+            <asp:Button ID="btn_AddCabinets" runat="server" text="Add Cabinets" OnClick="btn_AddCabinets_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_price_offer" runat="server" Text="Price Offer" OnClick="btn_price_offer_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_contract" runat="server" Text="Contract" OnClick="btn_contract_Click" CssClass="Initial_button" />
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
             <asp:Label ID="lbl_err_2" runat="server" Text="Please select a project!" Visible="False" CssClass="wronginfo"></asp:Label>
+            <asp:Label ID="lbl_err_4" runat="server" Text="Please fill out the project's technical details first!" Visible="False" CssClass="wronginfo"></asp:Label>
                                           </ContentTemplate>
                                 </asp:UpdatePanel>
                                 </td>

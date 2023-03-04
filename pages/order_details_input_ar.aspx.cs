@@ -19,74 +19,85 @@ namespace GELA_DB.pages
             con.Open();
             if (Session["project_id"] != null)
             {
-                project_id.Text = Session["project_id"].ToString();
-
-                ///to determine which project the cabinets are for
-                SqlCommand cab_grid = new SqlCommand("SELECT * FROM dbo.entry_tbl_order WHERE project_no = @project_ID", con);
-                cab_grid.Parameters.AddWithValue("@project_ID", project_id.Text);
-                SqlDataReader cab_dr = cab_grid.ExecuteReader();
-                cabinets_grid.DataSource = cab_dr;
-                cabinets_grid.DataBind();
-                con.Close();
-                if (!IsPostBack)
+                if (Session["kitchen_type"] != null)
                 {
-                    con.Open();
-                    SqlCommand cab_names = new SqlCommand("SELECT * FROM dbo.fxd_tbl_cabinet_full_names", con);
-                    SqlDataAdapter cfn = new SqlDataAdapter(cab_names);
-                    DataTable c_f_n = new DataTable();
-                    cfn.Fill(c_f_n);
-                    dlst_product.DataSource = c_f_n;
-                    dlst_product.DataBind();
-                    dlst_product.DataTextField = "cabinet_full_name";
-                    dlst_product.DataValueField = "cabinets_ID";
-                    dlst_product.DataBind();
-                    con.Close();
-                    con.Open();
-                    SqlCommand accessories = new SqlCommand("SELECT * FROM dbo.fxd_tbl_accessories", con);
-                    SqlDataAdapter acc = new SqlDataAdapter(accessories);
-                    DataTable a_c_c = new DataTable();
-                    acc.Fill(a_c_c);
-                    dlst_accessories.DataSource = a_c_c;
-                    dlst_accessories.DataBind();
-                    dlst_accessories.DataTextField = "fullacc";
-                    dlst_accessories.DataValueField = "accessories_ID";
-                    dlst_accessories.DataBind();
-                    con.Close();
-                    con.Open();
-                    SqlCommand lighting = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_types", con);
-                    SqlDataAdapter lig = new SqlDataAdapter(lighting);
-                    DataTable l_i_g = new DataTable();
-                    lig.Fill(l_i_g);
-                    dlst_lighting.DataSource = l_i_g;
-                    dlst_lighting.DataBind();
-                    dlst_lighting.DataTextField = "lighting_type_ar";
-                    dlst_lighting.DataValueField = "lighting_type_ID";
-                    dlst_lighting.DataBind();
-                    con.Close();
-                    con.Open();
-                    SqlCommand lighting_pos = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_position", con);
-                    SqlDataAdapter lp = new SqlDataAdapter(lighting_pos);
-                    DataTable l_p = new DataTable();
-                    lp.Fill(l_p);
-                    dlst_lighting_pos.DataSource = l_p;
-                    dlst_lighting_pos.DataBind();
-                    dlst_lighting_pos.DataTextField = "lighting_pos_ar";
-                    dlst_lighting_pos.DataValueField = "lighting_pos_ID";
-                    dlst_lighting_pos.DataBind();
-                    con.Close();
-                    con.Open();
-                    SqlCommand lighting_place = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_cab_type", con);
-                    SqlDataAdapter lpl = new SqlDataAdapter(lighting_place);
-                    DataTable l_p_l = new DataTable();
-                    lpl.Fill(l_p_l);
-                    dlst_lighting_place.DataSource = l_p_l;
-                    dlst_lighting_place.DataBind();///o
-                    dlst_lighting_place.DataTextField = "lighting_cab_type_ar";
-                    dlst_lighting_place.DataValueField = "lighting_cab_type_ID";
-                    dlst_lighting_place.DataBind();
-                    con.Close();
+                    if (!Session["kitchen_type"].ToString().IsNullOrWhiteSpace()) { 
+                        project_id.Text = Session["project_id"].ToString();
 
-
+                        ///to determine which project the cabinets are for
+                        SqlCommand cab_grid = new SqlCommand("SELECT * FROM dbo.entry_tbl_order WHERE project_no = @project_ID", con);
+                        cab_grid.Parameters.AddWithValue("@project_ID", project_id.Text);
+                        SqlDataReader cab_dr = cab_grid.ExecuteReader();
+                        cabinets_grid.DataSource = cab_dr;
+                        cabinets_grid.DataBind();
+                        con.Close();
+                        if (!IsPostBack)
+                        {
+                            con.Open();
+                            SqlCommand cab_names = new SqlCommand("SELECT * FROM dbo.fxd_tbl_cabinet_full_names", con);
+                            SqlDataAdapter cfn = new SqlDataAdapter(cab_names);
+                            DataTable c_f_n = new DataTable();
+                            cfn.Fill(c_f_n);
+                            dlst_product.DataSource = c_f_n;
+                            dlst_product.DataBind();
+                            dlst_product.DataTextField = "cabinet_full_name";
+                            dlst_product.DataValueField = "cabinets_ID";
+                            dlst_product.DataBind();
+                            con.Close();
+                            con.Open();
+                            SqlCommand accessories = new SqlCommand("SELECT * FROM dbo.fxd_tbl_accessories", con);
+                            SqlDataAdapter acc = new SqlDataAdapter(accessories);
+                            DataTable a_c_c = new DataTable();
+                            acc.Fill(a_c_c);
+                            dlst_accessories.DataSource = a_c_c;
+                            dlst_accessories.DataBind();
+                            dlst_accessories.DataTextField = "fullacc";
+                            dlst_accessories.DataValueField = "accessories_ID";
+                            dlst_accessories.DataBind();
+                            con.Close();
+                            con.Open();
+                            SqlCommand lighting = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_types", con);
+                            SqlDataAdapter lig = new SqlDataAdapter(lighting);
+                            DataTable l_i_g = new DataTable();
+                            lig.Fill(l_i_g);
+                            dlst_lighting.DataSource = l_i_g;
+                            dlst_lighting.DataBind();
+                            dlst_lighting.DataTextField = "lighting_type_ar";
+                            dlst_lighting.DataValueField = "lighting_type_ID";
+                            dlst_lighting.DataBind();
+                            con.Close();
+                            con.Open();
+                            SqlCommand lighting_pos = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_position", con);
+                            SqlDataAdapter lp = new SqlDataAdapter(lighting_pos);
+                            DataTable l_p = new DataTable();
+                            lp.Fill(l_p);
+                            dlst_lighting_pos.DataSource = l_p;
+                            dlst_lighting_pos.DataBind();
+                            dlst_lighting_pos.DataTextField = "lighting_pos_ar";
+                            dlst_lighting_pos.DataValueField = "lighting_pos_ID";
+                            dlst_lighting_pos.DataBind();
+                            con.Close();
+                            con.Open();
+                            SqlCommand lighting_place = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_cab_type", con);
+                            SqlDataAdapter lpl = new SqlDataAdapter(lighting_place);
+                            DataTable l_p_l = new DataTable();
+                            lpl.Fill(l_p_l);
+                            dlst_lighting_place.DataSource = l_p_l;
+                            dlst_lighting_place.DataBind();///o
+                            dlst_lighting_place.DataTextField = "lighting_cab_type_ar";
+                            dlst_lighting_place.DataValueField = "lighting_cab_type_ID";
+                            dlst_lighting_place.DataBind();
+                            con.Close();
+                        }
+                        else
+                        {
+                            Response.Redirect("buffer_page.aspx");
+                        }
+                        }
+                    else
+                    {
+                        Response.Redirect("buffer_page.aspx");
+                    }
 
                 } /// bind fixed cabinet info from tables to drop down lists
             }

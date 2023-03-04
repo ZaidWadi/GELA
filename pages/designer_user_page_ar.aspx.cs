@@ -582,5 +582,20 @@ namespace GELA_DB.pages
         {
             Response.Redirect("designer_user_page.aspx");
         }
+        protected void btn_AddCabinets_Click(object sender, EventArgs e)
+        {
+            Session["project_id"] = txtbx_selected_row_project_ID.Text;
+            GridViewRow rk = projects_grid.SelectedRow;
+            if (!rk.Cells[10].Text.Trim().IsNullOrWhiteSpace() && rk.Cells[10].Text != "&nbsp;")
+            {
+                Session["kitchen_type"] = rk.Cells[10].Text;
+                string popup = "window.open ('order_details_input_ar.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
+                ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
+            }
+            else
+            {
+                lbl_err_4.Visible = true;
+            }
+        }
     }
 }

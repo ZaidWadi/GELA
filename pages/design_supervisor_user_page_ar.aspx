@@ -198,9 +198,11 @@
             <asp:Button ID="btn_contract" runat="server" Text="اخراج عقد بيع" OnClick="btn_contract_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_production_order" runat="server" Text="اخراج تفاصيل الانتاج" OnClick="btn_production_order_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_delte_project" runat="server" Text="حذف المشروع" OnClick="btn_delte_project_Click" CssClass="Initial_button_ar" />  
+            <asp:Button ID="btn_AddCabinets" runat="server" text="ادخال الخزائن" OnClick="btn_AddCabinets_Click" CssClass="Initial_button_ar" />
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
             <asp:Label ID="lbl_err_2" runat="server" Text="الرجاء اختيار مشروع من القائمة!" Visible="False" CssClass="wronginfo"></asp:Label>
+            <asp:Label ID="lbl_err_4" runat="server" Text="الرجاء تعبئة تفاصيل المشروع قبل ادخال الخزائن!" Visible="false" CssClass="wronginfo"></asp:Label>
                                           </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>

@@ -177,11 +177,13 @@
                              </ContentTemplate>
                         </asp:updatepanel>
             <asp:Button ID="btn_add_technical_details" runat="server" Text="اضافة تفاصيل المشروع" OnClick="btn_add_technical_details_Click" CssClass="Initial_button_ar" />
+            <asp:Button ID="btn_AddCabinets" runat="server" text="ادخال الخزائن" OnClick="btn_AddCabinets_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_price_offer" runat="server" Text="اخراج عرض السعر" OnClick="btn_price_offer_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_contract" runat="server" Text="اخراج عقد المبيعات" OnClick="btn_contract_Click" CssClass="Initial_button_ar" />
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
             <asp:Label ID="lbl_err_2" runat="server" Text="الرجاء اختيار مشروع من القائمة!" Visible="False" CssClass="wronginfo"></asp:Label>
+            <asp:Label ID="lbl_err_4" runat="server" Text="الرجاء تعبئة تفاصيل المشروع قبل ادخال الخزائن!" Visible="false" CssClass="wronginfo"></asp:Label>
                                           </ContentTemplate>
                                 </asp:UpdatePanel>
                                 </td>

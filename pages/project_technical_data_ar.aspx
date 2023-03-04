@@ -255,10 +255,7 @@
             <br /><h3>ملاحظات:</h3>
             <asp:TextBox ID="txtbx_Notes" runat="server" TextMode="MultiLine" Width="800px" Height="300px"></asp:TextBox> <br /><br /><br /><br />
             <asp:Table ID="btns" runat="server" CssClass="borderspaces">
-                <asp:TableRow>
-                    <asp:TableCell>
-            <asp:Button ID="btn_AddCabinets" runat="server" text="ادخال الخزائن" OnClick="btn_AddCabinets_Click" CssClass="Initial_button_ar" />
-               </asp:TableCell>
+                <asp:TableRow>           
                     <asp:TableCell>
                         <asp:Button ID="btn_done" runat="server" Text="انتهى" OnClick="btn_Done_Click" CssClass="Initial_button_ar" />
                     </asp:TableCell>
