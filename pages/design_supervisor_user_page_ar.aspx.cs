@@ -570,9 +570,9 @@ namespace GELA_DB.pages
         {
             Session["project_id"] = txtbx_selected_row_project_ID.Text;
             GridViewRow rk = projects_grid.SelectedRow;
-            if (!rk.Cells[18].Text.Trim().IsNullOrWhiteSpace() && rk.Cells[18].Text != "&nbsp;")
+            if (!rk.Cells[18].Text.Trim().IsNullOrWhiteSpace() && rk.Cells[17].Text != "&nbsp;")
             {
-                Session["kitchen_type"] = rk.Cells[18].Text;
+                Session["kitchen_type"] = rk.Cells[17].Text;
                 string popup = "window.open ('order_details_input_ar.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
                 ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
             }

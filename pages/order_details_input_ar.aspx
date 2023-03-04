@@ -16,6 +16,8 @@
             <asp:Button ID="debug" runat="server" Text="debug" OnClick="debug_Click" Visible="false" />
             <fieldset class="loginpagefieldset">
                <asp:Table runat="server"><asp:TableRow><asp:TableCell>
+                    <asp:Label ID="Label1" runat="server" Visible="false"> </asp:Label>
+            <asp:Label ID="Label2" runat="server" Visible="false"></asp:Label>
             <asp:Label ID="lbl_project_id" runat="server">رقم المشروع: </asp:Label>
             <asp:Label ID="project_id" runat="server"></asp:Label>
                 </asp:TableCell></asp:TableRow></asp:Table>
