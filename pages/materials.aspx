@@ -6,6 +6,15 @@
 <head runat="server">
     <title></title>
     <link href="StyleSheet1.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+<script src="../Scripts/jquery-3.6.0.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+<script src="../Scripts/select2.min.js"></script>
+
+<link href="../Content/css/select2.css" rel="stylesheet" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

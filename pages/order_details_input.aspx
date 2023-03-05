@@ -4,7 +4,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link href="StyleSheet1.css" rel="stylesheet" />
+
+<link href="StyleSheet1.css" rel="stylesheet" />
+<link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+<script src="../Scripts/jquery-3.6.0.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+<script src="../Scripts/select2.min.js"></script>
+
+<link href="../Content/css/select2.css" rel="stylesheet" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
     <title></title>
 </head>
 <body>
@@ -29,7 +39,10 @@
                             <asp:UpdatePanel ID="updt_product" runat="server">
                                 <ContentTemplate>
                                     <asp:Label ID="lbl_product" runat="server">Product:</asp:Label>
-                                    <asp:DropDownList ID="dlst_product" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dlst_product_SelectedIndexChanged"></asp:DropDownList>
+                                    <asp:DropDownList ID="dlst_product" runat="server" ToolTip="Select" AutoPostBack="true" OnSelectedIndexChanged="dlst_product_SelectedIndexChanged"></asp:DropDownList>
+                                        <script>
+                                            $(document).ready(function () { $("#dlst_product").select2(); });
+                                        </script>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </asp:TableCell>
@@ -43,7 +56,10 @@
                             <asp:UpdatePanel ID="updt_accessories" runat="server">
                                 <ContentTemplate>
                                     <asp:Label ID="lbl_accessories" runat="server">Accessories:</asp:Label>
-                                    <asp:DropDownList ID="dlst_accessories" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="dlst_accessories" runat="server" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_accessories").select2(); });
+                                    </script>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                             <asp:UpdatePanel runat="server">
@@ -58,7 +74,10 @@
                                 <Triggers><asp:AsyncPostBackTrigger ControlID="dlst_product" /></Triggers>
                                 <ContentTemplate>
                                     <asp:Label ID="lbl_devices" runat="server">Devices:</asp:Label>
-                                    <asp:DropDownList ID="dlst_devices" runat="server" Enabled="false" AutoPostBack="true"></asp:DropDownList>
+                                    <asp:DropDownList ID="dlst_devices" runat="server" Enabled="false" AutoPostBack="true" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_devices").select2(); });
+                                    </script>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                             <asp:UpdatePanel runat="server">
@@ -74,7 +93,10 @@
                             <asp:UpdatePanel ID="updt_lighting" runat="server">
                                 <ContentTemplate>
                                     <asp:Label ID="lbl_lighting" runat="server">Lighting:</asp:Label>
-                                    <asp:DropDownList ID="dlst_lighting" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="dlst_lighting" runat="server" ToolTip="Select"></asp:DropDownList>                                     
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_lighting").select2(); });
+                                    </script>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </asp:TableCell>
@@ -82,7 +104,10 @@
                             <asp:UpdatePanel ID="updt_lighting_pos" runat="server">
                                 <ContentTemplate>
                                     <asp:Label ID="lbl_lighting_pos" runat="server">Lighting Position:</asp:Label>
-                                    <asp:DropDownList ID="dlst_lighting_pos" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="dlst_lighting_pos" runat="server" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_lighting_pos").select2(); });
+                                    </script>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </asp:TableCell>
@@ -90,7 +115,10 @@
                             <asp:UpdatePanel ID="updt_lighting_place" runat="server">
                                 <ContentTemplate>
                                     <asp:Label ID="lbl_lighting_place" runat="server">Lighting Place:</asp:Label>
-                                    <asp:DropDownList ID="dlst_lighting_place" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList ID="dlst_lighting_place" runat="server" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_lighting_place").select2(); });
+                                    </script>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </asp:TableCell>

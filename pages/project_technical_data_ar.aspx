@@ -6,6 +6,15 @@
 <head runat="server">
    <title></title>
     <link href="StyleSheet1.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+<script src="../Scripts/jquery-3.6.0.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+<script src="../Scripts/select2.min.js"></script>
+
+<link href="../Content/css/select2.css" rel="stylesheet" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
     <form id="form1" runat="server" dir="rtl">
@@ -56,6 +65,9 @@
                          <asp:TableCell>
             <asp:Label ID="lbl_InnerBodyWood" runat="server">خشب البودي الداخلي: </asp:Label>
             <asp:DropDownList ID="dlst_InnerBodyWood" runat="server"></asp:DropDownList>
+                             <script>
+                                 $(document).ready(function () { $("#dlst_InnerBodyWood").select2(); });
+                             </script>
                     </asp:TableCell>
                              </asp:TableRow>
                     <asp:TableRow>
@@ -67,6 +79,9 @@
                                 <ContentTemplate>
             <asp:Label ID="lbl_DKHUCabinets" runat="server">خشب الدرف للخزائن العلوية المرتفعة موديل الدبل: </asp:Label>
             <asp:DropDownList ID="dlst_DKHUCabinets" runat="server" Enabled="false" AutoPostBack="true"></asp:DropDownList>
+                                     <script>
+                                         $(document).ready(function () { $("#dlst_DKHUCabinets").select2(); });
+                                     </script>
                                     </ContentTemplate>
                             </asp:UpdatePanel>
                              </asp:TableCell>
@@ -92,6 +107,9 @@
                                 <ContentTemplate>
             <asp:Label ID="lbl_DKLUCabinets" runat="server">خشب الدرف العلوية المنخفضة موديل الدبل: </asp:Label>
             <asp:DropDownList ID="dlst_DKLUCabinets" runat="server" Enabled="false" AutoPostBack="true"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_DKLUCabinets").select2(); });
+                                    </script>
                            </ContentTemplate>
                             </asp:UpdatePanel>
                                     </asp:TableCell>
@@ -112,6 +130,9 @@
                         <asp:TableCell>
             <asp:Label ID="lbl_ClassicUpperCabinets" runat="server">خشب الخزائن العلوية الكلاسيك: </asp:Label>
             <asp:DropDownList ID="dlst_ClassicUpperCabinets" runat="server"></asp:DropDownList>
+                             <script>
+                                 $(document).ready(function () { $("#dlst_ClassicUpperCabinets").select2(); });
+                             </script>
                             </asp:TableCell>
                         
                             <asp:TableCell>
@@ -124,6 +145,9 @@
                         <asp:TableCell>
             <asp:Label ID="lbl_LowerCabinets" runat="server">خشب الخزائن السفلية: </asp:Label>
             <asp:DropDownList ID="dlst_LowerCabinets" runat="server"></asp:DropDownList>
+                            <script>
+                                $(document).ready(function () { $("#dlst_LowerCabinets").select2(); });
+                            </script>
                             </asp:TableCell>
                             <asp:TableCell>
             <asp:Label ID="lbl_LowerCabinetsColor" runat="server">اللون: </asp:Label>
@@ -134,6 +158,9 @@
                         <asp:TableCell>
             <asp:Label ID="lbl_PantryCabinets" runat="server">خشب خزائن المونة: </asp:Label>
             <asp:DropDownList ID="dlst_PantryCabinets" runat="server"></asp:DropDownList>
+                            <script>
+                                $(document).ready(function () { $("#dlst_PantryCabinets").select2(); });
+                            </script>
             </asp:TableCell>
                             <asp:TableCell>
             <asp:Label ID="lbl_PantryCabinetsColor" runat="server">اللون: </asp:Label>
@@ -146,6 +173,9 @@
                                 <ContentTemplate>
             <asp:Label ID="lbl_HingesTrademark" runat="server">الفصالات: </asp:Label>
             <asp:DropDownList ID="dlst_HingesTrademark" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dlst_HingesTrademark_SelectedIndexChanged"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_HingesTrademark").select2(); });
+                                    </script>
                           </ContentTemplate>
                                     </asp:UpdatePanel>
                                     </asp:TableCell>
@@ -165,10 +195,16 @@
                         <asp:TableCell>
                         <asp:Label ID="lbl_sink" runat="server">المجلى:</asp:Label>
                         <asp:DropDownList ID="dlst_sink" runat="server"></asp:DropDownList>
+                            <script>
+                                $(document).ready(function () { $("#dlst_sink").select2(); });
+                            </script>
                         </asp:TableCell>
                         <asp:TableCell>
                         <asp:Label ID="lbl_faucet" runat="server">البطارية:</asp:Label>
                         <asp:DropDownList ID="dlst_faucet" runat="server"></asp:DropDownList>
+                            <script>
+                                $(document).ready(function () { $("#dlst_faucet").select2(); });
+                            </script>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
@@ -180,6 +216,9 @@
                                 <ContentTemplate>
             <asp:Label ID="lbl_GraniteType" runat="server">نوع الجرانيت: </asp:Label>
             <asp:DropDownList ID="dlst_GraniteType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dlst_GraniteType_SelectedIndexChanged"></asp:DropDownList>
+                                     <script>
+                                         $(document).ready(function () { $("#dlst_GraniteType").select2(); });
+                                     </script>
                        </ContentTemplate>
                             </asp:UpdatePanel>
                                     </asp:TableCell>
@@ -240,6 +279,9 @@
                         <asp:TableCell>
             <asp:Label ID="lbl_LightingType" runat="server">الانارة: </asp:Label>
             <asp:DropDownList ID="dlst_LightingType" runat="server"></asp:DropDownList>
+                             <script>
+                                 $(document).ready(function () { $("#dlst_LightingType").select2(); });
+                             </script>
                             </asp:TableCell>
                             <asp:TableCell>
             <asp:Label ID="lbl_HandsType" runat="server">الأيادي: </asp:Label>

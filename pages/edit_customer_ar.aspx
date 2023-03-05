@@ -5,6 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="StyleSheet1.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+<script src="../Scripts/jquery-3.6.0.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+<script src="../Scripts/select2.min.js"></script>
+
+<link href="../Content/css/select2.css" rel="stylesheet" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
     <title></title>
 </head>
 <body>
@@ -51,6 +60,9 @@
                                 <ContentTemplate>
             <asp:Label ID="lbl_City" runat="server">المدينة: </asp:Label>
             <asp:DropDownList ID="dlst_City" runat="server" OnSelectedIndexChanged="dlst_City_SelectedIndexChanged" OnDataBound="dlst_City_DataBound" AutoPostBack="true"></asp:DropDownList>
+                                     <script>
+                                         $(document).ready(function () { $("#dlst_City").select2(); });
+                                     </script>
                         </ContentTemplate>
                             </asp:UpdatePanel>
                                     </td>
@@ -60,6 +72,9 @@
                                 <ContentTemplate>
             <asp:Label ID="lbl_Area" runat="server">المنطقة: </asp:Label>
             <asp:DropDownList ID="dlst_Area" runat="server" AutoPostBack="true" Enabled="false"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_Area").select2(); });
+                                    </script>
                     </ContentTemplate>
                             </asp:UpdatePanel>
                                     </td>

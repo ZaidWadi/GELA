@@ -159,6 +159,15 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.UpdatePanel updt_customers_grid;
 
         /// <summary>
+        /// search_clients control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox search_clients;
+
+        /// <summary>
         /// customers_grid control.
         /// </summary>
         /// <remarks>
@@ -256,6 +265,15 @@ namespace GELA_DB.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View projects_view;
+
+        /// <summary>
+        /// search_projects control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox search_projects;
 
         /// <summary>
         /// updt_project_data control.
@@ -409,6 +427,15 @@ namespace GELA_DB.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View employees_view;
+
+        /// <summary>
+        /// search_employees control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox search_employees;
 
         /// <summary>
         /// employees_grid control.
