@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="design_supervisor_user_page.aspx.cs" Inherits="GELA_DB.pages.WebForm22" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" MaintainScrollPositionOnPostBack="true" AutoEventWireup="true" CodeBehind="design_supervisor_user_page.aspx.cs" Inherits="GELA_DB.pages.WebForm22" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
@@ -61,9 +61,7 @@
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
                       <td>
-                                     <asp:UpdatePanel ID="updt_customers_grid" runat="server" >
-                                          <Triggers><asp:AsyncPostBackTrigger ControlID="tmr_projects" /></Triggers>
-                                         <ContentTemplate>         
+                                              
                            <script>
                                $(document).ready(function () {
                                    $("#search_clients").on("keyup", function () {
@@ -74,9 +72,12 @@
                                    });
                                });
                            </script>
-                            <div style="width:1850px;background-color:whitesmoke;overflow:auto;max-height:500px;">
+                            <div id="cstmr_div" onscroll="SetDivPosition()" style="width:1850px;background-color:whitesmoke;overflow:auto;max-height:500px;">
                          Search: <asp:TextBox ID="search_clients" Font-Size="12pt" runat="server"></asp:TextBox>
                               <br />
+                                <asp:UpdatePanel runat="server">
+                                    <Triggers><asp:AsyncPostBackTrigger ControlID="tmr_projects" /></Triggers>
+                                    <ContentTemplate>
                                 <asp:GridView ID="customers_grid" ClientInstanceName="customers_grid_client" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
  HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="customers_grid_SelectedIndexChanged" OnRowDataBound="customers_grid_RowDataBound" ShowHeaderWhenEmpty="true">
                 <Columns>
@@ -97,10 +98,9 @@
                               <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
                                  
                               </asp:GridView>
+                                        </ContentTemplate>
+                                </asp:UpdatePanel>
                                 </div>
-                                    
-                                               </ContentTemplate>
-                                     </asp:UpdatePanel>
                       </td>
                     </tr>
                   </table>
@@ -134,7 +134,7 @@
                                });
                            });
                        </script>
-                      <div style="width:1700px;max-height:500px;background-color:whitesmoke;overflow:auto;">
+                      <div id="prjct_div" onscroll="SetDivPosition_1()" style="width:1700px;max-height:500px;background-color:whitesmoke;overflow:auto;">
                           Search: <asp:TextBox ID="search_projects" Font-Size="12pt" runat="server"></asp:TextBox>
                               <br />
                           <asp:UpdatePanel ID="updt_project_data" runat="server">
@@ -250,7 +250,7 @@
                                    });
                                });
                            </script>
-                         <div style="width:1850px;max-height:500px;background-color:whitesmoke;overflow:auto;">
+                         <div id="emp_div" onscroll="SetDivPosition_2()" style="width:1850px;max-height:500px;background-color:whitesmoke;overflow:auto;">
                              Search: <asp:TextBox ID="search_employees" Font-Size="12pt" runat="server"></asp:TextBox>
                               <br />
                              <asp:UpdatePanel runat="server">
@@ -301,5 +301,50 @@
     </table>
         </div>
     </form>
+    <script type="text/javascript">
+        window.onload = function () {
+            var strCook = document.cookie;
+            if (strCook.indexOf("!~") != 0) {
+                var intS = strCook.indexOf("!~");
+                var intE = strCook.indexOf("~!");
+                var strPos = strCook.substring(intS + 2, intE);
+                document.getElementById("cstmr_div").scrollTop = strPos;
+            }
+        }
+        function SetDivPosition() {
+            var intY = document.getElementById("cstmr_div").scrollTop;
+            document.cookie = "yPos=!~" + intY + "~!";
+        }
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var strCook = document.cookie;
+            if (strCook.indexOf("!~") != 0) {
+                var intS = strCook.indexOf("!~");
+                var intE = strCook.indexOf("~!");
+                var strPos = strCook.substring(intS + 2, intE);
+                document.getElementById("prjct_div").scrollTop = strPos;
+            }
+        }
+        function SetDivPosition_1() {
+            var intY = document.getElementById("prjct_div").scrollTop;
+            document.cookie = "yPos=!~" + intY + "~!";
+        }
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var strCook = document.cookie;
+            if (strCook.indexOf("!~") != 0) {
+                var intS = strCook.indexOf("!~");
+                var intE = strCook.indexOf("~!");
+                var strPos = strCook.substring(intS + 2, intE);
+                document.getElementById("emp_div").scrollTop = strPos;
+            }
+        }
+        function SetDivPosition_2() {
+            var intY = document.getElementById("emp_div").scrollTop;
+            document.cookie = "yPos=!~" + intY + "~!";
+        }
+    </script>
 </body>
 </html>

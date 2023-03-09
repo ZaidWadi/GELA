@@ -139,7 +139,7 @@
         });
     });
 </script>
-                         <div style="width:1800px;max-height:500px;background-color:whitesmoke;overflow:auto;">
+                         <div style="width:1700px;max-height:500px;background-color:whitesmoke;overflow:auto;">
                              البحث: <asp:TextBox ID="search_projects" Font-Size="12pt" runat="server"></asp:TextBox>
                               <br />
                              <asp:UpdatePanel ID="updt_project_data" runat="server">

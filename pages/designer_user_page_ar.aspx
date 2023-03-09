@@ -80,12 +80,6 @@
                     <asp:BoundField DataField="prefix" headertext="البادئة" />
                     <asp:BoundField DataField="customer_name" headertext="الاسم" />
                     <asp:BoundField DataField="customer_phone_1" headertext="رقم الهاتف" />
-                    <asp:BoundField DataField="customer_phone_2" headertext="رقم الهاتف الثانوي" />
-                    <asp:BoundField DataField="city" HeaderText="المدينة" />
-                    <asp:BoundField DataField="area" headertext="المنطقة" />
-                    <asp:BoundField DataField="address_line" headertext="تفاصيل العنوان" />
-                    <asp:BoundField DataField="building_keeper_phone_no" HeaderText="رقم حارس المبنى" />
-                    <asp:BoundField DataField="notes" HeaderText="الملاحظات" />
                 </Columns>
 
                               <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
@@ -148,7 +142,6 @@
                     <asp:BoundField DataField="QA_eng_name" HeaderText="مهندس ضبط الجودة" />
                     <asp:BoundField DataField="kitchen_type" headertext="نوع المطبخ" />
                     <asp:BoundField DataField="kitchen_height" headertext="ارتفاع المطبخ" />
-                    <asp:BoundField DataField="kitchen_design" HeaderText="التصميم" />
                     <asp:BoundField DataField="inner_body_wood" headertext="خشب البودي الداخلي" />
                     <asp:BoundField DataField="double_kitchen_high_upper_cabinets_wood_type" headertext="خشب الخزائن العلوية المرتفعة لموديل الدبل" />
                     <asp:BoundField DataField="double_kitchen_high_upper_cabinets_color" headertext="لون الخزائن العلوية المرتفعة لموديل الدبل" />

@@ -79,34 +79,37 @@ namespace GELA_DB.pages
 
         protected void projects_view_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
-            con.Open();
-            if (Session["auth"].ToString() == "Supervisor")
+            if (!IsPostBack)
             {
-                string sql_sup = "SELECT * from dbo.entry_tbl_project_data";
-                SqlCommand cmd_sup = new SqlCommand(sql_sup, con);
-                SqlDataReader reader_sup = cmd_sup.ExecuteReader();
-                projects_grid.DataSource = reader_sup;
-                projects_grid.DataBind();
-                con.Close();
-            }
-            else
-            {
-                SqlCommand eng_name = new SqlCommand("SELECT * FROM dbo.fxd_tbl_engineers WHERE eng_name_en=@name", con);
-                eng_name.Parameters.AddWithValue("@name", lbl_name.Text);
-                SqlDataReader dr_eng_name = eng_name.ExecuteReader();
-                if (dr_eng_name.Read())
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+                con.Open();
+                if (Session["auth"].ToString() == "Supervisor")
                 {
-                    string sql = "SELECT * from dbo.entry_tbl_project_data WHERE measuring_eng_name=@eng or designer_name=@eng or QA_eng_name=@eng";
-                    SqlCommand cmd = new SqlCommand(sql, con);
-                    cmd.Parameters.AddWithValue("@eng", dr_eng_name[2].ToString());
-                    dr_eng_name.Close();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    projects_grid.DataSource = reader;
+                    string sql_sup = "SELECT * from dbo.entry_tbl_project_data";
+                    SqlCommand cmd_sup = new SqlCommand(sql_sup, con);
+                    SqlDataReader reader_sup = cmd_sup.ExecuteReader();
+                    projects_grid.DataSource = reader_sup;
                     projects_grid.DataBind();
                     con.Close();
                 }
+                else
+                {
+                    SqlCommand eng_name = new SqlCommand("SELECT * FROM dbo.fxd_tbl_engineers WHERE eng_name_en=@name", con);
+                    eng_name.Parameters.AddWithValue("@name", lbl_name.Text);
+                    SqlDataReader dr_eng_name = eng_name.ExecuteReader();
+                    if (dr_eng_name.Read())
+                    {
+                        string sql = "SELECT * from dbo.entry_tbl_project_data WHERE measuring_eng_name=@eng or designer_name=@eng or QA_eng_name=@eng";
+                        SqlCommand cmd = new SqlCommand(sql, con);
+                        cmd.Parameters.AddWithValue("@eng", dr_eng_name[2].ToString());
+                        dr_eng_name.Close();
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        projects_grid.DataSource = reader;
+                        projects_grid.DataBind();
+                        con.Close();
+                    }
 
+                }
             }
         }
         /// i
@@ -149,35 +152,38 @@ namespace GELA_DB.pages
         }
         protected void projects_view_Load1(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
-            con.Open();
-            if (Session["auth"].ToString() == "Supervisor")
+            if (!IsPostBack)
             {
-                string sql_sup = "SELECT * from dbo.entry_tbl_project_data";
-                SqlCommand cmd_sup = new SqlCommand(sql_sup, con);
-                SqlDataReader reader_sup = cmd_sup.ExecuteReader();
-                projects_grid.DataSource = reader_sup;
-                projects_grid.DataBind();
-            }
-            else
-            {
-                SqlCommand eng_name = new SqlCommand("SELECT * FROM dbo.fxd_tbl_engineers WHERE eng_name_en=@name", con);
-                eng_name.Parameters.AddWithValue("@name", lbl_name.Text);
-                SqlDataReader dr_eng_name = eng_name.ExecuteReader();
-                if (dr_eng_name.Read())
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+                con.Open();
+                if (Session["auth"].ToString() == "Supervisor")
                 {
-                    string sql = "SELECT * from dbo.entry_tbl_project_data WHERE measuring_eng_name=@eng or designer_name=@eng or QA_eng_name=@eng";
-                    SqlCommand cmd = new SqlCommand(sql, con);
-                    cmd.Parameters.AddWithValue("@eng", dr_eng_name[2].ToString());
-                    dr_eng_name.Close();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    projects_grid.DataSource = reader;
+                    string sql_sup = "SELECT * from dbo.entry_tbl_project_data";
+                    SqlCommand cmd_sup = new SqlCommand(sql_sup, con);
+                    SqlDataReader reader_sup = cmd_sup.ExecuteReader();
+                    projects_grid.DataSource = reader_sup;
                     projects_grid.DataBind();
+                }
+                else
+                {
+                    SqlCommand eng_name = new SqlCommand("SELECT * FROM dbo.fxd_tbl_engineers WHERE eng_name_en=@name", con);
+                    eng_name.Parameters.AddWithValue("@name", lbl_name.Text);
+                    SqlDataReader dr_eng_name = eng_name.ExecuteReader();
+                    if (dr_eng_name.Read())
+                    {
+                        string sql = "SELECT * from dbo.entry_tbl_project_data WHERE measuring_eng_name=@eng or designer_name=@eng or QA_eng_name=@eng";
+                        SqlCommand cmd = new SqlCommand(sql, con);
+                        cmd.Parameters.AddWithValue("@eng", dr_eng_name[2].ToString());
+                        dr_eng_name.Close();
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        projects_grid.DataSource = reader;
+                        projects_grid.DataBind();
+
+                    }
 
                 }
-
+                con.Close();
             }
-            con.Close();
         }
 
         protected void edit_customer_Click(object sender, EventArgs e)
@@ -586,9 +592,9 @@ namespace GELA_DB.pages
         {
             Session["project_id"] = txtbx_selected_row_project_ID.Text;
             GridViewRow rk = projects_grid.SelectedRow;
-            if (!rk.Cells[10].Text.Trim().IsNullOrWhiteSpace() && rk.Cells[10].Text != "&nbsp;")
+            if (!rk.Cells[9].Text.Trim().IsNullOrWhiteSpace() && rk.Cells[9].Text != "&nbsp;")
             {
-                Session["kitchen_type"] = rk.Cells[10].Text;
+                Session["kitchen_type"] = rk.Cells[9].Text;
                 string popup = "window.open ('order_details_input_ar.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
                 ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
             }

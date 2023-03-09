@@ -74,21 +74,13 @@
                          <div style="width:contain;max-height:500px;background-color:whitesmoke;overflow:auto;">
                              Search: <asp:TextBox ID="search_customers" Font-Size="12pt" runat="server"></asp:TextBox>
                               <br />         
-                             <asp:GridView ID="customers_grid" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
+                             <asp:GridView ID="customers_grid" ClientInstanceName="customers_grid_client" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
  HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="customers_grid_SelectedIndexChanged"  OnRowDataBound="customers_grid_RowDataBound" ShowHeaderWhenEmpty="true">
                 <Columns>
                     <asp:BoundField DataField="customer_ID" headertext="customer ID" />
                     <asp:BoundField DataField="prefix" headertext="prefix" />
                     <asp:BoundField DataField="customer_name" headertext="Customer Name" />
                     <asp:BoundField DataField="customer_phone_1" headertext="Customer Phone Number" />
-                    <asp:BoundField DataField="customer_phone_2" headertext="Secondary Phone number" />
-                    <asp:BoundField DataField="city" HeaderText="City" />
-                    <asp:BoundField DataField="area" headertext="Area" />
-                    <asp:BoundField DataField="address_line" headertext="Address Line" />
-                    <asp:BoundField DataField="national_id" headertext="National ID Number"></asp:BoundField>
-                    <asp:BoundField DataField="national_id_card_no" HeaderText="Document Number" />
-                    <asp:BoundField DataField="building_keeper_phone_no" HeaderText="Building Keeper Phone Number" />
-                    <asp:BoundField DataField="notes" HeaderText="Notes" />
                 </Columns>
 
                               <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
@@ -147,11 +139,9 @@
                     <asp:BoundField DataField="initiation_date" HeaderText="Project Initiation Date" />
                     <asp:BoundField DataField="measuring_eng_name" headertext="Measuring Engineer" />
                     <asp:BoundField DataField="measuring_eng_phone_no" headertext="Measuring Engineer Phone Number" />
-                    <asp:BoundField DataField="production_manager" HeaderText="Production Manager" />
-                    <asp:BoundField DataField="project_ID" headertext="Project ID" />
+                    <asp:BoundField DataField="QA_eng_name" HeaderText="QA engineer" />
                     <asp:BoundField DataField="kitchen_type" headertext="Kitchen Type" />
                     <asp:BoundField DataField="kitchen_height" headertext="Kitchen Height" />
-                    <asp:BoundField DataField="kitchen_design" HeaderText="Design" />
                     <asp:BoundField DataField="inner_body_wood" headertext="Inner Body Wood Type" />
                     <asp:BoundField DataField="double_kitchen_high_upper_cabinets_wood_type" headertext="High Upper Cabinets wood type" />
                     <asp:BoundField DataField="double_kitchen_high_upper_cabinets_color" headertext="High Upper Cabinets wood color" />

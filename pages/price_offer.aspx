@@ -209,189 +209,192 @@
             </asp:Table>
                 </fieldset>
             <fieldset>
+                <br /><br />
                 <h3>ثالثاً: مواصفات المنتج الأساسية:</h3>
                 <asp:Table runat="server" CellSpacing="10">
                     <asp:TableRow>
                         <asp:TableCell>
-                            خشب البودي الداخلي:<br />
+                           <b> خشب البودي الداخلي: </b><br />
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="lbl_inner_body_wood" runat="server"></asp:Label><br />
                         </asp:TableCell>
-                         <asp:TableCell><br /></asp:TableCell>
-                        <asp:TableCell><asp:Label ID="lbl_inner_body_color" runat="server"></asp:Label><br /></asp:TableCell>
+                         <asp:TableCell><b>اللون: </b><br /></asp:TableCell>
+                        <asp:TableCell><asp:Label ID="lbl_inner_body_color" runat="server"></asp:Label>&nbsp;&nbsp;<br /></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            خشب الدرف العلوية:<br />
+                           <b> خشب الدرف العلوية: </b><br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="lbl_upper_cabinet_wood" runat="server"><br /></asp:Label>
+                            <asp:Label ID="lbl_upper_cabinet_wood" runat="server"><br /></asp:Label>&nbsp;&nbsp;
                         </asp:TableCell>
-                        <asp:TableCell>اللون:<br /></asp:TableCell>
+                        <asp:TableCell><b>اللون: </b><br /></asp:TableCell>
                         <asp:TableCell><asp:Label ID="lbl_upper_cabinet_color" runat="server"></asp:Label><br /></asp:TableCell>
                     </asp:TableRow>
                      <asp:TableRow>
                         <asp:TableCell>
-                            خشب الدرف الدبل المرتفعة:<br />
+                           <b> خشب الدرف الدبل المرتفعة: </b><br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="lbl_u_upper_cabinet_wood" runat="server"><br /></asp:Label>
+                            <asp:Label ID="lbl_u_upper_cabinet_wood" runat="server"><br /></asp:Label>&nbsp;&nbsp;
                         </asp:TableCell>
-                        <asp:TableCell>اللون:<br /></asp:TableCell>
+                        <asp:TableCell><b>اللون: </b><br /></asp:TableCell>
                         <asp:TableCell><asp:Label ID="lbl_u_upper_cabinet_color" runat="server"></asp:Label><br /></asp:TableCell>
                     </asp:TableRow>
                      <asp:TableRow>
                         <asp:TableCell>
-                            خشب الدرف الدبل المنخفضة:<br />
+                           <b> خشب الدرف الدبل المنخفضة:&nbsp;&nbsp;</b><br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="lbl_l_upper_cabinet_wood" runat="server"><br /></asp:Label>
+                            <asp:Label ID="lbl_l_upper_cabinet_wood" runat="server"><br /></asp:Label>&nbsp;&nbsp;
                         </asp:TableCell>
-                        <asp:TableCell>اللون:<br /></asp:TableCell>
+                        <asp:TableCell><b>اللون: </b><br /></asp:TableCell>
                         <asp:TableCell><asp:Label ID="lbl_l_upper_cabinet_color" runat="server"></asp:Label><br /></asp:TableCell>
                     </asp:TableRow>
                      <asp:TableRow>
                         <asp:TableCell>
-                            خشب الدرف السفلية:<br />
+                           <b> خشب الدرف السفلية: </b><br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="lbl_lower_cabinet_wood" runat="server"><br /></asp:Label>
+                            <asp:Label ID="lbl_lower_cabinet_wood" runat="server"><br /></asp:Label>&nbsp;&nbsp;
                         </asp:TableCell>
-                        <asp:TableCell>اللون:<br /></asp:TableCell>
+                        <asp:TableCell><b>اللون: </b><br /></asp:TableCell>
                         <asp:TableCell><asp:Label ID="lbl_lower_cabinet_color" runat="server"></asp:Label><br /></asp:TableCell>
                     </asp:TableRow>
                      <asp:TableRow>
                         <asp:TableCell>
-                            خشب درف المونة:<br />
+                           <b> خشب درف المونة: </b><br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="lbl_pantry_cabinet_wood" runat="server"><br /></asp:Label>
+                            <asp:Label ID="lbl_pantry_cabinet_wood" runat="server"><br /></asp:Label>&nbsp;&nbsp;
                         </asp:TableCell>
-                        <asp:TableCell>اللون:<br /></asp:TableCell>
+                        <asp:TableCell><b> اللون: </b><br /></asp:TableCell>
                         <asp:TableCell><asp:Label ID="lbl_pantry_cabinet_color" runat="server"></asp:Label><br /></asp:TableCell>
                     </asp:TableRow>
                      <asp:TableRow>
                         <asp:TableCell>
-                           نوع الجرانيت:<br />
+                          <b> نوع الجرانيت: </b><br />
                         </asp:TableCell>
                         <asp:TableCell>
-                            <asp:Label ID="lbl_granite" runat="server"><br /></asp:Label>
+                            <asp:Label ID="lbl_granite" runat="server"><br /></asp:Label>&nbsp;&nbsp;
                         </asp:TableCell>
                           <asp:TableCell>
-                           اسم الجرانيت:<br />
+                          <b> اسم الجرانيت: </b><br />
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="lbl_granite_name" runat="server"><br /></asp:Label>
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
+                <br /><br />
                 <asp:Table runat="server" CellSpacing="10">
                     <asp:TableRow>
                         <asp:TableCell>
-                            موديل الأيادي
+                           <b> موديل الأيادي: </b>
                         </asp:TableCell>
                          <asp:TableCell>
                              <asp:Label ID="lbl_hands" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             يضاف مبلغ
+                            <b>يضاف مبلغ</b>&nbsp;&nbsp;
                         </asp:TableCell>
                          <asp:TableCell>
                              <asp:Label ID="lbl_hands_price" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             دينار أردني
+                            &nbsp;&nbsp; <b>دينار أردني</b>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            الفصالات والسكك
+                           <b> الفصالات والسكك: </b>
                         </asp:TableCell>
                          <asp:TableCell>
                               <asp:Label ID="lbl_rails_hinges" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             يضاف مبلغ
+                             <b>يضاف مبلغ</b>&nbsp;&nbsp;
                         </asp:TableCell>
                          <asp:TableCell>
                               <asp:Label ID="lbl_rails_hinges_price" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             دينار أردني
+                            &nbsp;&nbsp; <b>دينار أردني</b>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            فتحة الدكت
+                           <b> فتحة الدكت: </b>
                         </asp:TableCell>
                          <asp:TableCell>
                              <asp:Label ID="lbl_duct_status" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             يضاف مبلغ
+                             <b>يضاف مبلغ</b>&nbsp;&nbsp;
                         </asp:TableCell>
                          <asp:TableCell>
                              <asp:Label ID="lbl_duct_price" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             دينار أردني
+                            &nbsp;&nbsp;<b>دينار أردني</b>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            الانارة
+                           <b> الانارة: </b>
                         </asp:TableCell>
                          <asp:TableCell>
                              <asp:Label ID="lbl_lighting" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             يضاف مبلغ
+                             <b>يضاف مبلغ</b>&nbsp;&nbsp;
                         </asp:TableCell>
                          <asp:TableCell>
                              <asp:Label ID="lbl_lighting_price" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             دينار أردني
+                             &nbsp;&nbsp;<b>دينار أردني</b>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            البطارية
+                           <b> البطارية: </b>
                         </asp:TableCell>
                          <asp:TableCell>
                              <asp:Label ID="lbl_faucet" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             يضاف مبلغ
+                             <b>يضاف مبلغ</b>&nbsp;&nbsp;
                         </asp:TableCell>
                          <asp:TableCell>
                              <asp:Label ID="lbl_faucet_price" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             دينار أردني
+                             &nbsp;&nbsp;<b>دينار أردني</b>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            المجلى
+                           <b>المجلى: </b>
                         </asp:TableCell>
                          <asp:TableCell>
                              <asp:Label ID="lbl_sink" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             يضاف مبلغ
+                             <b>يضاف مبلغ</b>&nbsp;&nbsp;
                         </asp:TableCell>
                          <asp:TableCell>
                              <asp:Label ID="lbl_sink_price" runat="server"></asp:Label>
                         </asp:TableCell>
                          <asp:TableCell>
-                             دينار أردني
+                             &nbsp;&nbsp;<b>دينار أردني</b>
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
             </fieldset>
             <fieldset>
+                <br /><br />
                 <h3>رابعاً: الاكسسوارات والأجهزة</h3>
                  <div>
                 <asp:GridView ID="accessories_grid" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
@@ -399,7 +402,7 @@
                 <Columns>
                     <asp:BoundField DataField="accessories" headertext="الاكسسوارات" />
                     <asp:BoundField DataField="accessory_price" headertext="السعر" />
-                    <asp:TemplateField><ItemTemplate>دينار أردني</ItemTemplate></asp:TemplateField>
+                    <asp:TemplateField><ItemTemplate><b>دينار أردني</b></ItemTemplate></asp:TemplateField>
                 </Columns>
                 </asp:GridView>
                      </div>
@@ -409,62 +412,63 @@
                 <Columns>
                     <asp:BoundField DataField="devices" headertext="الاجهزة" />
                     <asp:BoundField DataField="price" headertext="السعر" />
-                    <asp:TemplateField><ItemTemplate>دينار أردني</ItemTemplate></asp:TemplateField>
+                    <asp:TemplateField><ItemTemplate><b>دينار أردني</b></ItemTemplate></asp:TemplateField>
                 </Columns>
                 </asp:GridView>
                     </div>
             </fieldset>
             <fieldset>
+                <br /><br />
                 <h3>خامساً: الأسعار</h3>
                 <asp:Table runat="server" CellSpacing="10">
                     <asp:TableRow>
                         <asp:TableCell>
-                            اجمالي سعر البودي الداخلي والدرف والجرانيت
+                           <b>اجمالي سعر البودي الداخلي والدرف والجرانيت: </b>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="lbl_woodwork_price" runat="server"></asp:Label>
                         </asp:TableCell>
-                        <asp:TableCell>دينار أردني</asp:TableCell>
+                        <asp:TableCell><b>دينار أردني</b></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            اجمالي سعر الاضافات الاساسية
+                           <b>اجمالي سعر الاضافات الاساسية: </b>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="lbl_basic_adds_price" runat="server"></asp:Label>
                         </asp:TableCell>
-                        <asp:TableCell>دينار أردني</asp:TableCell>
+                        <asp:TableCell><b>دينار أردني</b></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            اجمالي سعر الاكسسوارات
+                          <b>اجمالي سعر الاكسسوارات: </b>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="lbl_accessories_price" runat="server"></asp:Label>
                         </asp:TableCell>
-                        <asp:TableCell>دينار أردني</asp:TableCell>
+                        <asp:TableCell><b>دينار أردني</b></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            اجمالي سعر الأجهزة
+                           <b>اجمالي سعر الأجهزة: </b>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="lbl_devices_price" runat="server"></asp:Label>
                         </asp:TableCell>
-                        <asp:TableCell>دينار أردني</asp:TableCell>
+                        <asp:TableCell><b>دينار أردني</b></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            السعر الاجمالي
+                          <b>السعر الاجمالي: </b>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:Label ID="lbl_final_price" runat="server"></asp:Label>
                         </asp:TableCell>
-                        <asp:TableCell>دينار أردني</asp:TableCell>
+                        <asp:TableCell><b>دينار أردني</b></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            خصم خاص
+                         <b>خصم خاص: </b>
                         </asp:TableCell>
                         <asp:TableCell>
                              <asp:UpdatePanel runat="server">
@@ -473,12 +477,12 @@
                        </ContentTemplate>
                             </asp:UpdatePanel>
                                      </asp:TableCell>
-                        <asp:TableCell>%</asp:TableCell>
-                        <asp:TableCell>دينار أردني</asp:TableCell>
+                        <asp:TableCell><b>%</b></asp:TableCell>
+                        <asp:TableCell><b>دينار أردني</b></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            القيمة بعد الخصم
+                           <b>القيمة بعد الخصم: </b>
                         </asp:TableCell>
                         <asp:TableCell>
                             <asp:UpdatePanel runat="server">
@@ -488,11 +492,12 @@
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </asp:TableCell>
-                        <asp:TableCell>دينار أردني</asp:TableCell>
+                        <asp:TableCell><b>دينار أردني</b></asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
             </fieldset>
             <fieldset>
+                <br /><br />
                 <h3>جدول الدفعات:</h3>
                 <asp:table runat="server" CellSpacing="10" style="border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black; border-top: 1px solid black;">
                     <asp:TableHeaderRow>
@@ -543,6 +548,7 @@
                 </asp:table >
             </fieldset>
             <fieldset>
+                <br /><br />
                 <h3>الشروط والاحكام:</h3>
                 <asp:Table runat="server" CellSpacing="20">
                     <asp:TableRow>

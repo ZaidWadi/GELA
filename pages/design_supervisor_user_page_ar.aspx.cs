@@ -129,6 +129,7 @@ namespace GELA_DB.pages
         }
         protected void projects_view_Load1(object sender, EventArgs e)
         {
+            if (!IsPostBack) { 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
             con.Open();
             string sql = "SELECT * from dbo.entry_tbl_project_data";
@@ -137,6 +138,7 @@ namespace GELA_DB.pages
             projects_grid.DataSource = reader;
             projects_grid.DataBind();
             con.Close();
+            }
         }
 
         protected void edit_customer_Click(object sender, EventArgs e)
@@ -177,7 +179,9 @@ namespace GELA_DB.pages
 
         protected void customers_view_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            if (!IsPostBack)
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
                 con.Open();
                 string sql = "SELECT * from dbo.entry_tbl_customers";
                 SqlCommand cmd = new SqlCommand(sql, con);
@@ -185,6 +189,7 @@ namespace GELA_DB.pages
                 customers_grid.DataSource = reader;
                 customers_grid.DataBind();
                 con.Close();
+            }
             
         }
 
@@ -202,29 +207,31 @@ namespace GELA_DB.pages
 
         protected void employees_view_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
-            con.Open();
-            string sql_engineers = "SELECT * FROM dbo.fxd_tbl_engineers";
-            SqlCommand cmd_engineers = new SqlCommand(sql_engineers, con);
-            SqlDataAdapter da_engineers = new SqlDataAdapter(cmd_engineers);
-            DataTable dt_engineers = new DataTable();
-            da_engineers.Fill(dt_engineers);
-            con.Close();
-            dt_engineers.Columns.Add("counts", typeof(int));
-            foreach (DataRow dr in dt_engineers.Rows)
+            if (!IsPostBack)
             {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
                 con.Open();
-                SqlCommand cmd_counts = new SqlCommand("SELECT COUNT (*) FROM dbo.entry_tbl_project_data WHERE measuring_eng_name = @eng or designer_name = @eng or QA_eng_name = @eng", con);
-                cmd_counts.Parameters.AddWithValue("@eng", dr[2].ToString());
-                SqlDataReader reader = cmd_counts.ExecuteReader();
-                reader.Read();
-                dr["counts"] = int.Parse(reader[0].ToString());
-                reader.Close();
+                string sql_engineers = "SELECT * FROM dbo.fxd_tbl_engineers";
+                SqlCommand cmd_engineers = new SqlCommand(sql_engineers, con);
+                SqlDataAdapter da_engineers = new SqlDataAdapter(cmd_engineers);
+                DataTable dt_engineers = new DataTable();
+                da_engineers.Fill(dt_engineers);
                 con.Close();
+                dt_engineers.Columns.Add("counts", typeof(int));
+                foreach (DataRow dr in dt_engineers.Rows)
+                {
+                    con.Open();
+                    SqlCommand cmd_counts = new SqlCommand("SELECT COUNT (*) FROM dbo.entry_tbl_project_data WHERE measuring_eng_name = @eng or designer_name = @eng or QA_eng_name = @eng", con);
+                    cmd_counts.Parameters.AddWithValue("@eng", dr[2].ToString());
+                    SqlDataReader reader = cmd_counts.ExecuteReader();
+                    reader.Read();
+                    dr["counts"] = int.Parse(reader[0].ToString());
+                    reader.Close();
+                    con.Close();
+                }
+                employees_grid.DataSource = dt_engineers;
+                employees_grid.DataBind();
             }
-            employees_grid.DataSource = dt_engineers;
-            employees_grid.DataBind();
-
         }
 
 
