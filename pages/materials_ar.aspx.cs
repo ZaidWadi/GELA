@@ -19,7 +19,7 @@ namespace GELA_DB.pages
                 {
                     if (!IsPostBack)
                     {///t
-                        Tab1.CssClass = "Clicked_button";
+                        Tab1.CssClass = "Clicked_button_ar";
                         material_views.ActiveViewIndex = 0;
                         Page.ClientScript.RegisterClientScriptInclude("jquery", Page.ResolveUrl("~/Scripts/jquery-3.6.0.js"));
                     }

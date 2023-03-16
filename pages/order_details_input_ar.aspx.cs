@@ -19,17 +19,18 @@ namespace GELA_DB.pages
             con.Open();
             if (Session["project_id"] != null)
             {
+                Label2.Text = Session["kitchen_type"].ToString();
                 project_id.Text = Session["project_id"].ToString();
 
                 ///to determine which project the cabinets are for
-                SqlCommand cab_grid = new SqlCommand("SELECT * FROM dbo.entry_tbl_order WHERE project_no = @project_ID", con);
+                if (!IsPostBack)
+                {
+                    SqlCommand cab_grid = new SqlCommand("SELECT * FROM dbo.entry_tbl_order WHERE project_no = @project_ID", con);
                 cab_grid.Parameters.AddWithValue("@project_ID", project_id.Text);
                 SqlDataReader cab_dr = cab_grid.ExecuteReader();
                 cabinets_grid.DataSource = cab_dr;
                 cabinets_grid.DataBind();
                 con.Close();
-                if (!IsPostBack)
-                {
                     con.Open();
                     SqlCommand cab_names = new SqlCommand("SELECT * FROM dbo.fxd_tbl_cabinet_full_names", con);
                     SqlDataAdapter cfn = new SqlDataAdapter(cab_names);
@@ -85,17 +86,17 @@ namespace GELA_DB.pages
                     dlst_lighting_place.DataValueField = "lighting_cab_type_ID";
                     dlst_lighting_place.DataBind();
                     con.Close();
+                }
 
-
-
-                } /// bind fixed cabinet info from tables to drop down lists
             }
             else
             {
                 Response.Redirect("buffer_page.aspx");
             }
 
-        }
+        } /// bind fixed cabinet info from tables to drop down lists
+
+        
 
         protected void btn_add_cabinet_Click(object sender, EventArgs e)
         {
@@ -106,6 +107,11 @@ namespace GELA_DB.pages
             }
             else
             {
+                decimal width = decimal.Parse(txtbx_width.Text);
+                if (decimal.Parse(txtbx_width.Text) >= 20)
+                {
+                    width = decimal.Parse(txtbx_width.Text) / 100;
+                }
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
                 con.Open();
                 var k_id = Session["kitchen_type"].ToString(); ///getting kitchen type to determine the multipliers
@@ -296,11 +302,11 @@ namespace GELA_DB.pages
                     std.Parameters.AddWithValue("@name", dlst_product.SelectedItem.Text);
                     SqlDataReader std_dr = std.ExecuteReader();
                     std_dr.Read();
-                    if (std_dr["cabinet_vertical_pos_code"].ToString() == "B") 
+                    if (std_dr["cabinet_vertical_pos_code"].ToString() == "B")
                     {
                         pr_wood = pr_lower;
                     }
-                    else if (std_dr["cabinet_vertical_pos_code"].ToString() == "H" && (std_dr["is_double"].ToString()!="LD" && std_dr["is_double"].ToString() != "UD"))
+                    else if (std_dr["cabinet_vertical_pos_code"].ToString() == "H" && (std_dr["is_double"].ToString() != "LD" && std_dr["is_double"].ToString() != "UD"))
                     {
                         pr_wood = pr_upper;
                     }
@@ -316,7 +322,7 @@ namespace GELA_DB.pages
                     {
                         pr_wood = pr_pantry;
                     }
-                    pr = ((decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(std_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
+                    pr = ((width * decimal.Parse(std_dr["constant_body"].ToString()) * pr_wood) + (width * decimal.Parse(std_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (width * decimal.Parse(std_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (width * decimal.Parse(std_dr["constant_top_granite"].ToString()) * pr_granite) + (width * decimal.Parse(std_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (width * decimal.Parse(std_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(std_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
                     std_dr.Close();
                     con.Close();
                 } /// if kitchen is american height
@@ -347,7 +353,7 @@ namespace GELA_DB.pages
                     {
                         pr_wood = pr_pantry;
                     }
-                    pr = ((decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(dtc_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
+                    pr = ((width * decimal.Parse(dtc_dr["constant_body"].ToString()) * pr_wood) + (width * decimal.Parse(dtc_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (width * decimal.Parse(dtc_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (width * decimal.Parse(dtc_dr["constant_top_granite"].ToString()) * pr_granite) + (width * decimal.Parse(dtc_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (width * decimal.Parse(dtc_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(dtc_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
                     dtc_dr.Close();
                     con.Close();
                 } /// if kitchen is german height
@@ -378,7 +384,7 @@ namespace GELA_DB.pages
                     {
                         pr_wood = pr_pantry;
                     }
-                    pr = ((decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(dtcd_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
+                    pr = ((width * decimal.Parse(dtcd_dr["constant_body"].ToString()) * pr_wood) + (width * decimal.Parse(dtcd_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (width * decimal.Parse(dtcd_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (width * decimal.Parse(dtcd_dr["constant_top_granite"].ToString()) * pr_granite) + (width * decimal.Parse(dtcd_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (width * decimal.Parse(dtcd_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(dtcd_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
                     dtcd_dr.Close();
                     con.Close();
                 } /// if kitchen is german double height
@@ -409,21 +415,7 @@ namespace GELA_DB.pages
                     {
                         pr_wood = pr_pantry;
                     }
-                    decimal a = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_body"].ToString()) * pr_wood;
-                    decimal b = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_upper_hood"].ToString()) * pr_upper_hood;
-                    decimal c = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_lower_hood"].ToString()) * pr_lower_hood;
-                    decimal d = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_top_granite"].ToString()) * pr_granite;
-                    decimal g = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_upper_panel"].ToString()) * pr_upper_panel;
-                    decimal f = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_lower_panel"].ToString()) * pr_lower_panel;
-                    decimal h = decimal.Parse(ful_dr["constant_holes"].ToString()) * pr_holes;
-                    dtxtbx_a.Text = pr_wood.ToString();
-                    dtxtbx_b.Text = b.ToString();
-                    dtxtbx_c.Text = c.ToString();
-                    dtxtbx_d.Text = d.ToString();
-                    dtxtbx_e.Text = f.ToString();
-                    dtxtbx_f.Text = g.ToString();
-                    dtxtbx_g.Text = h.ToString();
-                    pr = ((decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(ful_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
+                    pr = ((width * decimal.Parse(ful_dr["constant_body"].ToString()) * pr_wood) + (width * decimal.Parse(ful_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (width * decimal.Parse(ful_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (width * decimal.Parse(ful_dr["constant_top_granite"].ToString()) * pr_granite) + (width * decimal.Parse(ful_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (width * decimal.Parse(ful_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(ful_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
                     ful_dr.Close();
                     con.Close();
                 } /// if kitchen is full height
@@ -454,7 +446,7 @@ namespace GELA_DB.pages
                     {
                         pr_wood = pr_pantry;
                     }
-                    pr = ((decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(fuld_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
+                    pr = ((width * decimal.Parse(fuld_dr["constant_body"].ToString()) * pr_wood) + (width * decimal.Parse(fuld_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (width * decimal.Parse(fuld_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (width * decimal.Parse(fuld_dr["constant_top_granite"].ToString()) * pr_granite) + (width * decimal.Parse(fuld_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (width * decimal.Parse(fuld_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(fuld_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
                     fuld_dr.Close();
                     con.Close();
                 } /// if kitchen is double full height
@@ -478,7 +470,7 @@ namespace GELA_DB.pages
                 SqlCommand cmd_add = new SqlCommand("INSERT INTO dbo.entry_tbl_order (project_no,product,width,accessories,devices,lighting,lighting_position,lighting_location_type,quantity,price) VALUES(@project_ID,@product,@width,@accessories,@devices,@lighting,@lighting_position,@lighting_location,@quantity,@price)", con);
                 cmd_add.Parameters.AddWithValue("@project_ID", project_id.Text);
                 cmd_add.Parameters.AddWithValue("@product", dlst_product.SelectedItem.Text);
-                cmd_add.Parameters.AddWithValue("@width", txtbx_width.Text);
+                cmd_add.Parameters.AddWithValue("@width", width);
                 cmd_add.Parameters.AddWithValue("@accessories", selected_accessory.Text);
                 cmd_add.Parameters.AddWithValue("@devices", selected_device.Text);
                 cmd_add.Parameters.AddWithValue("@lighting", dlst_lighting.SelectedItem.Text);

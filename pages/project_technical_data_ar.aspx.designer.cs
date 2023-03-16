@@ -735,15 +735,6 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Table btns;
 
         /// <summary>
-        /// btn_AddCabinets control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_AddCabinets;
-
-        /// <summary>
         /// btn_done control.
         /// </summary>
         /// <remarks>

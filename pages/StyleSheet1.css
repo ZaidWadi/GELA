@@ -7,6 +7,8 @@
     min-height: 600px;
     max-height: 1080px;
     font-weight: bold;
+    width:1920px;
+    font-size:16pt;
 }
 
 .table_background{
@@ -15,6 +17,24 @@
 div {
    
 }
+
+.Initial_button_login {
+    display: block;
+    padding: 4px 18px 4px 18px;
+    background-color: mediumseagreen;
+    color: Black;
+    font-weight: bold;
+    border-radius: 2.5px;
+    font-size: 10pt;
+    text-align:center;
+    align-self:center;
+}
+
+    .Initial_button_login:hover {
+        color: White;
+        background-color: lightgreen;
+    }
+
 .Initial_button {
     display: block;
     padding: 4px 18px 4px 18px;
@@ -23,11 +43,17 @@ div {
     color: Black;
     font-weight: bold;
     border-radius: 2.5px;
+    font-size:10pt;
 }
 
     .Initial_button:hover {
         color: White;
         background-color: lightgreen;
+    }
+
+    .Initial_button:disabled{
+        color: black;
+        background-color: lightgrey;
     }
 
 .Clicked_button {
@@ -39,6 +65,7 @@ div {
     font-weight: bold;
     color: White;
     border-radius: 2.5px;
+    font-size: 10pt;
 }
 .Initial_button_ar {
     display: block;
@@ -48,11 +75,16 @@ div {
     color: Black;
     font-weight: bold;
     border-radius: 2.5px;
+    font-size: 10pt;
 }
 
     .Initial_button_ar:hover {
         color: White;
         background-color: lightgreen;
+    }
+    .Initial_button_ar:disabled {
+    color: black;
+    background-color: lightgrey;
     }
 
 .Clicked_button_ar {
@@ -64,15 +96,16 @@ div {
     font-weight: bold;
     color: White;
     border-radius: 2.5px;
+    font-size: 10pt;
 }
 .mydatagrid {
-    width: 80%;
+    max-width: 80%;
     border: solid 2px black;
     min-width: 80%;
     overflow:auto;
 }
 .mydatagrid_1 {
-    width: 100%;
+    max-width: 80%;
     border: solid 2px black;
     min-width: 80%;
     overflow: auto;

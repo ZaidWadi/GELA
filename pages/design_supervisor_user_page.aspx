@@ -1,10 +1,19 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="design_supervisor_user_page.aspx.cs" Inherits="GELA_DB.pages.WebForm22" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" MaintainScrollPositionOnPostBack="true" AutoEventWireup="true" CodeBehind="design_supervisor_user_page.aspx.cs" Inherits="GELA_DB.pages.WebForm22" EnableEventValidation="false" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="StyleSheet1.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+<script src="../Scripts/jquery-3.6.0.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+<script src="../Scripts/select2.min.js"></script>
+
+<link href="../Content/css/select2.css" rel="stylesheet" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
     <title></title>
 </head>
 <body>
@@ -43,9 +52,7 @@
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
                       <td>
-                        <h3>
                           <span>Hello <asp:Label ID="lbl_name" runat="server"></asp:Label>!</span>
-                        </h3>
                       </td>
                     </tr>
                   </table>
@@ -54,12 +61,24 @@
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
                       <td>
-                                     <asp:UpdatePanel ID="updt_customers_grid" runat="server" >
-                                          <Triggers><asp:AsyncPostBackTrigger ControlID="tmr_projects" /></Triggers>
-                                         <ContentTemplate>         
-                        <h3>
-                            <div style="width:1850px;background-color:whitesmoke;overflow:auto;max-height:500px;">
-                          <asp:GridView ID="customers_grid" ClientInstanceName="customers_grid_client" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
+                                              
+                           <script>
+                               $(document).ready(function () {
+                                   $("#search_clients").on("keyup", function () {
+                                       var value = $(this).val().toLowerCase();
+                                       $("#customers_grid tr").filter(function () {
+                                           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                       });
+                                   });
+                               });
+                           </script>
+                            <div id="cstmr_div" onscroll="SetDivPosition()" style="width:1850px;background-color:whitesmoke;overflow:auto;max-height:500px;">
+                         Search: <asp:TextBox ID="search_clients" Font-Size="12pt" runat="server"></asp:TextBox>
+                              <br />
+                                <asp:UpdatePanel runat="server">
+                                    <Triggers><asp:AsyncPostBackTrigger ControlID="tmr_projects" /></Triggers>
+                                    <ContentTemplate>
+                                <asp:GridView ID="customers_grid" ClientInstanceName="customers_grid_client" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
  HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="customers_grid_SelectedIndexChanged" OnRowDataBound="customers_grid_RowDataBound" ShowHeaderWhenEmpty="true">
                 <Columns>
                     <asp:BoundField DataField="customer_ID" headertext="customer ID" />
@@ -79,11 +98,9 @@
                               <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
                                  
                               </asp:GridView>
+                                        </ContentTemplate>
+                                </asp:UpdatePanel>
                                 </div>
-                                    
-                        </h3>
-                                               </ContentTemplate>
-                                     </asp:UpdatePanel>
                       </td>
                     </tr>
                   </table>
@@ -107,7 +124,19 @@
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                 <tr>
                   <td>
-                      <div style="width:1700px;max-height:500px;background-color:whitesmoke;overflow:auto;">
+                       <script>
+                           $(document).ready(function () {
+                               $("#search_projects").on("keyup", function () {
+                                   var value = $(this).val().toLowerCase();
+                                   $("#projects_grid tr").filter(function () {
+                                       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                   });
+                               });
+                           });
+                       </script>
+                      <div id="prjct_div" onscroll="SetDivPosition_1()" style="width:1700px;max-height:500px;background-color:whitesmoke;overflow:auto;">
+                          Search: <asp:TextBox ID="search_projects" Font-Size="12pt" runat="server"></asp:TextBox>
+                              <br />
                           <asp:UpdatePanel ID="updt_project_data" runat="server">
                                <Triggers><asp:AsyncPostBackTrigger ControlID="tmr_projects" /></Triggers>
                               <ContentTemplate>
@@ -194,9 +223,11 @@
             <asp:Button ID="btn_contract" runat="server" Text="Contract" OnClick="btn_contract_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_production_order" runat="server" Text="Production Order" OnClick="btn_production_order_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_delte_project" runat="server" Text="Delete Project" OnClick="btn_delte_project_Click" CssClass="Initial_button" />  
+            <asp:Button ID="btn_AddCabinets" runat="server" text="Add Cabinets" OnClick="btn_AddCabinets_Click" CssClass="Initial_button" />
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
             <asp:Label ID="lbl_err_2" runat="server" Text="Please select a project!" Visible="False" CssClass="wronginfo"></asp:Label>
+            <asp:Label ID="lbl_err_4" runat="server" Text="Please fill out the project's technical details first!" Visible="false" CssClass="wronginfo"></asp:Label>
                                           </ContentTemplate>
                                 </asp:UpdatePanel>
                             </td>
@@ -209,7 +240,19 @@
                     <tr>
                       <td>
                                  <br />
-                         <div style="width:1850px;max-height:500px;background-color:whitesmoke;overflow:auto;">
+                           <script>
+                               $(document).ready(function () {
+                                   $("#search_employees").on("keyup", function () {
+                                       var value = $(this).val().toLowerCase();
+                                       $("#employees_grid tr").filter(function () {
+                                           $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                       });
+                                   });
+                               });
+                           </script>
+                         <div id="emp_div" onscroll="SetDivPosition_2()" style="width:1850px;max-height:500px;background-color:whitesmoke;overflow:auto;">
+                             Search: <asp:TextBox ID="search_employees" Font-Size="12pt" runat="server"></asp:TextBox>
+                              <br />
                              <asp:UpdatePanel runat="server">
                                   <Triggers><asp:AsyncPostBackTrigger ControlID="tmr_projects" /></Triggers>
                                  <ContentTemplate>
@@ -245,8 +288,63 @@
                 </asp:MultiView>
               </td>
           </tr>
+          <tr>
+              <td>
+                  <asp:UpdatePanel runat="server">
+                <Triggers><asp:AsyncPostBackTrigger ControlID="projects_grid" /></Triggers>
+                <ContentTemplate>
+                    <asp:TextBox ID="txtbx_selected_kitchen_type" Visible="false" runat="server" AutoPostBack="true"></asp:TextBox>
+                </ContentTemplate>
+                </asp:UpdatePanel>
+              </td>
+          </tr>
     </table>
         </div>
     </form>
+    <script type="text/javascript">
+        window.onload = function () {
+            var strCook = document.cookie;
+            if (strCook.indexOf("!~") != 0) {
+                var intS = strCook.indexOf("!~");
+                var intE = strCook.indexOf("~!");
+                var strPos = strCook.substring(intS + 2, intE);
+                document.getElementById("cstmr_div").scrollTop = strPos;
+            }
+        }
+        function SetDivPosition() {
+            var intY = document.getElementById("cstmr_div").scrollTop;
+            document.cookie = "yPos=!~" + intY + "~!";
+        }
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var strCook = document.cookie;
+            if (strCook.indexOf("!~") != 0) {
+                var intS = strCook.indexOf("!~");
+                var intE = strCook.indexOf("~!");
+                var strPos = strCook.substring(intS + 2, intE);
+                document.getElementById("prjct_div").scrollTop = strPos;
+            }
+        }
+        function SetDivPosition_1() {
+            var intY = document.getElementById("prjct_div").scrollTop;
+            document.cookie = "yPos=!~" + intY + "~!";
+        }
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var strCook = document.cookie;
+            if (strCook.indexOf("!~") != 0) {
+                var intS = strCook.indexOf("!~");
+                var intE = strCook.indexOf("~!");
+                var strPos = strCook.substring(intS + 2, intE);
+                document.getElementById("emp_div").scrollTop = strPos;
+            }
+        }
+        function SetDivPosition_2() {
+            var intY = document.getElementById("emp_div").scrollTop;
+            document.cookie = "yPos=!~" + intY + "~!";
+        }
+    </script>
 </body>
 </html>

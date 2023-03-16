@@ -132,6 +132,15 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.UpdatePanel updt_customers_grid;
 
         /// <summary>
+        /// search_customers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox search_customers;
+
+        /// <summary>
         /// customers_grid control.
         /// </summary>
         /// <remarks>
@@ -211,6 +220,15 @@ namespace GELA_DB.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View projects_view;
+
+        /// <summary>
+        /// search_projects control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox search_projects;
 
         /// <summary>
         /// updt_project_data control.
@@ -312,6 +330,15 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Button btn_add_technical_details;
 
         /// <summary>
+        /// btn_AddCabinets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_AddCabinets;
+
+        /// <summary>
         /// btn_price_offer control.
         /// </summary>
         /// <remarks>
@@ -337,5 +364,14 @@ namespace GELA_DB.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_err_2;
+
+        /// <summary>
+        /// lbl_err_4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_err_4;
     }
 }

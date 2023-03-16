@@ -5,6 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="StyleSheet1.css" rel="stylesheet" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+<script src="../Scripts/jquery-3.6.0.min.js"></script>
+<script src="../Scripts/bootstrap.min.js"></script>
+<script src="../Scripts/select2.min.js"></script>
+
+<link href="../Content/css/select2.css" rel="stylesheet" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
     <title></title>
 </head>
 <body>
@@ -41,6 +50,9 @@
                                      <ContentTemplate>
             <asp:Label ID="lbl_MeasuringEngName" runat="server">Measuring Engineer: </asp:Label>
                             <asp:DropDownList ID="dlst_MeasuringEngName" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dlst_MeasuringEngName_SelectedIndexChanged"></asp:DropDownList>
+                                         <script>
+                                             $(document).ready(function () { $("#dlst_MeasuringEngName").select2(); });
+                                         </script>
                        </ContentTemplate>
                                   </asp:UpdatePanel>
                                          </asp:TableCell>
@@ -60,6 +72,9 @@
                                      <ContentTemplate>
             <asp:Label ID="lbl_DesignerName" runat="server">Designer's Name: </asp:Label>
             <asp:DropDownList ID="dlst_DesignerName" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dlst_DesignerName_SelectedIndexChanged"></asp:DropDownList>
+                                         <script>
+                                             $(document).ready(function () { $("#dlst_DesignerName").select2(); });
+                                         </script>
                            </ContentTemplate>
                                   </asp:UpdatePanel>
                                          </asp:TableCell>
@@ -77,12 +92,18 @@
                         <asp:TableCell>
             <asp:Label ID="lbl_QAEng" runat="server">QA Engineer: </asp:Label>
             <asp:DropDownList ID="dlst_QAEng" runat="server"></asp:DropDownList>
+                            <script>
+                                $(document).ready(function () { $("#dlst_QAEng").select2(); });
+                            </script>
                              </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
             <asp:Label ID="lbl_ProdManager" runat="server">Production Manager: </asp:Label>
             <asp:DropDownList ID="dlst_ProdManger" runat="server"></asp:DropDownList>
+                            <script>
+                                $(document).ready(function () { $("#dlst_ProdManger").select2(); });
+                            </script>
                             </asp:TableCell>
                     </asp:TableRow>
                     </asp:Table>

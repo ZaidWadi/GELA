@@ -33,6 +33,15 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.ScriptManager scrptmgr_project_data_input;
 
         /// <summary>
+        /// search_projects control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox search_projects;
+
+        /// <summary>
         /// reports_grid control.
         /// </summary>
         /// <remarks>

@@ -129,6 +129,7 @@ namespace GELA_DB.pages
         }
         protected void projects_view_Load1(object sender, EventArgs e)
         {
+            if (!IsPostBack) { 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
             con.Open();
             string sql = "SELECT * from dbo.entry_tbl_project_data";
@@ -137,6 +138,7 @@ namespace GELA_DB.pages
             projects_grid.DataSource = reader;
             projects_grid.DataBind();
             con.Close();
+            }
         }
 
         protected void edit_customer_Click(object sender, EventArgs e)
@@ -177,7 +179,9 @@ namespace GELA_DB.pages
 
         protected void customers_view_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            if (!IsPostBack)
+            {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
                 con.Open();
                 string sql = "SELECT * from dbo.entry_tbl_customers";
                 SqlCommand cmd = new SqlCommand(sql, con);
@@ -185,6 +189,7 @@ namespace GELA_DB.pages
                 customers_grid.DataSource = reader;
                 customers_grid.DataBind();
                 con.Close();
+            }
             
         }
 
@@ -202,29 +207,31 @@ namespace GELA_DB.pages
 
         protected void employees_view_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
-            con.Open();
-            string sql_engineers = "SELECT * FROM dbo.fxd_tbl_engineers";
-            SqlCommand cmd_engineers = new SqlCommand(sql_engineers, con);
-            SqlDataAdapter da_engineers = new SqlDataAdapter(cmd_engineers);
-            DataTable dt_engineers = new DataTable();
-            da_engineers.Fill(dt_engineers);
-            con.Close();
-            dt_engineers.Columns.Add("counts", typeof(int));
-            foreach (DataRow dr in dt_engineers.Rows)
+            if (!IsPostBack)
             {
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
                 con.Open();
-                SqlCommand cmd_counts = new SqlCommand("SELECT COUNT (*) FROM dbo.entry_tbl_project_data WHERE measuring_eng_name = @eng or designer_name = @eng or QA_eng_name = @eng", con);
-                cmd_counts.Parameters.AddWithValue("@eng", dr[2].ToString());
-                SqlDataReader reader = cmd_counts.ExecuteReader();
-                reader.Read();
-                dr["counts"] = int.Parse(reader[0].ToString());
-                reader.Close();
+                string sql_engineers = "SELECT * FROM dbo.fxd_tbl_engineers";
+                SqlCommand cmd_engineers = new SqlCommand(sql_engineers, con);
+                SqlDataAdapter da_engineers = new SqlDataAdapter(cmd_engineers);
+                DataTable dt_engineers = new DataTable();
+                da_engineers.Fill(dt_engineers);
                 con.Close();
+                dt_engineers.Columns.Add("counts", typeof(int));
+                foreach (DataRow dr in dt_engineers.Rows)
+                {
+                    con.Open();
+                    SqlCommand cmd_counts = new SqlCommand("SELECT COUNT (*) FROM dbo.entry_tbl_project_data WHERE measuring_eng_name = @eng or designer_name = @eng or QA_eng_name = @eng", con);
+                    cmd_counts.Parameters.AddWithValue("@eng", dr[2].ToString());
+                    SqlDataReader reader = cmd_counts.ExecuteReader();
+                    reader.Read();
+                    dr["counts"] = int.Parse(reader[0].ToString());
+                    reader.Close();
+                    con.Close();
+                }
+                employees_grid.DataSource = dt_engineers;
+                employees_grid.DataBind();
             }
-            employees_grid.DataSource = dt_engineers;
-            employees_grid.DataBind();
-
         }
 
 
@@ -565,6 +572,21 @@ namespace GELA_DB.pages
         protected void btn_lang_Click(object sender, EventArgs e)
         {
             Response.Redirect("design_supervisor_user_page.aspx");
+        }
+        protected void btn_AddCabinets_Click(object sender, EventArgs e)
+        {
+            Session["project_id"] = txtbx_selected_row_project_ID.Text;
+            GridViewRow rk = projects_grid.SelectedRow;
+            if (!rk.Cells[18].Text.Trim().IsNullOrWhiteSpace() && rk.Cells[17].Text != "&nbsp;")
+            {
+                Session["kitchen_type"] = rk.Cells[17].Text;
+                string popup = "window.open ('order_details_input_ar.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
+                ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
+            }
+            else
+            {
+                lbl_err_4.Visible = true;
+            }
         }
     }
 }
