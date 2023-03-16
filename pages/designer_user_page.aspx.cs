@@ -218,7 +218,6 @@ namespace GELA_DB.pages
             GridViewRow customer_row = customers_grid.SelectedRow;
             txtbx_selected_row_ID.Text = customer_row.Cells[0].Text;
             txtbx_selected_row_name.Text = customer_row.Cells[2].Text;
-            txtbx_selected_row_city.Text = customer_row.Cells[5].Text;
         }
 
         protected void customers_view_Load(object sender, EventArgs e)

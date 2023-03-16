@@ -466,6 +466,18 @@ namespace GELA_DB.pages
                 {
                     selected_accessory.Text = dlst_accessories.SelectedItem.Text;
                 }
+                string light_pos = "";
+                string light_loc = "";
+                if (dlst_lighting.SelectedItem.Text == "لا يوجد إنارة") 
+                {
+                    light_pos = "N/A";
+                    light_loc = "N/A";
+                }
+                else
+                {
+                    light_pos = dlst_lighting_pos.SelectedItem.Text;
+                    light_loc = dlst_lighting_place.SelectedItem.Text;
+                }
                 con.Open();
                 SqlCommand cmd_add = new SqlCommand("INSERT INTO dbo.entry_tbl_order (project_no,product,width,accessories,devices,lighting,lighting_position,lighting_location_type,quantity,price) VALUES(@project_ID,@product,@width,@accessories,@devices,@lighting,@lighting_position,@lighting_location,@quantity,@price)", con);
                 cmd_add.Parameters.AddWithValue("@project_ID", project_id.Text);
@@ -474,8 +486,8 @@ namespace GELA_DB.pages
                 cmd_add.Parameters.AddWithValue("@accessories", selected_accessory.Text);
                 cmd_add.Parameters.AddWithValue("@devices", selected_device.Text);
                 cmd_add.Parameters.AddWithValue("@lighting", dlst_lighting.SelectedItem.Text);
-                cmd_add.Parameters.AddWithValue("@lighting_position", dlst_lighting_pos.SelectedItem.Text);
-                cmd_add.Parameters.AddWithValue("@lighting_location", dlst_lighting_place.SelectedItem.Text);
+                cmd_add.Parameters.AddWithValue("@lighting_position", light_pos);
+                cmd_add.Parameters.AddWithValue("@lighting_location", light_loc);
                 cmd_add.Parameters.AddWithValue("@quantity", txtbx_quantity.Text);
                 cmd_add.Parameters.AddWithValue("@price", pr);
                 cmd_add.ExecuteNonQuery(); ///posts the cabinet info to the cabinets table

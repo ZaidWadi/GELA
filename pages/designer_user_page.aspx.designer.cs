@@ -123,15 +123,6 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.View customers_view;
 
         /// <summary>
-        /// updt_customers_grid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updt_customers_grid;
-
-        /// <summary>
         /// search_customers control.
         /// </summary>
         /// <remarks>

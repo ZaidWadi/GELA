@@ -85,11 +85,7 @@ namespace GELA_DB.pages
             projects_grid.DataSource = reader;
             projects_grid.DataBind();
             con.Close();
-        }/// <summary>
-         /// i
-         /// </summary>
-         /// <param name="sender"></param>
-         /// <param name="e"></param>
+        }
 
         protected void btn_new_project_Click(object sender, EventArgs e)
         {
@@ -192,8 +188,6 @@ namespace GELA_DB.pages
             }
         }
 
-       
-
         protected void customers_grid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -201,8 +195,6 @@ namespace GELA_DB.pages
                 e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(this.customers_grid, "Select$" + e.Row.RowIndex.ToString());
             }
         }
-
-
 
         protected void employees_view_Load(object sender, EventArgs e)
         {
@@ -232,10 +224,6 @@ namespace GELA_DB.pages
                 employees_grid.DataBind();
             }
         }
-
-
-
-        
 
         protected void projects_grid_row_DataBound(object sender, GridViewRowEventArgs e)
         {

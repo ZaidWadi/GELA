@@ -54,6 +54,19 @@ namespace GELA_DB.pages
                         dlst_QAEng.DataValueField = "engineers_ID";
                         dlst_QAEng.DataBind();
                         con.Close();
+                        con.Open();
+                        if (Session["auth"].ToString() == "Design")
+                        {
+                            SqlCommand cmd_des = new SqlCommand("SELECT * FROM dbo.fxd_tbl_engineers WHERE eng_name_en=@eng_name_en", con);
+                            cmd_des.Parameters.AddWithValue("@eng_name_en", Session["username"].ToString());
+                            SqlDataReader dr_des = cmd_des.ExecuteReader();
+                            if (dr_des.Read())
+                            {
+                                dlst_DesignerName.SelectedItem.Text = dr_des[2].ToString();
+                                dlst_DesignerName.Enabled = false;
+                            }
+                        }
+                        con.Close();
                         try
                         {
                             con.Open();
@@ -108,6 +121,7 @@ namespace GELA_DB.pages
                         dlst_ProdManger.DataTextField = "man_name_ar";
                         dlst_ProdManger.DataValueField = "man_ID";
                         dlst_ProdManger.DataBind();
+                        con.Close();
                     }
                 }
             }

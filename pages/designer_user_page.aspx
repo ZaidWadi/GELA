@@ -58,9 +58,7 @@
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
                       <td>
-                                     <asp:UpdatePanel ID="updt_customers_grid" runat="server">
-                                         <Triggers><asp:AsyncPostBackTrigger ControlID="tmr_projects" /></Triggers>
-                                         <ContentTemplate>         
+                                         
 <script>
      $(document).ready(function () {
          $("#search_customers").on("keyup", function () {
@@ -71,9 +69,12 @@
          });
      });
 </script>
-                         <div style="width:contain;max-height:500px;background-color:whitesmoke;overflow:auto;">
+                         <div id="cstmr_div" style="width:contain;max-height:500px;background-color:whitesmoke;overflow:auto;">
                              Search: <asp:TextBox ID="search_customers" Font-Size="12pt" runat="server"></asp:TextBox>
                               <br />         
+                              <asp:UpdatePanel runat="server">
+                                         <Triggers><asp:AsyncPostBackTrigger ControlID="tmr_projects" /></Triggers>
+                                         <ContentTemplate>     
                              <asp:GridView ID="customers_grid" ClientInstanceName="customers_grid_client" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
  HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="customers_grid_SelectedIndexChanged"  OnRowDataBound="customers_grid_RowDataBound" ShowHeaderWhenEmpty="true">
                 <Columns>
@@ -86,10 +87,9 @@
                               <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
                                  
                               </asp:GridView>
-                                </div>
-                                    
-                                               </ContentTemplate>
+                                             </ContentTemplate>
                                      </asp:UpdatePanel>
+                                </div>     
                       </td>
                     </tr>
                   </table>
