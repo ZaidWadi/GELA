@@ -138,6 +138,21 @@
                                 </asp:TableCell>
 
                     </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                <asp:TextBox ID="dtxtbx_a" runat="server" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox ID="dtxtbx_b" runat="server" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox ID="dtxtbx_c" runat="server" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox ID="dtxtbx_d" runat="server" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox ID="dtxtbx_e" runat="server" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox ID="dtxtbx_f" runat="server" AutoPostBack="true"></asp:TextBox>
+                                <asp:TextBox ID="dtxtbx_g" runat="server" AutoPostBack="true"></asp:TextBox>
+                                        </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </asp:TableCell>
+                            </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
                             <asp:UpdatePanel runat="server">

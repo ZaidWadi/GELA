@@ -117,7 +117,7 @@ namespace GELA_DB.pages
                 kid.Close(); ///grabing the code for the kitchen type
                 con.Close();
                 con.Open();
-                float pr = 0; ///this will be the final price for the cabinet
+                decimal pr = 0; ///this will be the final price for the cabinet
                 SqlCommand load_project = new SqlCommand("SELECT * FROM dbo.entry_tbl_project_data WHERE project_ID = @ID", con);
                 load_project.Parameters.AddWithValue("@ID", Session["project_id"].ToString());
                 SqlDataAdapter project_data_da = new SqlDataAdapter(load_project);
@@ -126,7 +126,7 @@ namespace GELA_DB.pages
                 con.Close();
 
                 ///get the wood and granite types from project data
-                float pr_upper = 0;
+                decimal pr_upper = 0;
                 if (!project_data_dt.Rows[0]["classic_upper_cabinets_wood_type"].ToString().IsNullOrWhiteSpace())
                 {
                     con.Open();
@@ -134,11 +134,11 @@ namespace GELA_DB.pages
                     upper_wood_prices.Parameters.AddWithValue("@name", project_data_dt.Rows[0]["classic_upper_cabinets_wood_type"].ToString());
                     SqlDataReader upper_wood_price_dr = upper_wood_prices.ExecuteReader();
                     upper_wood_price_dr.Read();
-                    pr_upper = float.Parse(upper_wood_price_dr["wood_granite_price"].ToString());
+                    pr_upper = decimal.Parse(upper_wood_price_dr["wood_granite_price"].ToString());
                     upper_wood_price_dr.Close(); ///look up wood name in the prices table and fetch its price
                     con.Close();
                 }
-                float u_pr_upper = 0;
+                decimal u_pr_upper = 0;
                 if (!project_data_dt.Rows[0]["double_kitchen_high_upper_cabinets_wood_type"].ToString().IsNullOrWhiteSpace())
                 {
                     con.Open();
@@ -147,12 +147,12 @@ namespace GELA_DB.pages
                     SqlDataReader u_upper_wood_price_dr = u_upper_wood_prices.ExecuteReader();
                     if (u_upper_wood_price_dr.Read())
                     {
-                        u_pr_upper = float.Parse(u_upper_wood_price_dr["wood_granite_price"].ToString());
+                        u_pr_upper = decimal.Parse(u_upper_wood_price_dr["wood_granite_price"].ToString());
                         u_upper_wood_price_dr.Close(); ///look up wood name in the prices table and fetch its price
                     }
                     con.Close();
                 }
-                float l_pr_upper = 0;
+                decimal l_pr_upper = 0;
                 if (!project_data_dt.Rows[0]["double_kitchen_low_upper_cabinets_wood_type"].ToString().IsNullOrWhiteSpace())
                 {
                     con.Open();
@@ -161,12 +161,12 @@ namespace GELA_DB.pages
                     SqlDataReader l_upper_wood_price_dr = l_upper_wood_prices.ExecuteReader();
                     if (l_upper_wood_price_dr.Read())
                     {
-                        l_pr_upper = float.Parse(l_upper_wood_price_dr["wood_granite_price"].ToString());
+                        l_pr_upper = decimal.Parse(l_upper_wood_price_dr["wood_granite_price"].ToString());
                         l_upper_wood_price_dr.Close(); ///look up wood name in the prices table and fetch its price
                     }
                     con.Close();
                 }
-                float pr_lower = 0;
+                decimal pr_lower = 0;
                 if (!project_data_dt.Rows[0]["lower_cabinets_wood_type"].ToString().IsNullOrWhiteSpace())
                 {
                     con.Open();
@@ -175,12 +175,12 @@ namespace GELA_DB.pages
                     SqlDataReader lower_wood_price_dr = lower_wood_prices.ExecuteReader();
                     if (lower_wood_price_dr.Read())
                     {
-                        pr_lower = float.Parse(lower_wood_price_dr["wood_granite_price"].ToString());
+                        pr_lower = decimal.Parse(lower_wood_price_dr["wood_granite_price"].ToString());
                         lower_wood_price_dr.Close(); ///look up wood name in the prices table and fetch its price
                     }
                     con.Close();
                 }
-                float pr_pantry = 0;
+                decimal pr_pantry = 0;
                 if (!project_data_dt.Rows[0]["pantry_cabinets_wood_type"].ToString().IsNullOrWhiteSpace())
                 {
                     con.Open();
@@ -189,70 +189,70 @@ namespace GELA_DB.pages
                     SqlDataReader pantry_wood_price_dr = pantry_wood_prices.ExecuteReader();
                     if (pantry_wood_price_dr.Read())
                     {
-                        pr_pantry = float.Parse(pantry_wood_price_dr["wood_granite_price"].ToString());
+                        pr_pantry = decimal.Parse(pantry_wood_price_dr["wood_granite_price"].ToString());
                         pantry_wood_price_dr.Close(); ///look up wood name in the prices table and fetch its price
                     }
                     con.Close();
                 }
-                float pr_wood = pr_upper + l_pr_upper + u_pr_upper + pr_lower + pr_pantry;
+                decimal pr_wood = 0;
                 con.Open();
-                float pr_granite = 0;
+                decimal pr_granite = 0;
                 if (!project_data_dt.Rows[0]["granite_type"].ToString().IsNullOrWhiteSpace())
                 {
                     SqlCommand granite_prices = new SqlCommand("SELECT * FROM dbo.fxd_tbl_wood_granite_prices WHERE wood_granite_name = @name", con);
                     granite_prices.Parameters.AddWithValue("@name", project_data_dt.Rows[0]["granite_type"].ToString());
                     SqlDataReader granite_price_dr = granite_prices.ExecuteReader();
                     granite_price_dr.Read();
-                    pr_granite = float.Parse(granite_price_dr["wood_granite_price"].ToString());
+                    pr_granite = decimal.Parse(granite_price_dr["wood_granite_price"].ToString());
                     granite_price_dr.Close(); ///look up granite name in the prices table and fetch its price
 
                 }
                 con.Close();
                 con.Open();
-                float pr_lower_hood = 0;
+                decimal pr_lower_hood = 0;
                 if (!project_data_dt.Rows[0]["lower_cabinets_wood_type"].ToString().IsNullOrWhiteSpace())
                 {
                     SqlCommand lower_hood_prices = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lower_hood_prices WHERE wood_type = @name", con);
                     lower_hood_prices.Parameters.AddWithValue("@name", project_data_dt.Rows[0]["lower_cabinets_wood_type"].ToString());
                     SqlDataReader lower_hood_prices_dr = lower_hood_prices.ExecuteReader();
                     lower_hood_prices_dr.Read();
-                    pr_lower_hood = float.Parse(lower_hood_prices_dr["price"].ToString());
+                    pr_lower_hood = decimal.Parse(lower_hood_prices_dr["price"].ToString());
                     lower_hood_prices_dr.Close(); ///look up wood name in the lower hood table and fetch its price
                 }
                 con.Close();
                 con.Open();
-                float pr_upper_hood = 0;
+                decimal pr_upper_hood = 0;
                 if (!project_data_dt.Rows[0]["lower_cabinets_wood_type"].ToString().IsNullOrWhiteSpace())
                 {
                     SqlCommand upper_hood_prices = new SqlCommand("SELECT * FROM dbo.fxd_tbl_upper_hood_prices WHERE wood_type = @name", con);
                     upper_hood_prices.Parameters.AddWithValue("@name", project_data_dt.Rows[0]["lower_cabinets_wood_type"].ToString());
                     SqlDataReader upper_hood_prices_dr = upper_hood_prices.ExecuteReader();
                     upper_hood_prices_dr.Read();
-                    pr_upper_hood = float.Parse(upper_hood_prices_dr["price"].ToString());
+                    pr_upper_hood = decimal.Parse(upper_hood_prices_dr["price"].ToString());
                     upper_hood_prices_dr.Close(); ///look up wood name in the upper hood table and fetch its price
                 }
                 con.Close();
                 con.Open();
-                float pr_lower_panel = 0;
+                decimal pr_lower_panel = 0;
                 if (!project_data_dt.Rows[0]["lower_panel_granite"].ToString().IsNullOrWhiteSpace())
                 {
                     SqlCommand lower_panel_prices = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lower_panel_granite_prices WHERE granite_type = @name", con);
                     lower_panel_prices.Parameters.AddWithValue("@name", project_data_dt.Rows[0]["lower_panel_granite"].ToString());
                     SqlDataReader lower_panel_prices_dr = lower_panel_prices.ExecuteReader();
                     lower_panel_prices_dr.Read();
-                    pr_lower_panel = float.Parse(lower_panel_prices_dr["price"].ToString());
+                    pr_lower_panel = decimal.Parse(lower_panel_prices_dr["price"].ToString());
                     lower_panel_prices_dr.Close(); ///look up wood name in the lower panel table and fetch its price
                 }
                 con.Close();
                 con.Open();
-                float pr_upper_panel = 0;
+                decimal pr_upper_panel = 0;
                 if (!project_data_dt.Rows[0]["upper_panel_granite"].ToString().IsNullOrWhiteSpace())
                 {
                     SqlCommand upper_panel_prices = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lower_panel_granite_prices WHERE granite_type = @name", con);
                     upper_panel_prices.Parameters.AddWithValue("@name", project_data_dt.Rows[0]["upper_panel_granite"].ToString());
                     SqlDataReader upper_panel_prices_dr = upper_panel_prices.ExecuteReader();
                     upper_panel_prices_dr.Read();
-                    pr_upper_panel = float.Parse(upper_panel_prices_dr["price"].ToString());
+                    pr_upper_panel = decimal.Parse(upper_panel_prices_dr["price"].ToString());
                     upper_panel_prices_dr.Close(); ///look up wood name in the upper panel table and fetch its price
                 }
                 con.Close();
@@ -262,43 +262,31 @@ namespace GELA_DB.pages
                 holes_prices.Parameters.AddWithValue("@name", holes);
                 SqlDataReader holes_price_dr = holes_prices.ExecuteReader();
                 holes_price_dr.Read();
-                float pr_holes = float.Parse(holes_price_dr["wood_granite_price"].ToString());
+                decimal pr_holes = decimal.Parse(holes_price_dr["wood_granite_price"].ToString());
                 holes_price_dr.Close(); ///get the price for holes from prices table
                 con.Close();
                 con.Open();
-                float pr_accessories = 0;
+                decimal pr_accessories = 0;
                 if (dlst_accessories.SelectedItem.Text.IsNullOrWhiteSpace())
                 {
                     SqlCommand accessories_prices = new SqlCommand("SELECT * FROM dbo.fxd_tbl_accessories WHERE fullacc = @acc", con);
                     accessories_prices.Parameters.AddWithValue("@acc", dlst_accessories.SelectedItem.Text);
                     SqlDataReader accessories_prices_dr = accessories_prices.ExecuteReader();
                     accessories_prices_dr.Read();
-                    pr_accessories = float.Parse(accessories_prices_dr["accessory_price"].ToString());
+                    pr_accessories = decimal.Parse(accessories_prices_dr["accessory_price"].ToString());
                     accessories_prices_dr.Close(); ///look up wood name in the upper panel table and fetch its price
                 }
                 con.Close();
                 con.Open();
-                float pr_devices = 0;
+                decimal pr_devices = 0;
                 if (dlst_devices.Enabled == true && dlst_devices.SelectedItem.Text != null)
                 {
                     SqlCommand devices_prices = new SqlCommand("SELECT * FROM dbo.fxd_tbl_devices WHERE fulldev = @dev", con);
                     devices_prices.Parameters.AddWithValue("@dev", dlst_devices.SelectedItem.Text);
                     SqlDataReader devices_prices_dr = devices_prices.ExecuteReader();
                     devices_prices_dr.Read();
-                    pr_devices = float.Parse(devices_prices_dr["price"].ToString());
+                    pr_devices = decimal.Parse(devices_prices_dr["price"].ToString());
                     devices_prices_dr.Close(); ///look up wood name in the upper panel table and fetch its price
-                }
-                con.Close();
-                con.Open();
-                float pr_lighting = 0;
-                if (!dlst_lighting.SelectedItem.Text.IsNullOrWhiteSpace())
-                {
-                    SqlCommand lighting_prices = new SqlCommand("SELECT * FROM dbo.fxd_tbl_general_prices WHERE item_name=@lighting", con);
-                    lighting_prices.Parameters.AddWithValue("@lighting", dlst_lighting.SelectedItem.Text);
-                    SqlDataReader lighting_prices_dr = lighting_prices.ExecuteReader();
-                    lighting_prices_dr.Read();
-                    pr_lighting = float.Parse(lighting_prices_dr["price"].ToString());
-                    lighting_prices_dr.Close();
                 }
                 con.Close();
                 if (k_code == "STD")
@@ -308,7 +296,27 @@ namespace GELA_DB.pages
                     std.Parameters.AddWithValue("@name", dlst_product.SelectedItem.Text);
                     SqlDataReader std_dr = std.ExecuteReader();
                     std_dr.Read();
-                    pr = ((float.Parse(txtbx_width.Text) * float.Parse(std_dr["constant_body"].ToString()) * pr_wood) + (float.Parse(txtbx_width.Text) * float.Parse(std_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (float.Parse(txtbx_width.Text) * float.Parse(std_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (float.Parse(txtbx_width.Text) * float.Parse(std_dr["constant_top_granite"].ToString()) * pr_granite) + (float.Parse(txtbx_width.Text) * float.Parse(std_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (float.Parse(txtbx_width.Text) * float.Parse(std_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (float.Parse(std_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices + pr_lighting) * float.Parse(txtbx_quantity.Text);
+                    if (std_dr["cabinet_vertical_pos_code"].ToString() == "B") 
+                    {
+                        pr_wood = pr_lower;
+                    }
+                    else if (std_dr["cabinet_vertical_pos_code"].ToString() == "H" && (std_dr["is_double"].ToString()!="LD" && std_dr["is_double"].ToString() != "UD"))
+                    {
+                        pr_wood = pr_upper;
+                    }
+                    else if (std_dr["cabinet_vertical_pos_code"].ToString() == "H" && (std_dr["is_double"].ToString() == "LD"))
+                    {
+                        pr_wood = l_pr_upper;
+                    }
+                    else if (std_dr["cabinet_vertical_pos_code"].ToString() == "H" && (std_dr["is_double"].ToString() == "UD"))
+                    {
+                        pr_wood = u_pr_upper;
+                    }
+                    else if (std_dr["cabinet_vertical_pos_code"].ToString() == "T")
+                    {
+                        pr_wood = pr_pantry;
+                    }
+                    pr = ((decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(std_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(std_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
                     std_dr.Close();
                     con.Close();
                 } /// if kitchen is american height
@@ -319,7 +327,27 @@ namespace GELA_DB.pages
                     dtc.Parameters.AddWithValue("@name", dlst_product.SelectedItem.Text);
                     SqlDataReader dtc_dr = dtc.ExecuteReader();
                     dtc_dr.Read();
-                    pr = ((float.Parse(txtbx_width.Text) * float.Parse(dtc_dr["constant_body"].ToString()) * pr_wood) + (float.Parse(txtbx_width.Text) * float.Parse(dtc_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (float.Parse(txtbx_width.Text) * float.Parse(dtc_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (float.Parse(txtbx_width.Text) * float.Parse(dtc_dr["constant_top_granite"].ToString()) * pr_granite) + (float.Parse(txtbx_width.Text) * float.Parse(dtc_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (float.Parse(txtbx_width.Text) * float.Parse(dtc_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (float.Parse(dtc_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices + pr_lighting) * float.Parse(txtbx_quantity.Text);
+                    if (dtc_dr["cabinet_vertical_pos_code"].ToString() == "B")
+                    {
+                        pr_wood = pr_lower;
+                    }
+                    else if (dtc_dr["cabinet_vertical_pos_code"].ToString() == "H" && (dtc_dr["is_double"].ToString() != "LD" && dtc_dr["is_double"].ToString() != "UD"))
+                    {
+                        pr_wood = pr_upper;
+                    }
+                    else if (dtc_dr["cabinet_vertical_pos_code"].ToString() == "H" && (dtc_dr["is_double"].ToString() == "LD"))
+                    {
+                        pr_wood = l_pr_upper;
+                    }
+                    else if (dtc_dr["cabinet_vertical_pos_code"].ToString() == "H" && (dtc_dr["is_double"].ToString() == "UD"))
+                    {
+                        pr_wood = u_pr_upper;
+                    }
+                    else if (dtc_dr["cabinet_vertical_pos_code"].ToString() == "T")
+                    {
+                        pr_wood = pr_pantry;
+                    }
+                    pr = ((decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtc_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(dtc_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
                     dtc_dr.Close();
                     con.Close();
                 } /// if kitchen is german height
@@ -330,7 +358,27 @@ namespace GELA_DB.pages
                     dtcd.Parameters.AddWithValue("@name", dlst_product.SelectedItem.Text);
                     SqlDataReader dtcd_dr = dtcd.ExecuteReader();
                     dtcd_dr.Read();
-                    pr = ((float.Parse(txtbx_width.Text) * float.Parse(dtcd_dr["constant_body"].ToString()) * pr_wood) + (float.Parse(txtbx_width.Text) * float.Parse(dtcd_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (float.Parse(txtbx_width.Text) * float.Parse(dtcd_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (float.Parse(txtbx_width.Text) * float.Parse(dtcd_dr["constant_top_granite"].ToString()) * pr_granite) + (float.Parse(txtbx_width.Text) * float.Parse(dtcd_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (float.Parse(txtbx_width.Text) * float.Parse(dtcd_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (float.Parse(dtcd_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices + pr_lighting) * float.Parse(txtbx_quantity.Text);
+                    if (dtcd_dr["cabinet_vertical_pos_code"].ToString() == "B")
+                    {
+                        pr_wood = pr_lower;
+                    }
+                    else if (dtcd_dr["cabinet_vertical_pos_code"].ToString() == "H" && (dtcd_dr["is_double"].ToString() != "LD" && dtcd_dr["is_double"].ToString() != "UD"))
+                    {
+                        pr_wood = pr_upper;
+                    }
+                    else if (dtcd_dr["cabinet_vertical_pos_code"].ToString() == "H" && (dtcd_dr["is_double"].ToString() == "LD"))
+                    {
+                        pr_wood = l_pr_upper;
+                    }
+                    else if (dtcd_dr["cabinet_vertical_pos_code"].ToString() == "H" && (dtcd_dr["is_double"].ToString() == "UD"))
+                    {
+                        pr_wood = u_pr_upper;
+                    }
+                    else if (dtcd_dr["cabinet_vertical_pos_code"].ToString() == "T")
+                    {
+                        pr_wood = pr_pantry;
+                    }
+                    pr = ((decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(dtcd_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(dtcd_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
                     dtcd_dr.Close();
                     con.Close();
                 } /// if kitchen is german double height
@@ -341,7 +389,41 @@ namespace GELA_DB.pages
                     ful.Parameters.AddWithValue("@name", dlst_product.SelectedItem.Text);
                     SqlDataReader ful_dr = ful.ExecuteReader();
                     ful_dr.Read();
-                    pr = ((float.Parse(txtbx_width.Text) * float.Parse(ful_dr["constant_body"].ToString()) * pr_wood) + (float.Parse(txtbx_width.Text) * float.Parse(ful_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (float.Parse(txtbx_width.Text) * float.Parse(ful_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (float.Parse(txtbx_width.Text) * float.Parse(ful_dr["constant_top_granite"].ToString()) * pr_granite) + (float.Parse(txtbx_width.Text) * float.Parse(ful_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (float.Parse(txtbx_width.Text) * float.Parse(ful_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (float.Parse(ful_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices + pr_lighting) * float.Parse(txtbx_quantity.Text);
+                    if (ful_dr["cabinet_vertical_pos_code"].ToString() == "B")
+                    {
+                        pr_wood = pr_lower;
+                    }
+                    else if (ful_dr["cabinet_vertical_pos_code"].ToString() == "H" && (ful_dr["is_double"].ToString() != "LD" && ful_dr["is_double"].ToString() != "UD"))
+                    {
+                        pr_wood = pr_upper;
+                    }
+                    else if (ful_dr["cabinet_vertical_pos_code"].ToString() == "H" && (ful_dr["is_double"].ToString() == "LD"))
+                    {
+                        pr_wood = l_pr_upper;
+                    }
+                    else if (ful_dr["cabinet_vertical_pos_code"].ToString() == "H" && (ful_dr["is_double"].ToString() == "UD"))
+                    {
+                        pr_wood = u_pr_upper;
+                    }
+                    else if (ful_dr["cabinet_vertical_pos_code"].ToString() == "T")
+                    {
+                        pr_wood = pr_pantry;
+                    }
+                    decimal a = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_body"].ToString()) * pr_wood;
+                    decimal b = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_upper_hood"].ToString()) * pr_upper_hood;
+                    decimal c = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_lower_hood"].ToString()) * pr_lower_hood;
+                    decimal d = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_top_granite"].ToString()) * pr_granite;
+                    decimal g = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_upper_panel"].ToString()) * pr_upper_panel;
+                    decimal f = decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_lower_panel"].ToString()) * pr_lower_panel;
+                    decimal h = decimal.Parse(ful_dr["constant_holes"].ToString()) * pr_holes;
+                    dtxtbx_a.Text = pr_wood.ToString();
+                    dtxtbx_b.Text = b.ToString();
+                    dtxtbx_c.Text = c.ToString();
+                    dtxtbx_d.Text = d.ToString();
+                    dtxtbx_e.Text = f.ToString();
+                    dtxtbx_f.Text = g.ToString();
+                    dtxtbx_g.Text = h.ToString();
+                    pr = ((decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(ful_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(ful_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
                     ful_dr.Close();
                     con.Close();
                 } /// if kitchen is full height
@@ -352,7 +434,27 @@ namespace GELA_DB.pages
                     fuld.Parameters.AddWithValue("@name", dlst_product.SelectedItem.Text);
                     SqlDataReader fuld_dr = fuld.ExecuteReader();
                     fuld_dr.Read();
-                    pr = ((float.Parse(txtbx_width.Text) * float.Parse(fuld_dr["constant_body"].ToString()) * pr_wood) + (float.Parse(txtbx_width.Text) * float.Parse(fuld_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (float.Parse(txtbx_width.Text) * float.Parse(fuld_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (float.Parse(txtbx_width.Text) * float.Parse(fuld_dr["constant_top_granite"].ToString()) * pr_granite) + (float.Parse(txtbx_width.Text) * float.Parse(fuld_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (float.Parse(txtbx_width.Text) * float.Parse(fuld_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (float.Parse(fuld_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices + pr_lighting) * float.Parse(txtbx_quantity.Text);
+                    if (fuld_dr["cabinet_vertical_pos_code"].ToString() == "B")
+                    {
+                        pr_wood = pr_lower;
+                    }
+                    else if (fuld_dr["cabinet_vertical_pos_code"].ToString() == "H" && (fuld_dr["is_double"].ToString() != "LD" && fuld_dr["is_double"].ToString() != "UD"))
+                    {
+                        pr_wood = pr_upper;
+                    }
+                    else if (fuld_dr["cabinet_vertical_pos_code"].ToString() == "H" && (fuld_dr["is_double"].ToString() == "LD"))
+                    {
+                        pr_wood = l_pr_upper;
+                    }
+                    else if (fuld_dr["cabinet_vertical_pos_code"].ToString() == "H" && (fuld_dr["is_double"].ToString() == "UD"))
+                    {
+                        pr_wood = u_pr_upper;
+                    }
+                    else if (fuld_dr["cabinet_vertical_pos_code"].ToString() == "T")
+                    {
+                        pr_wood = pr_pantry;
+                    }
+                    pr = ((decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(txtbx_width.Text) * decimal.Parse(fuld_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(fuld_dr["constant_holes"].ToString()) * pr_holes) + pr_accessories + pr_devices) * decimal.Parse(txtbx_quantity.Text);
                     fuld_dr.Close();
                     con.Close();
                 } /// if kitchen is double full height

@@ -321,6 +321,69 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.GridView cabinets_grid;
 
         /// <summary>
+        /// dtxtbx_a control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtxtbx_a;
+
+        /// <summary>
+        /// dtxtbx_b control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtxtbx_b;
+
+        /// <summary>
+        /// dtxtbx_c control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtxtbx_c;
+
+        /// <summary>
+        /// dtxtbx_d control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtxtbx_d;
+
+        /// <summary>
+        /// dtxtbx_e control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtxtbx_e;
+
+        /// <summary>
+        /// dtxtbx_f control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtxtbx_f;
+
+        /// <summary>
+        /// dtxtbx_g control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtxtbx_g;
+
+        /// <summary>
         /// txbx_selected_row control.
         /// </summary>
         /// <remarks>
