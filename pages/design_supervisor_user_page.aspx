@@ -226,7 +226,7 @@
             <asp:Button ID="btn_contract" runat="server" Text="Contract" OnClick="btn_contract_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_production_order" runat="server" Text="Production Order" OnClick="btn_production_order_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_delte_project" runat="server" Text="Delete Project" OnClick="btn_delte_project_Click" CssClass="Initial_button" />  
-            <asp:Button ID="btn_cancel" runat="server" text="Cancel Project" OnClick="btn_cancel_Click" CssClass="Initial_button_ar" />
+            <asp:Button ID="btn_cancel" runat="server" text="Cancel Project" OnClick="btn_cancel_Click" CssClass="Initial_button" />
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
             <asp:Label ID="lbl_err_2" runat="server" Text="Please select a project!" Visible="False" CssClass="wronginfo"></asp:Label>
