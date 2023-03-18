@@ -189,6 +189,8 @@
                     <asp:BoundField DataField="hands_type" HeaderText="Hands" />
                     <asp:BoundField DataField="sink_hole_type" HeaderText="Sinkhole" />
                     <asp:BoundField DataField="notes" HeaderText="Notes" />
+                    <asp:BoundField DataField="notes" HeaderText="Notes" />
+                    <asp:BoundField DataField="cancellation_reason" HeaderText="Cancellation Reason" />
                 </Columns>
                 <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
             </asp:GridView>
@@ -219,11 +221,12 @@
             <asp:Button ID="btn_lateness" runat="server" Text="Show Reports" OnClick="btn_lateness_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_edit_project_1" runat="server" Text="Edit Project" OnClick="btn_edit_project_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_add_technical_details" runat="server" Text="Add Technical Details" OnClick="btn_add_technical_details_Click" CssClass="Initial_button" />
+            <asp:Button ID="btn_AddCabinets" runat="server" text="Add Cabinets" OnClick="btn_AddCabinets_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_price_offer" runat="server" Text="Price Offer" OnClick="btn_price_offer_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_contract" runat="server" Text="Contract" OnClick="btn_contract_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_production_order" runat="server" Text="Production Order" OnClick="btn_production_order_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_delte_project" runat="server" Text="Delete Project" OnClick="btn_delte_project_Click" CssClass="Initial_button" />  
-            <asp:Button ID="btn_AddCabinets" runat="server" text="Add Cabinets" OnClick="btn_AddCabinets_Click" CssClass="Initial_button" />
+            <asp:Button ID="btn_cancel" runat="server" text="Cancel Project" OnClick="btn_cancel_Click" CssClass="Initial_button_ar" />
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
             <asp:Label ID="lbl_err_2" runat="server" Text="Please select a project!" Visible="False" CssClass="wronginfo"></asp:Label>

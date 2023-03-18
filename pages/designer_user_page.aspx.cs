@@ -171,9 +171,11 @@ namespace GELA_DB.pages
                     SqlDataReader dr_eng_name = eng_name.ExecuteReader();
                     if (dr_eng_name.Read())
                     {
-                        string sql = "SELECT * from dbo.entry_tbl_project_data WHERE measuring_eng_name=@eng or designer_name=@eng or QA_eng_name=@eng";
+                        string sql = "SELECT * from dbo.entry_tbl_project_data WHERE (measuring_eng_name=@eng or designer_name=@eng or QA_eng_name=@eng) and project_status != @cancel and project_status != @done";
                         SqlCommand cmd = new SqlCommand(sql, con);
                         cmd.Parameters.AddWithValue("@eng", dr_eng_name[2].ToString());
+                        cmd.Parameters.AddWithValue("@cancel", "ملغي");
+                        cmd.Parameters.AddWithValue("@done", "انتهى");
                         dr_eng_name.Close();
                         SqlDataReader reader = cmd.ExecuteReader();
                         projects_grid.DataSource = reader;
@@ -261,7 +263,6 @@ namespace GELA_DB.pages
                 btn_des_finished.Enabled = true;
                 btn_contact.Enabled = false;
                 btn_contract_signed.Enabled = false;
-                btn_contract_refused.Enabled = false;
                 btn_PO_issued.Enabled = false;
             }
             else if (project_row.Cells[4].Text == "بانتظار التواصل")
@@ -269,7 +270,6 @@ namespace GELA_DB.pages
                 btn_des_finished.Enabled = true;
                 btn_contact.Enabled = true;
                 btn_contract_signed.Enabled = false;
-                btn_contract_refused.Enabled = false;
                 btn_PO_issued.Enabled = false;
             }
             else if (project_row.Cells[4].Text == "بانتظار توقيع العقد")
@@ -277,7 +277,6 @@ namespace GELA_DB.pages
                 btn_des_finished.Enabled = true;
                 btn_contact.Enabled = true;
                 btn_contract_signed.Enabled = true;
-                btn_contract_refused.Enabled = true;
                 btn_PO_issued.Enabled = false;
             }
             else if (project_row.Cells[4].Text == "بانتظار أمر الانتاج")
@@ -285,7 +284,6 @@ namespace GELA_DB.pages
                 btn_des_finished.Enabled = true;
                 btn_contact.Enabled = true;
                 btn_contract_signed.Enabled = true;
-                btn_contract_refused.Enabled = true;
                 btn_PO_issued.Enabled = true;
             }
             else
@@ -293,7 +291,6 @@ namespace GELA_DB.pages
                 btn_des_finished.Enabled = false;
                 btn_contact.Enabled = false;
                 btn_contract_signed.Enabled = false;
-                btn_contract_refused.Enabled = false;
                 btn_PO_issued.Enabled = false;
             }
         }
@@ -468,14 +465,7 @@ namespace GELA_DB.pages
 
         protected void btn_contract_refused_Click(object sender, EventArgs e)
         {
-            Session["project_identifier"] = txtbx_selected_row_project_ID.Text;
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE dbo.entry_tbl_project_data SET project_status=@status WHERE project_ID = @project", con);
-            cmd.Parameters.AddWithValue("@project", txtbx_selected_row_project_ID.Text);
-            cmd.Parameters.AddWithValue("status", "ملغي");
-            cmd.ExecuteNonQuery();
-            con.Close();
+            Session["project_ID"] = txtbx_selected_row_project_ID.Text;
             string popup = "window.open ('refusal.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
             ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
         }

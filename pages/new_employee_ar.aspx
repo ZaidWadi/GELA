@@ -62,12 +62,7 @@
                                 $(document).ready(function () { $("#dlst_department").select2(); });
                             </script>
                         </td>
-                    </tr>
-              <tr>
-                    <td>
-            <asp:TextBox ID="txtbx_correlation_status" runat="server" Visible="false"></asp:TextBox>
-                        </td>
-                    </tr>
+                    </tr>      
                <tr>
                     <td>
                          <asp:Button ID="btn_NextPage" runat="server" text="انتهى"  OnClick="btn_NextPage_Click" CssClass="Initial_button_ar"/>

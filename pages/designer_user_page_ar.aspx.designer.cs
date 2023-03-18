@@ -276,15 +276,6 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Button btn_contract_signed;
 
         /// <summary>
-        /// btn_contract_refused control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_contract_refused;
-
-        /// <summary>
         /// btn_PO_issued control.
         /// </summary>
         /// <remarks>
@@ -346,6 +337,15 @@ namespace GELA_DB.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_contract;
+
+        /// <summary>
+        /// btn_contract_refused control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_contract_refused;
 
         /// <summary>
         /// lbl_err_2 control.

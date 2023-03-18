@@ -132,15 +132,6 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.DropDownList dlst_department;
 
         /// <summary>
-        /// txtbx_correlation_status control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtbx_correlation_status;
-
-        /// <summary>
         /// btn_NextPage control.
         /// </summary>
         /// <remarks>

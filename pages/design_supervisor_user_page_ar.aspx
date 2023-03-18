@@ -193,6 +193,7 @@
                     <asp:BoundField DataField="hands_type" HeaderText="الأيادي" />
                     <asp:BoundField DataField="sink_hole_type" HeaderText="فتحة المجلى" />
                     <asp:BoundField DataField="notes" HeaderText="ملاحظات" />
+                    <asp:BoundField DataField="cancellation_reason" HeaderText="سبب الإلغاء" />
                 </Columns>
                 <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
             </asp:GridView>
@@ -223,11 +224,12 @@
             <asp:Button ID="btn_lateness" runat="server" Text="اظهار التقارير" OnClick="btn_lateness_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_edit_project_1" runat="server" Text="التعديل على المشروع" OnClick="btn_edit_project_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_add_technical_details" runat="server" Text="اضافة تفاصيل المشروع" OnClick="btn_add_technical_details_Click" CssClass="Initial_button_ar" />
+            <asp:Button ID="btn_AddCabinets" runat="server" text="ادخال الخزائن" OnClick="btn_AddCabinets_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_price_offer" runat="server" Text="اخراج عرض سعر" OnClick="btn_price_offer_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_contract" runat="server" Text="اخراج عقد بيع" OnClick="btn_contract_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_production_order" runat="server" Text="اخراج تفاصيل الانتاج" OnClick="btn_production_order_Click" CssClass="Initial_button_ar" />
-            <asp:Button ID="btn_delte_project" runat="server" Text="حذف المشروع" OnClick="btn_delte_project_Click" CssClass="Initial_button_ar" />  
-            <asp:Button ID="btn_AddCabinets" runat="server" text="ادخال الخزائن" OnClick="btn_AddCabinets_Click" CssClass="Initial_button_ar" />
+            <asp:Button ID="btn_delte_project" runat="server" Text="حذف المشروع" OnClick="btn_delte_project_Click" CssClass="Initial_button_ar" />
+            <asp:Button ID="btn_cancel" runat="server" text="الغاء المشروع" OnClick="btn_cancel_Click" CssClass="Initial_button_ar" />
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
             <asp:Label ID="lbl_err_2" runat="server" Text="الرجاء اختيار مشروع من القائمة!" Visible="False" CssClass="wronginfo"></asp:Label>

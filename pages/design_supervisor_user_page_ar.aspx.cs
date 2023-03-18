@@ -588,5 +588,16 @@ namespace GELA_DB.pages
                 lbl_err_4.Visible = true;
             }
         }
+
+        protected void btn_cancel_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE dbo.entry_tbl_project_data SET project_status=@status WHERE project_ID = @project", con);
+            cmd.Parameters.AddWithValue("@project", txtbx_selected_row_project_ID.Text);
+            cmd.Parameters.AddWithValue("status", "ملغي");
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }

@@ -357,6 +357,15 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Button btn_add_technical_details;
 
         /// <summary>
+        /// btn_AddCabinets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_AddCabinets;
+
+        /// <summary>
         /// btn_price_offer control.
         /// </summary>
         /// <remarks>
@@ -393,13 +402,13 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Button btn_delte_project;
 
         /// <summary>
-        /// btn_AddCabinets control.
+        /// btn_cancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_AddCabinets;
+        protected global::System.Web.UI.WebControls.Button btn_cancel;
 
         /// <summary>
         /// lbl_err_2 control.

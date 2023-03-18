@@ -21,7 +21,7 @@
      <br /><br /><br /><br />
     
     <form id="form1" runat="server" >
-        <asp:ScriptManager ID="scrptmgr_design_sup" runat="server"></asp:ScriptManager>
+        <asp:ScriptManager ID="scrptmgr_design_sup" runat="server" EnablePartialRendering="true"></asp:ScriptManager>
         <div>
              <asp:Timer runat="server" ID="tmr_projects" Interval="10000" OnTick="tmr_projects_Tick"></asp:Timer>
             <table width="80%" align="center" dir="rtl">
@@ -176,13 +176,12 @@
                           </td>
                           <td>
                                   Project Progression:
-                              <asp:UpdatePanel runat="server">
+                              <asp:UpdatePanel runat="server" ChildrenAsTriggers="true">
                                   <ContentTemplate>
                               <br /><br /> <asp:Button ID="btn_measurements_taken" runat="server" OnClick="btn_measurements_taken_Click" Text="Measurements Taken" CssClass="Initial_button" />
                               <br /><br /> <asp:Button ID="btn_des_finished" runat="server" OnClick="btn_des_finished_Click" Text="Design Done" Enabled="false" CssClass="Initial_button" />
                               <br /><br /> <asp:Button ID="btn_contact" runat="server" OnClick="btn_contact_Click" Text="Customer Contacted" Enabled="false" CssClass="Initial_button" />
                               <br /><br /> <asp:Button ID="btn_contract_signed" runat="server" OnClick="btn_contract_signed_Click" Text="Contract Signed" Enabled="false" CssClass="Initial_button" />
-                                           <asp:Button ID="btn_contract_refused" runat="server" Text="Offer Refused" OnClick="btn_contract_refused_Click" Enabled="false" CssClass="Initial_button" />
                               <br /><br /> <asp:Button ID="btn_PO_issued" runat="server" OnClick="btn_PO_issued_Click" Text="Production Order Isuued" Enabled="false" CssClass="Initial_button" />    
                               <br /><br /><br /> <asp:Label ID="lbl_err_3" runat="server" CssClass="wronginfo" Text="Please select a project!" Visible="false"></asp:Label>
                                                                     </ContentTemplate>
@@ -202,6 +201,7 @@
             <asp:Button ID="btn_AddCabinets" runat="server" text="Add Cabinets" OnClick="btn_AddCabinets_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_price_offer" runat="server" Text="Price Offer" OnClick="btn_price_offer_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_contract" runat="server" Text="Contract" OnClick="btn_contract_Click" CssClass="Initial_button" />
+            <asp:Button ID="btn_contract_refused" runat="server" Text="Request Cancellation" OnClick="btn_contract_refused_Click" CssClass="Initial_button" />
                                 <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
             <asp:Label ID="lbl_err_2" runat="server" Text="Please select a project!" Visible="False" CssClass="wronginfo"></asp:Label>
