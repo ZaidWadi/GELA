@@ -373,6 +373,12 @@ namespace GELA_DB.pages
                 cmd.Parameters.AddWithValue("status", "في التصميم");
                 cmd.ExecuteNonQuery();
                 con.Close();
+                string sql_grid = "SELECT * from dbo.entry_tbl_project_data";
+                SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+                SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+                projects_grid.DataSource = reader_grid;
+                projects_grid.DataBind();
+                con.Close();
             }
             else
             {
@@ -391,6 +397,12 @@ namespace GELA_DB.pages
                 cmd.Parameters.AddWithValue("@project", txtbx_selected_row_project_ID.Text);
                 cmd.Parameters.AddWithValue("status", "بانتظار التواصل");
                 cmd.ExecuteNonQuery();
+                con.Close();
+                string sql_grid = "SELECT * from dbo.entry_tbl_project_data";
+                SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+                SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+                projects_grid.DataSource = reader_grid;
+                projects_grid.DataBind();
                 con.Close();
             }
             else
@@ -412,6 +424,12 @@ namespace GELA_DB.pages
                 cmd.Parameters.AddWithValue("@date_1", DateTime.Today.AddDays(30));
                 cmd.ExecuteNonQuery();
                 con.Close();
+                string sql_grid = "SELECT * from dbo.entry_tbl_project_data";
+                SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+                SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+                projects_grid.DataSource = reader_grid;
+                projects_grid.DataBind();
+                con.Close();
             }
             else
             {
@@ -431,6 +449,12 @@ namespace GELA_DB.pages
                 cmd.Parameters.AddWithValue("status", "بانتظار أمر الانتاج");
                 cmd.ExecuteNonQuery();
                 con.Close();
+                string sql_grid = "SELECT * from dbo.entry_tbl_project_data";
+                SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+                SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+                projects_grid.DataSource = reader_grid;
+                projects_grid.DataBind();
+                con.Close();
             }
             else
             {
@@ -449,6 +473,12 @@ namespace GELA_DB.pages
                 cmd.Parameters.AddWithValue("@project", txtbx_selected_row_project_ID.Text);
                 cmd.Parameters.AddWithValue("status", "في الانتاج");
                 cmd.ExecuteNonQuery();
+                con.Close();
+                string sql_grid = "SELECT * from dbo.entry_tbl_project_data";
+                SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+                SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+                projects_grid.DataSource = reader_grid;
+                projects_grid.DataBind();
                 con.Close();
             }
             else

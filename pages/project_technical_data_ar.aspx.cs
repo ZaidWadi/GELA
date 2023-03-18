@@ -19,6 +19,15 @@ namespace GELA_DB.pages
                 var project_id = Session["Im_running_out_of_session_names"].ToString();
                 lbl_OrderID.Text = project_id;
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+                con.Open();
+                SqlCommand cmd_grab_data = new SqlCommand("SELECT * FROM dbo.entry_tbl_project_data WHERE project_ID=@ID", con);
+                cmd_grab_data.Parameters.AddWithValue("@ID", project_id);
+                SqlDataAdapter da_grab = new SqlDataAdapter(cmd_grab_data);
+                DataTable dt_grab = new DataTable();
+                da_grab.Fill(dt_grab);
+                con.Close();
+                txtbx_GraniteName.Text = dt_grab.Rows[0]["granite_name"].ToString();
+                txtbx_Notes.Text = dt_grab.Rows[0]["notes"].ToString();
                 if (!IsPostBack)
                 {
                     con.Open();
@@ -32,6 +41,7 @@ namespace GELA_DB.pages
                     dlst_KitchenType.DataValueField = "kitchen_types_ID";
                     dlst_KitchenType.DataBind();
                     con.Close();
+                    dlst_KitchenType.SelectedItem.Text = dt_grab.Rows[0]["kitchen_type"].ToString();
                     try
                     {
                         con.Open();
@@ -79,6 +89,7 @@ namespace GELA_DB.pages
                     dlst_Design.DataValueField = "kitchen_design_ID";
                     dlst_Design.DataBind();
                     con.Close();
+                    dlst_Design.SelectedItem.Text = dt_grab.Rows[0]["kitchen_design"].ToString();
                     con.Open();
                     SqlCommand inner_body_wood_type = new SqlCommand("SELECT * from dbo.fxd_tbl_cbnt_wood_type WHERE wood_place=@place", con);
                     inner_body_wood_type.Parameters.AddWithValue("@place", "بودي");
@@ -91,6 +102,7 @@ namespace GELA_DB.pages
                     dlst_InnerBodyWood.DataValueField = "cbnt_wood_types_ID";
                     dlst_InnerBodyWood.DataBind();
                     con.Close();
+                    dlst_InnerBodyWood.SelectedItem.Text = dt_grab.Rows[0]["inner_body_wood"].ToString();
                     con.Open();
                     SqlCommand cabinet_wood_type = new SqlCommand("SELECT * from dbo.fxd_tbl_cbnt_wood_type WHERE wood_place=@place_1", con);
                     cabinet_wood_type.Parameters.AddWithValue("@place_1", "درف");
@@ -102,27 +114,37 @@ namespace GELA_DB.pages
                     dlst_DKHUCabinets.DataTextField = "cbnt_wood_type";
                     dlst_DKHUCabinets.DataValueField = "cbnt_wood_types_ID";
                     dlst_DKHUCabinets.DataBind();
+                    dlst_DKHUCabinets.SelectedItem.Text = dt_grab.Rows[0]["double_kitchen_high_upper_cabinets_wood_type"].ToString();
+                    txtbx_DKHUCabinetsColor.Text = dt_grab.Rows[0]["double_kitchen_high_upper_cabinets_color"].ToString();
                     dlst_DKLUCabinets.DataSource = c_w;
                     dlst_DKLUCabinets.DataBind();
                     dlst_DKLUCabinets.DataTextField = "cbnt_wood_type";
                     dlst_DKLUCabinets.DataValueField = "cbnt_wood_types_ID";
                     dlst_DKLUCabinets.DataBind();
+                    dlst_DKLUCabinets.SelectedItem.Text = dt_grab.Rows[0]["double_kitchen_low_upper_cabinets_wood_type"].ToString();
+                    txtbx_DKLUCabinetsColor.Text = dt_grab.Rows[0]["double_kitchen_low_upper_cabinets_color"].ToString();
                     dlst_ClassicUpperCabinets.DataSource = c_w;
                     dlst_ClassicUpperCabinets.DataBind();
                     dlst_ClassicUpperCabinets.DataTextField = "cbnt_wood_type";
                     dlst_ClassicUpperCabinets.DataValueField = "cbnt_wood_types_ID";
                     dlst_ClassicUpperCabinets.DataBind();
+                    dlst_ClassicUpperCabinets.SelectedItem.Text = dt_grab.Rows[0]["classic_upper_cabinets_wood_type"].ToString();
+                    txtbx_ClassicUpperCabinetsColor.Text = dt_grab.Rows[0]["classic_upper_cabinets_color"].ToString();
                     ///b
                     dlst_LowerCabinets.DataSource = c_w;
                     dlst_LowerCabinets.DataBind();
                     dlst_LowerCabinets.DataTextField = "cbnt_wood_type";
                     dlst_LowerCabinets.DataValueField = "cbnt_wood_types_ID";
                     dlst_LowerCabinets.DataBind();
+                    dlst_LowerCabinets.SelectedItem.Text = dt_grab.Rows[0]["lower_cabinets_wood_type"].ToString();
+                    txtbx_LowerCabinetsColor.Text = dt_grab.Rows[0]["lower_cabinets_color"].ToString();
                     dlst_PantryCabinets.DataSource = c_w;
                     dlst_PantryCabinets.DataBind();
                     dlst_PantryCabinets.DataTextField = "cbnt_wood_type";
                     dlst_PantryCabinets.DataValueField = "cbnt_wood_types_ID";
                     dlst_PantryCabinets.DataBind();
+                    dlst_PantryCabinets.SelectedItem.Text = dt_grab.Rows[0]["pantry_cabinets_wood_type"].ToString();
+                    txtbx_PantyCabinetsColor.Text = dt_grab.Rows[0]["pantry_cabinets_color"].ToString();
                     con.Close();
                     con.Open();
                     SqlCommand hinges = new SqlCommand("SELECT * from dbo.fxd_tbl_hinges", con);
@@ -134,6 +156,7 @@ namespace GELA_DB.pages
                     dlst_HingesTrademark.DataTextField = "hinge_trademark";
                     dlst_HingesTrademark.DataValueField = "hinges_ID";
                     dlst_HingesTrademark.DataBind();
+                    dlst_HingesTrademark.SelectedItem.Text = dt_grab.Rows[0]["hinges_trademark"].ToString();
 
                     con.Close();
                     try
@@ -168,6 +191,7 @@ namespace GELA_DB.pages
                     dlst_GraniteType.DataTextField = "granite_type_ar";
                     dlst_GraniteType.DataValueField = "granite_ID";
                     dlst_GraniteType.DataBind();
+                    dlst_GraniteType.SelectedItem.Text = dt_grab.Rows[0]["granite_type"].ToString();
                     txtbx_LowerPanel.Enabled = true;
                     txtbx_UpperPanel.Enabled = true;
                     txtbx_LowerPanel.Text = dlst_GraniteType.SelectedItem.Text;
@@ -185,6 +209,7 @@ namespace GELA_DB.pages
                     dlst_GraniteTopThickness.DataTextField = "top_status";
                     dlst_GraniteTopThickness.DataValueField = "top_ID";
                     dlst_GraniteTopThickness.DataBind();
+                    dlst_GraniteTopThickness.SelectedItem.Text = dt_grab.Rows[0]["top_granite_thickness"].ToString();
                     con.Close();
                     con.Open();
                     SqlCommand lighting_types = new SqlCommand("SELECT * from dbo.fxd_tbl_lighting_types", con);
@@ -196,6 +221,7 @@ namespace GELA_DB.pages
                     dlst_LightingType.DataTextField = "lighting_type_ar";
                     dlst_LightingType.DataValueField = "lighting_type_ID";
                     dlst_LightingType.DataBind();
+                    dlst_LightingType.SelectedItem.Text = dt_grab.Rows[0]["lighting_type"].ToString();
                     con.Close();
                     con.Open();
                     SqlCommand hands = new SqlCommand("SELECT * from dbo.fxd_tbl_hands", con);
@@ -207,6 +233,7 @@ namespace GELA_DB.pages
                     dlst_HandsType.DataTextField = "hand_name_ar";
                     dlst_HandsType.DataValueField = "hands_ID";
                     dlst_HandsType.DataBind();
+                    dlst_HandsType.SelectedItem.Text = dt_grab.Rows[0]["hands_type"].ToString();
                     con.Close();
                     con.Open();
                     SqlCommand duct_status = new SqlCommand("SELECT * from dbo.fxd_tbl_duct_status", con);
@@ -218,6 +245,7 @@ namespace GELA_DB.pages
                     dlst_DuctOpening.DataTextField = "duct_status_ar";
                     dlst_DuctOpening.DataValueField = "duct_status_ID";
                     dlst_DuctOpening.DataBind();
+                    dlst_DuctOpening.SelectedItem.Text = dt_grab.Rows[0]["duct_opening"].ToString();
                     con.Close();
                     con.Open();
                     SqlCommand sinkhole = new SqlCommand("SELECT * from dbo.fxd_tbl_sinkhole", con);
@@ -229,6 +257,7 @@ namespace GELA_DB.pages
                     dlst_SinkHole.DataTextField = "sinkhole_type_ar";
                     dlst_SinkHole.DataValueField = "sinkhole_ID";
                     dlst_SinkHole.DataBind();
+                    dlst_SinkHole.SelectedItem.Text = dt_grab.Rows[0]["sink_hole_type"].ToString();
                     con.Close();
                     con.Open();
                     SqlCommand layout_status = new SqlCommand("SELECT * from dbo.fxd_tbl_layout_status", con);
@@ -240,11 +269,13 @@ namespace GELA_DB.pages
                     dlst_ElectricLayout.DataTextField = "layout_status_ar";
                     dlst_ElectricLayout.DataValueField = "layout_status_ID";
                     dlst_ElectricLayout.DataBind();
+                    dlst_ElectricLayout.SelectedItem.Text = dt_grab.Rows[0]["electric_layout"].ToString();
                     dlst_SanitaryLayout.DataSource = l_s;
                     dlst_SanitaryLayout.DataBind();
                     dlst_SanitaryLayout.DataTextField = "layout_status_ar";
                     dlst_SanitaryLayout.DataValueField = "layout_status_ID";
                     dlst_SanitaryLayout.DataBind();
+                    dlst_SanitaryLayout.SelectedItem.Text = dt_grab.Rows[0]["sanitary_layout"].ToString();
                     con.Close();
                     con.Open();
                     SqlCommand granite_corners = new SqlCommand("SELECT * from dbo.fxd_tbl_granite_corners", con);
@@ -256,6 +287,7 @@ namespace GELA_DB.pages
                     dlst_GraniteCorners.DataTextField = "corner_type";
                     dlst_GraniteCorners.DataValueField = "corners_ID";
                     dlst_GraniteCorners.DataBind();
+                    dlst_GraniteCorners.SelectedItem.Text = dt_grab.Rows[0]["granite_corners"].ToString();
                     con.Close();
                     con.Open();
                     SqlCommand sink = new SqlCommand("SELECT * from dbo.fxd_tbl_sinks_list", con);
@@ -267,6 +299,7 @@ namespace GELA_DB.pages
                     dlst_sink.DataTextField = "sink_name";
                     dlst_sink.DataValueField = "sinks_ID";
                     dlst_sink.DataBind();
+                    dlst_sink.SelectedItem.Text = dt_grab.Rows[0]["sink"].ToString();
                     con.Close();
                     con.Open();
                     SqlCommand faucets = new SqlCommand("SELECT * from dbo.fxd_tbl_faucets", con);
@@ -278,6 +311,7 @@ namespace GELA_DB.pages
                     dlst_faucet.DataTextField = "faucet_name";
                     dlst_faucet.DataValueField = "faucets_ID";
                     dlst_faucet.DataBind();
+                    dlst_faucet.SelectedItem.Text = dt_grab.Rows[0]["faucet"].ToString();
                     con.Close();
                 }
             }

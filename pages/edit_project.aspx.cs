@@ -21,6 +21,17 @@ namespace GELA_DB.pages
                 var project_ID = Session["project_ID"].ToString();
                 lbl_customer_no.Text = project_ID;
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+                con.Open();
+                SqlCommand cmd_proj_data = new SqlCommand("SELECT * FROM dbo.entry_tbl_project_data WHERE project_ID=@ID", con);
+                cmd_proj_data.Parameters.AddWithValue("@ID", project_ID);
+                SqlDataAdapter da_proj = new SqlDataAdapter(cmd_proj_data);
+                DataTable dt_proj = new DataTable();
+                da_proj.Fill(dt_proj);
+                con.Close();
+                txtbx_project.Text = dt_proj.Rows[0]["project"].ToString();
+                lbl_customer_name.Text = dt_proj.Rows[0]["customer"].ToString();
+                lbl_customer_no.Text = dt_proj.Rows[0]["customer_no"].ToString();
+                lbl_OrderID.Text = dt_proj.Rows[0]["project_ID"].ToString();
                 if (!IsPostBack)
                 {
                     if (lbl_customer_no.Text != null)
@@ -35,16 +46,19 @@ namespace GELA_DB.pages
                         dlst_MeasuringEngName.DataTextField = "eng_name_ar";
                         dlst_MeasuringEngName.DataValueField = "engineers_ID";
                         dlst_MeasuringEngName.DataBind();
+                        dlst_MeasuringEngName.SelectedItem.Text = dt_proj.Rows[0]["measuring_eng_name"].ToString();
                         dlst_DesignerName.DataSource = e_n;
                         dlst_DesignerName.DataBind();
                         dlst_DesignerName.DataTextField = "eng_name_ar";
                         dlst_DesignerName.DataValueField = "engineers_ID";
                         dlst_DesignerName.DataBind();
+                        dlst_DesignerName.SelectedItem.Text = dt_proj.Rows[0]["designer_name"].ToString();
                         dlst_QAEng.DataSource = e_n;
                         dlst_QAEng.DataBind();
                         dlst_QAEng.DataTextField = "eng_name_ar";
                         dlst_QAEng.DataValueField = "engineers_ID";
                         dlst_QAEng.DataBind();
+                        dlst_QAEng.SelectedItem.Text = dt_proj.Rows[0]["QA_eng_name"].ToString();
                         con.Close();
                         con.Open();
                         SqlCommand managers = new SqlCommand("SELECT * from dbo.fxd_tbl_managers", con);
@@ -57,6 +71,7 @@ namespace GELA_DB.pages
                         dlst_ProdManger.DataValueField = "man_ID";
                         dlst_ProdManger.DataBind();
                         con.Close();
+                        dlst_ProdManger.SelectedItem.Text = dt_proj.Rows[0]["production_manager"].ToString();
                         try
                         {
                             con.Open();
@@ -104,11 +119,12 @@ namespace GELA_DB.pages
 
                     }
                 }
-                else
-                {
-                    Response.Redirect("buffer_page.aspx");
-                }
+                
 
+            }
+            else
+            {
+                Response.Redirect("buffer_page.aspx");
             }
         }
 
@@ -166,6 +182,24 @@ namespace GELA_DB.pages
             {
                 con.Close();
             }
+        }
+
+        protected void btn_submit_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("UPDATE dbo.entry_tbl_project_data SET (project=@proj ,measuring_eng_name=@meas_eng ,measuring_eng_phone_no=@meas_eng_ph ,designer_name=@designer ,designer_phone_no=@des_ph ,QA_eng_name=qa ,production_manager=prod_man) WHERE project_ID=@ID", con);
+            cmd.Parameters.AddWithValue("@ID", lbl_customer_no.Text);
+            cmd.Parameters.AddWithValue("@proj", txtbx_project.Text);
+            cmd.Parameters.AddWithValue("@meas_eng", dlst_MeasuringEngName.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@meas_eng_ph", txtbx_MeasuringEngPhone.Text);
+            cmd.Parameters.AddWithValue("@designer", dlst_DesignerName.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@des_ph", txtbx_DesignerPhone.Text);
+            cmd.Parameters.AddWithValue("@qa", dlst_QAEng.SelectedItem.Text);
+            cmd.Parameters.AddWithValue("@prod_man", dlst_ProdManger.SelectedItem.Text);
+            cmd.ExecuteNonQuery();
+            Response.Write("<script>window.close();</" + "script>");
+            Response.End();
         }
     }
 }

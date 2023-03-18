@@ -293,6 +293,13 @@ namespace GELA_DB.pages
             delete_customer.Parameters.AddWithValue("@id", txtbx_selected_row_ID.Text);
             delete_customer.ExecuteNonQuery();
             con.Close();
+            con.Open();
+            string sql_grid = "SELECT * from dbo.entry_tbl_customers";
+            SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+            SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+            customers_grid.DataSource = reader_grid;
+            customers_grid.DataBind();
+            con.Close();
         }
 
         protected void btn_delte_project_Click(object sender, EventArgs e)
@@ -308,6 +315,13 @@ namespace GELA_DB.pages
             SqlCommand delete_project = new SqlCommand("DELETE FROM dbo.entry_tbl_project_data WHERE project_ID = @id", con);
             delete_project.Parameters.AddWithValue("@id", txtbx_selected_row_project_ID.Text);
             delete_project.ExecuteNonQuery();
+            con.Close();
+            con.Open();
+            string sql_grid = "SELECT * from dbo.entry_tbl_customers";
+            SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+            SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+            projects_grid.DataSource = reader_grid;
+            projects_grid.DataBind();
             con.Close();
         }
 
@@ -347,6 +361,13 @@ namespace GELA_DB.pages
                 SqlCommand delete_employee = new SqlCommand("DELETE FROM dbo.fxd_tbl_engineers WHERE eng_name_ar = @name", con);
                 delete_employee.Parameters.AddWithValue("@name", txtbx_employee_name.Text);
                 delete_employee.ExecuteNonQuery();
+                con.Close();
+                con.Open();
+                string sql_grid = "SELECT * from dbo.entry_tbl_engineers";
+                SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+                SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+                employees_grid.DataSource = reader_grid;
+                employees_grid.DataBind();
                 con.Close();
             }
         }
@@ -442,6 +463,13 @@ namespace GELA_DB.pages
                 cmd.Parameters.AddWithValue("status", "في التركيب");
                 cmd.ExecuteNonQuery();
                 con.Close();
+                con.Open();
+                string sql_grid = "SELECT * from dbo.entry_tbl_project_data";
+                SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+                SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+                projects_grid.DataSource = reader_grid;
+                projects_grid.DataBind();
+                con.Close();
             }
             else
             {
@@ -460,6 +488,13 @@ namespace GELA_DB.pages
                 cmd.Parameters.AddWithValue("@project", txtbx_selected_row_project_ID.Text);
                 cmd.Parameters.AddWithValue("status", "انتهى");
                 cmd.ExecuteNonQuery();
+                con.Close();
+                con.Open() ;
+                string sql_grid = "SELECT * from dbo.entry_tbl_project_data";
+                SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+                SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+                projects_grid.DataSource = reader_grid;
+                projects_grid.DataBind();
                 con.Close();
             }
             else
@@ -597,6 +632,13 @@ namespace GELA_DB.pages
             cmd.Parameters.AddWithValue("@project", txtbx_selected_row_project_ID.Text);
             cmd.Parameters.AddWithValue("status", "ملغي");
             cmd.ExecuteNonQuery();
+            con.Close();
+            con.Open();
+            string sql_grid = "SELECT * from dbo.entry_tbl_project_data";
+            SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
+            SqlDataReader reader_grid = cmd_grid.ExecuteReader();
+            projects_grid.DataSource = reader_grid;
+            projects_grid.DataBind();
             con.Close();
         }
     }

@@ -18,6 +18,17 @@ namespace GELA_DB.pages
             {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
                 con.Open();
+                SqlCommand cmd_employees = new SqlCommand("SELECT * FROM dbo.fxd_tbl_engineers WHERE eng_name_ar=@name", con);
+                cmd_employees.Parameters.AddWithValue("@name", Session["employee"].ToString());
+                SqlDataAdapter da_employees = new SqlDataAdapter(cmd_employees);
+                DataTable dt_employees = new DataTable();
+                da_employees.Fill(dt_employees);
+                con.Close();
+                txtbx_ar_name.Text = Session["employee"].ToString();
+                txtbx_Name.Text = dt_employees.Rows[0]["eng_name_en"].ToString();
+                txtbx_PhoneNo_1.Text = dt_employees.Rows[0]["eng_phone_1"].ToString();
+                txtbx_PhoneNo_2.Text = dt_employees.Rows[0]["eng_phone_2"].ToString();
+                con.Open();
                 if (!IsPostBack)
                 {
                     SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fxd_tbl_departments", con);
@@ -30,6 +41,7 @@ namespace GELA_DB.pages
                     dlst_department.DataValueField = "departments_ID";
                     dlst_department.DataBind();
                     con.Close();
+                    dlst_department.SelectedItem.Text = dt_employees.Rows[0]["Specialization"].ToString();
                 }
             }
             else
