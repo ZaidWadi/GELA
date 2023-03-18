@@ -465,7 +465,7 @@ namespace GELA_DB.pages
 
         protected void btn_contract_refused_Click(object sender, EventArgs e)
         {
-            Session["project_ID"] = txtbx_selected_row_project_ID.Text;
+            Session["id_of_project"] = txtbx_selected_row_project_ID.Text;
             string popup = "window.open ('refusal.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
             ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
         }
