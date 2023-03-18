@@ -19,7 +19,6 @@
 <body>
     <form id="form1" runat="server" dir="rtl">
         <br /><br /><br /><br /><br /><br /><br /><br />
-        <asp:Label ID="lbl_project_id" runat="server"></asp:Label>
         <h3>&nbsp;&nbsp;&nbsp;&nbsp;سبب الإلغاء:</h3>
         <div style="background-color:whitesmoke; width:fit-content; max-height:1920px;align-content:center; margin:0;">
         <asp:TextBox ID="refusal_reason" runat="server" TextMode="MultiLine" Width="1920px" Height="500px"></asp:TextBox>
