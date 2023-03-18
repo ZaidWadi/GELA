@@ -489,9 +489,15 @@ namespace GELA_DB.pages
 
         protected void btn_contract_refused_Click(object sender, EventArgs e)
         {
+            if (!txtbx_selected_row_project_ID.Text.IsNullOrWhiteSpace()) { 
             Session["id_of_project"] = txtbx_selected_row_project_ID.Text;
             string popup = "window.open ('refusal.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
             ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
+            }
+            else
+            {
+                lbl_err_2.Visible= true;
+            }
         }
         protected void btn_add_technical_details_Click(object sender, EventArgs e)
         {
