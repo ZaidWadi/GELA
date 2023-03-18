@@ -108,7 +108,7 @@
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:Button ID="btn_submit" runat="server" Text="Done" OnClick="btn_submit_Click" />
+                            <asp:Button ID="btn_submit" runat="server" Text="Done" OnClick="btn_submit_Click" CssClass="Initial_button" />
                         </asp:TableCell>
                     </asp:TableRow>
                     </asp:Table>
