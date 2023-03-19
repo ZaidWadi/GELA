@@ -277,11 +277,19 @@ namespace GELA_DB.pages
             }
             else
             {
-                Session["cust_id"] = txtbx_customer_id.Text;
-                Session["price_offer_ID"] = txtbx_selected_row_project_ID.Text;
-                string popup = "window.open ('price_offer.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
-                ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
-
+                GridViewRow rk = projects_grid.SelectedRow;
+                if (!rk.Cells[9].Text.Trim().IsNullOrWhiteSpace() && rk.Cells[9].Text != "&nbsp;")
+                {
+                    Session["kitchen_type"] = rk.Cells[17].Text;
+                    Session["cust_id"] = txtbx_customer_id.Text;
+                    Session["price_offer_ID"] = txtbx_selected_row_project_ID.Text;
+                    string popup = "window.open ('price_offer.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
+                    ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
+                }
+                else
+                {
+                    lbl_err_4.Visible = true;
+                }
             }
         }
 
@@ -614,7 +622,6 @@ namespace GELA_DB.pages
             GridViewRow rk = projects_grid.SelectedRow;
             if (!rk.Cells[18].Text.Trim().IsNullOrWhiteSpace() && rk.Cells[17].Text != "&nbsp;")
             {
-                Session["kitchen_type"] = rk.Cells[17].Text;
                 string popup = "window.open ('order_details_input_ar.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
                 ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
             }
