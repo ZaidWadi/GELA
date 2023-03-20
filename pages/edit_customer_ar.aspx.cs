@@ -138,7 +138,7 @@ namespace GELA_DB.pages
             cmd.ExecuteNonQuery();
             con.Close();
             con.Open();
-            SqlCommand cmd_pr = new SqlCommand("UPDATE dbo.entry_tbl_project_data SET customer_name=@Name WHERE customer_no=@ID", con);
+            SqlCommand cmd_pr = new SqlCommand("UPDATE dbo.entry_tbl_project_data SET customer=@Name WHERE customer_no=@ID", con);
             cmd_pr.Parameters.AddWithValue("@ID", customer_ID_out);
             cmd_pr.Parameters.AddWithValue("@Name", txtbx_Name.Text);
             cmd_pr.ExecuteNonQuery();
