@@ -3,6 +3,8 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.IO;
 using System.Runtime.Remoting.Messaging;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -627,6 +629,14 @@ namespace GELA_DB.pages
             projects_grid.DataSource = reader_grid;
             projects_grid.DataBind();
             con.Close();
+        }
+
+        protected void btn_export_to_excel_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo.WorkingDirectory = Path.GetDirectoryName("C:/Users/GELA/source/repos/marchlann/GELA/pages/");
+            p.StartInfo.FileName = "exportxlsx.bat";
+            p.Start();
         }
     }
 }

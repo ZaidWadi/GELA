@@ -33,6 +33,7 @@
             <asp:Button ID="btn_des" runat="server" Text="Designer Page" OnClick="btn_des_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_add_new_cabinet" runat="server" Text="New Cabinet" OnClick="btn_add_new_cabinet_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_add_raw_materials" runat="server" Text="New Raw Materials" OnClick="btn_add_raw_materials_Click" CssClass="Initial_button_ar" />
+            <asp:Button ID="btn_export_to_excel" runat="server" Text="Export Data To Excel" CssClass="Initial_button_ar" OnClick="btn_export_to_excel_Click" />
           </td>
       </tr>
       </table>
