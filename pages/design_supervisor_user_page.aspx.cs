@@ -637,13 +637,12 @@ namespace GELA_DB.pages
 
         protected void btn_export_to_excel_Click(object sender, EventArgs e)
         {
-            string batchFilePath = @"C:/Users/Thaer/Desktop\source\repos\GELA_DB\bin\app.publish\pages\exportxlsx.bat";
+            string batchFilePath = @"C:\Users\GELA\source\repos\marchlann\GELA\pages\exportxlsx.bat";
 
             // Set up the process start information
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = batchFilePath;
-            startInfo.UseShellExecute = false;
-            startInfo.RedirectStandardOutput = true;
+
             startInfo.CreateNoWindow = true;
 
             // Start the process and wait for it to exit
@@ -652,11 +651,7 @@ namespace GELA_DB.pages
                 process.WaitForExit();
 
                 // Read any output from the process (e.g. error messages)
-                string output = process.StandardOutput.ReadToEnd();
-                if (!string.IsNullOrEmpty(output))
-                {
-                    // Handle any output from the process (e.g. display error message)
-                }
+                
             }
         }
     }

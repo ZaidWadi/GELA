@@ -13,7 +13,7 @@ import openpyxl
 
 def sql_connect ():
     con = pyodbc.connect('Driver={SQL Server};'
-                          'Server=CAMSER-PC\MSSQLSERVER01;'
+                          'Server=DESKTOP-NDV1ULH;'
                           'Database=GELA;'
                           'Trusted_Connection=yes;')
     return con
@@ -23,7 +23,7 @@ def sql_select (table):
     return s_quer
 
 wb = openpyxl.Workbook()
-excel_dir = r'C:\Users\Thaer\Desktop\source\repos\GELA_DB\bin\app.publish\excel_export'
+excel_dir = r'C:\Users\GELA\source\repos\marchlann\GELA\excel_exports'
 wb.save(excel_dir + '\GELA_data' + " " + date.today().strftime('%b %d, %Y') + '.xlsx')
 with pd.ExcelWriter (excel_dir + '\GELA_data' + " " + date.today().strftime('%b %d, %Y') + '.xlsx',engine="openpyxl",mode='a', if_sheet_exists='replace') as writer:
     df_projects = pd.read_sql_query(sql_select('entry_tbl_project_data'),sql_connect())
