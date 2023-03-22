@@ -653,12 +653,27 @@ namespace GELA_DB.pages
 
         protected void btn_export_to_excel_Click(object sender, EventArgs e)
         {
-            Process p = new Process();
-            p.StartInfo.EnvironmentVariables["PATH"] = @"C:\Python27;C:\Python27\Scripts";
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.WorkingDirectory = Path.GetDirectoryName(Directory.GetCurrentDirectory());
-            p.StartInfo.FileName = "exportxlsx.bat";
-            p.Start();
+            string batchFilePath = @"C:/Users/Thaer/Desktop\source\repos\GELA_DB\bin\app.publish\pages\exportxls.bat";
+
+            // Set up the process start information
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = batchFilePath;
+            startInfo.UseShellExecute = false;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.CreateNoWindow = true;
+
+            // Start the process and wait for it to exit
+            using (Process process = Process.Start(startInfo))
+            {
+                process.WaitForExit();
+
+                // Read any output from the process (e.g. error messages)
+                string output = process.StandardOutput.ReadToEnd();
+                if (!string.IsNullOrEmpty(output))
+                {
+                    // Handle any output from the process (e.g. display error message)
+                }
+            }
         }
     }
 }
