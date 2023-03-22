@@ -16,7 +16,8 @@ namespace GELA_DB.pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["auth"] != null) { 
+            if (Session["auth"] != null)
+            {
                 if (Session["auth"].ToString() == "Supervisor")
                 {
                     lbl_name.Text = Session["username"].ToString();
@@ -24,10 +25,10 @@ namespace GELA_DB.pages
                     {///t
                         design_views.ActiveViewIndex = 0;
                         Page.ClientScript.RegisterClientScriptInclude("jquery", Page.ResolveUrl("~/Scripts/jquery-3.6.0.js"));
-                    
+
                     }
                 }
-                else if (Session["auth"].ToString() == "Design") 
+                else if (Session["auth"].ToString() == "Design")
                 {
                     Response.Redirect("buffer_page.aspx");
                 }
@@ -242,7 +243,7 @@ namespace GELA_DB.pages
             txtbx_customer_id.Text = project_row.Cells[1].Text;
             txtbx_selected_kitchen_type.Text = project_row.Cells[18].Text;
             btn_edit_project_1.Enabled = true;
-            if (project_row.Cells[4].Text == "في الانتاج") 
+            if (project_row.Cells[4].Text == "في الانتاج")
             {
                 btn_production_done.Enabled = true;
             }
@@ -390,7 +391,7 @@ namespace GELA_DB.pages
 
         }
 
-       
+
 
         protected void employees_grid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -434,10 +435,11 @@ namespace GELA_DB.pages
 
         protected void btn_add_technical_details_Click(object sender, EventArgs e)
         {
-            if (!txtbx_selected_row_project_ID.Text.IsNullOrWhiteSpace()) { 
-            Session["Im_running_out_of_session_names"] = txtbx_selected_row_project_ID.Text;
-            string popup = "window.open ('project_technical_data.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
-            ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
+            if (!txtbx_selected_row_project_ID.Text.IsNullOrWhiteSpace())
+            {
+                Session["Im_running_out_of_session_names"] = txtbx_selected_row_project_ID.Text;
+                string popup = "window.open ('project_technical_data.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
+                ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
             }
             else
             {
@@ -518,7 +520,7 @@ namespace GELA_DB.pages
             SqlDataReader reader = cmd.ExecuteReader();
             projects_grid.DataSource = reader;
             projects_grid.DataBind();
-            con.Close() ;
+            con.Close();
             string sql_engineers = "SELECT * FROM dbo.fxd_tbl_engineers";
             SqlCommand cmd_engineers = new SqlCommand(sql_engineers, con);
             SqlDataAdapter da_engineers = new SqlDataAdapter(cmd_engineers);
@@ -539,22 +541,23 @@ namespace GELA_DB.pages
             }
             employees_grid.DataSource = dt_engineers;
             employees_grid.DataBind();
-            if (!txtbx_selected_row_project_ID.Text.IsNullOrWhiteSpace()) { 
-            GridViewRow project_row = projects_grid.SelectedRow;
-            if (project_row.Cells[4].Text == "في الانتاج")
+            if (!txtbx_selected_row_project_ID.Text.IsNullOrWhiteSpace())
             {
-                btn_production_done.Enabled = true;
-            }
-            else if (project_row.Cells[4].Text == "في التركيب")
-            {
-                btn_production_done.Enabled = true;
-                btn_installing_done.Enabled = true;
-            }
-            else
-            {
-                btn_production_done.Enabled = false;
-                btn_installing_done.Enabled = false;
-            }
+                GridViewRow project_row = projects_grid.SelectedRow;
+                if (project_row.Cells[4].Text == "في الانتاج")
+                {
+                    btn_production_done.Enabled = true;
+                }
+                else if (project_row.Cells[4].Text == "في التركيب")
+                {
+                    btn_production_done.Enabled = true;
+                    btn_installing_done.Enabled = true;
+                }
+                else
+                {
+                    btn_production_done.Enabled = false;
+                    btn_installing_done.Enabled = false;
+                }
             }
 
         }
@@ -603,9 +606,10 @@ namespace GELA_DB.pages
         protected void btn_AddCabinets_Click(object sender, EventArgs e)
         {
             Session["project_id"] = txtbx_selected_row_project_ID.Text;
-            if (!txtbx_selected_kitchen_type.Text.IsNullOrWhiteSpace() && txtbx_selected_kitchen_type.Text != "&nbsp;") { 
-            string popup = "window.open ('order_details_input.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
-            ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
+            if (!txtbx_selected_kitchen_type.Text.IsNullOrWhiteSpace() && txtbx_selected_kitchen_type.Text != "&nbsp;")
+            {
+                string popup = "window.open ('order_details_input.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
+                ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
             }
             else
             {
@@ -633,10 +637,27 @@ namespace GELA_DB.pages
 
         protected void btn_export_to_excel_Click(object sender, EventArgs e)
         {
-            Process p = new Process();
-            p.StartInfo.WorkingDirectory = Path.GetDirectoryName("C:/Users/GELA/source/repos/marchlann/GELA/pages/");
-            p.StartInfo.FileName = "exportxlsx.bat";
-            p.Start();
+            string batchFilePath = @"C:/Users/Thaer/Desktop\source\repos\GELA_DB\bin\app.publish\pages\exportxlsx.bat";
+
+            // Set up the process start information
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = batchFilePath;
+            startInfo.UseShellExecute = false;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.CreateNoWindow = true;
+
+            // Start the process and wait for it to exit
+            using (Process process = Process.Start(startInfo))
+            {
+                process.WaitForExit();
+
+                // Read any output from the process (e.g. error messages)
+                string output = process.StandardOutput.ReadToEnd();
+                if (!string.IsNullOrEmpty(output))
+                {
+                    // Handle any output from the process (e.g. display error message)
+                }
+            }
         }
     }
 }
