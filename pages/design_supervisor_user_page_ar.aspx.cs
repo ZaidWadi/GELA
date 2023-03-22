@@ -654,7 +654,9 @@ namespace GELA_DB.pages
         protected void btn_export_to_excel_Click(object sender, EventArgs e)
         {
             Process p = new Process();
-            p.StartInfo.WorkingDirectory = Path.GetDirectoryName("C:/Users/GELA/source/repos/marchlann/GELA/pages/");
+            p.StartInfo.EnvironmentVariables["PATH"] = @"C:\Python27;C:\Python27\Scripts";
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.WorkingDirectory = Path.GetDirectoryName(Directory.GetCurrentDirectory());
             p.StartInfo.FileName = "exportxlsx.bat";
             p.Start();
         }

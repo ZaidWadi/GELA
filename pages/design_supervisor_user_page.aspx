@@ -29,6 +29,7 @@
           <td>
               <asp:Button ID="btn_lang" runat="server" Text="العربية" OnClick="btn_lang_Click" CssClass="Initial_button_ar" />
               <br /><br /><br />
+              <asp:Label ID="directory" runat="server"></asp:Label>
             <asp:Button ID="btn_log_out" runat="server" Text="Log Out" OnClick="btn_log_out_Click" CssClass="Initial_button_ar" />
             <asp:Button ID="btn_des" runat="server" Text="Designer Page" OnClick="btn_des_Click" CssClass="Initial_button" />
             <asp:Button ID="btn_add_new_cabinet" runat="server" Text="New Cabinet" OnClick="btn_add_new_cabinet_Click" CssClass="Initial_button_ar" />

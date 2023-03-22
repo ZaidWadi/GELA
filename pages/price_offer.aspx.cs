@@ -385,11 +385,12 @@ namespace GELA_DB.pages
                         fuld_dr.Close();
                         pr = ((decimal.Parse(dr["width"].ToString()) * decimal.Parse(fuld_dr["constant_body"].ToString()) * pr_wood) + (decimal.Parse(dr["width"].ToString()) * decimal.Parse(fuld_dr["constant_upper_hood"].ToString()) * pr_upper_hood) + (decimal.Parse(dr["width"].ToString()) * decimal.Parse(fuld_dr["constant_lower_hood"].ToString()) * pr_lower_hood) + (decimal.Parse(dr["width"].ToString()) * decimal.Parse(fuld_dr["constant_top_granite"].ToString()) * pr_granite) + (decimal.Parse(dr["width"].ToString()) * decimal.Parse(fuld_dr["constant_upper_panel"].ToString()) * pr_upper_panel) + (decimal.Parse(dr["width"].ToString()) * decimal.Parse(fuld_dr["constant_lower_panel"].ToString()) * pr_lower_panel) + (decimal.Parse(fuld_dr["constant_holes"].ToString()) * pr_holes)) * decimal.Parse(dr["quantity"].ToString());
                         DataTable dt_debug = new DataTable();
-                        con.Close();
+                        
                     }
                     final_pr += pr;
                 }
-                    con.Open();
+                con.Close();
+                con.Open();
                     SqlCommand cmd_accessories_grid = new SqlCommand("SELECT dbo.entry_tbl_order.project_no ,dbo.entry_tbl_order.accessories, dbo.fxd_tbl_accessories.accessory_price FROM dbo.entry_tbl_order INNER JOIN dbo.fxd_tbl_accessories ON dbo.entry_tbl_order.accessories = dbo.fxd_tbl_accessories.fullacc WHERE project_no = @id  and accessories != @NA and accessories != @none", con);
                     cmd_accessories_grid.Parameters.AddWithValue("@none", "لا يوجد  X  ");
                     cmd_accessories_grid.Parameters.AddWithValue("@NA", "N/A");
