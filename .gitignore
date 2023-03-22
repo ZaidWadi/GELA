@@ -364,3 +364,7 @@ FodyWeavers.xsd
 
 # Web config file
 Web.config
+
+# python script and batch
+GELA_data_analysis.py
+exportxlsx.bat
