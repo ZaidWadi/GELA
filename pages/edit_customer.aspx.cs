@@ -40,7 +40,7 @@ namespace GELA_DB.pages
                     dlst_title.DataValueField = "prefix_ID";
                     dlst_title.DataBind();
                     con.Close();
-                    dlst_title.SelectedItem.Text = dr_customer.Rows[0]["prefix"].ToString();
+                    dlst_title.Items.FindByText(dr_customer.Rows[0]["prefix"].ToString()).Selected = true;
                     con.Open();
                     SqlCommand city = new SqlCommand("SELECT * from dbo.fxd_tbl_cities", con);
                     SqlDataAdapter ct = new SqlDataAdapter(city);
@@ -52,7 +52,7 @@ namespace GELA_DB.pages
                     dlst_City.DataValueField = "cities_ID";
                     dlst_City.DataBind();
                     con.Close();
-                    dlst_City.SelectedItem.Text = dr_customer.Rows[0]["city"].ToString();
+                    dlst_City.Items.FindByText(dr_customer.Rows[0]["city"].ToString()).Selected = true;
                     con.Open();
                     SqlCommand city_area = new SqlCommand("SELECT cty_code FROM dbo.fxd_tbl_cities WHERE cty_name_ar=@name", con);
                     city_area.Parameters.AddWithValue("@name", dlst_City.SelectedItem.Text);
@@ -73,7 +73,7 @@ namespace GELA_DB.pages
                         dlst_Area.DataBind();
                         con.Close();
                     
-                    dlst_Area.SelectedItem.Text = dr_customer.Rows[0]["area"].ToString();
+                    dlst_Area.Items.FindByText(dr_customer.Rows[0]["area"].ToString()).Selected = true;
                     }
                 }
             }

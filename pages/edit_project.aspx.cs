@@ -46,19 +46,19 @@ namespace GELA_DB.pages
                         dlst_MeasuringEngName.DataTextField = "eng_name_ar";
                         dlst_MeasuringEngName.DataValueField = "engineers_ID";
                         dlst_MeasuringEngName.DataBind();
-                        dlst_MeasuringEngName.SelectedItem.Text = dt_proj.Rows[0]["measuring_eng_name"].ToString();
+                        dlst_MeasuringEngName.Items.FindByText(dt_proj.Rows[0]["measuring_eng_name"].ToString()).Selected = true;
                         dlst_DesignerName.DataSource = e_n;
                         dlst_DesignerName.DataBind();
                         dlst_DesignerName.DataTextField = "eng_name_ar";
                         dlst_DesignerName.DataValueField = "engineers_ID";
                         dlst_DesignerName.DataBind();
-                        dlst_DesignerName.SelectedItem.Text = dt_proj.Rows[0]["designer_name"].ToString();
+                        dlst_DesignerName.Items.FindByText(dt_proj.Rows[0]["designer_name"].ToString()).Selected = true;
                         dlst_QAEng.DataSource = e_n;
                         dlst_QAEng.DataBind();
                         dlst_QAEng.DataTextField = "eng_name_ar";
                         dlst_QAEng.DataValueField = "engineers_ID";
                         dlst_QAEng.DataBind();
-                        dlst_QAEng.SelectedItem.Text = dt_proj.Rows[0]["QA_eng_name"].ToString();
+                        dlst_QAEng.Items.FindByText(dt_proj.Rows[0]["QA_eng_name"].ToString()).Selected = true;
                         con.Close();
                         con.Open();
                         SqlCommand managers = new SqlCommand("SELECT * from dbo.fxd_tbl_managers", con);
@@ -71,7 +71,7 @@ namespace GELA_DB.pages
                         dlst_ProdManger.DataValueField = "man_ID";
                         dlst_ProdManger.DataBind();
                         con.Close();
-                        dlst_ProdManger.SelectedItem.Text = dt_proj.Rows[0]["production_manager"].ToString();
+                        dlst_ProdManger.Items.FindByText(dt_proj.Rows[0]["production_manager"].ToString()).Selected = true;
                         try
                         {
                             con.Open();

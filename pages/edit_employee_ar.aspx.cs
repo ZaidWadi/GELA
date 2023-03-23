@@ -41,7 +41,7 @@ namespace GELA_DB.pages
                     dlst_department.DataValueField = "departments_ID";
                     dlst_department.DataBind();
                     con.Close();
-                    dlst_department.SelectedItem.Text = dt_employees.Rows[0]["Specialization"].ToString();
+                    dlst_department.Items.FindByText(dt_employees.Rows[0]["Specialization"].ToString()).Selected = true; 
                 }
             }
             else
