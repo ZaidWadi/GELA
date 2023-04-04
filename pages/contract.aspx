@@ -17,20 +17,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
-    <form id="form1" runat="server" style="align-self:center;">
+    <form id="form1" runat="server">
         <asp:ScriptManager runat="server"></asp:ScriptManager>
         <br /><br /><br /><br /><br /><br />
-        <div style="align-content:center; text-align:center;width:1700px;text-align:right;align-self:center;" dir="rtl">
+        <div style="align-content:center; text-align:center;" dir="rtl">
             <asp:Label ID="lbl_project_ID" runat="server" Visible="false"></asp:Label>
             <asp:Label ID="lbl_customer_id" runat="server" Visible="false"></asp:Label>
          <h1><b>عقد تصنيع مطبخ</b></h1>
             </div>
         <br /><br /><br />
-        <div dir="rtl" style="background-color:whitesmoke;width:1700px;">
+        <div dir="rtl" style="background-color:whitesmoke;">
             <fieldset>
 
             <br /><br />
-          <asp:Table runat="server" CellSpacing="10" Width="50%">
+          <asp:Table runat="server" CellSpacing="10">
               <asp:TableRow>
                   <asp:TableCell>
                       التاريخ:
@@ -243,7 +243,15 @@
                     </asp:TableCell>
                 </asp:TableRow>
                 </asp:Table>
-
+                <asp:Table runat="server">
+                <asp:TableFooterRow>
+                    <asp:TableCell></asp:TableCell>
+                    <asp:TableCell>
+                        <b>توقيع الفريق الأول:</b> <br /><br /><br /><br /> <br /><br /><br /><br />
+                        <b>توقيع الفريق الثاني:</b>
+                    </asp:TableCell>
+                </asp:TableFooterRow>
+                </asp:Table>
             </fieldset>
         </div>
     </form>

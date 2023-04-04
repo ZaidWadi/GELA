@@ -5,10 +5,9 @@
     background-position: center;
     background-size: contain;
     min-height: 600px;
-    max-height: 1080px;
+    max-height: 595px;
     font-weight: bold;
-    width:1920px;
-    font-size:16pt;
+    font-size: 16pt;
 }
 
 .table_background{
