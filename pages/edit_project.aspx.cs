@@ -198,6 +198,7 @@ namespace GELA_DB.pages
             cmd.Parameters.AddWithValue("@qa", dlst_QAEng.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@prod_man", dlst_ProdManger.SelectedItem.Text);
             cmd.ExecuteNonQuery();
+            con.Close();
             Response.Write("<script>window.close();</" + "script>");
             Response.End();
         }

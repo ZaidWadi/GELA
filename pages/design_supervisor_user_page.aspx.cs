@@ -314,6 +314,7 @@ namespace GELA_DB.pages
             delete_project.Parameters.AddWithValue("@id", txtbx_selected_row_project_ID.Text);
             delete_project.ExecuteNonQuery();
             con.Close();
+            con.Open();
             string sql_grid = "SELECT * from dbo.entry_tbl_project_data";
             SqlCommand cmd_grid = new SqlCommand(sql_grid, con);
             SqlDataReader reader_grid = cmd_grid.ExecuteReader();
