@@ -42,6 +42,18 @@ namespace GELA_DB.pages
                     con.Close();
                     dlst_title.Items.FindByText(dr_customer.Rows[0]["prefix"].ToString()).Selected = true;
                     con.Open();
+                    SqlCommand showroom = new SqlCommand("SELECT * from dbo.fxd_tbl_showrooms", con);
+                    SqlDataAdapter sr = new SqlDataAdapter(showroom);
+                    DataTable s_r = new DataTable();
+                    sr.Fill(s_r);
+                    dlst_showroom.DataSource = s_r;
+                    dlst_showroom.DataBind();
+                    dlst_showroom.DataTextField = "showroom_ar";
+                    dlst_showroom.DataValueField = "showrooms_ID";
+                    dlst_showroom.DataBind();
+                    con.Close();
+                    dlst_showroom.Items.FindByText(dr_customer.Rows[0]["showroom"].ToString()).Selected = true;
+                    con.Open();
                     SqlCommand city = new SqlCommand("SELECT * from dbo.fxd_tbl_cities", con);
                     SqlDataAdapter ct = new SqlDataAdapter(city);
                     DataTable c_t = new DataTable();

@@ -42,6 +42,24 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Label lbl_customer_ID;
 
         /// <summary>
+        /// lbl_showroom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_showroom;
+
+        /// <summary>
+        /// dlst_showroom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlst_showroom;
+
+        /// <summary>
         /// lbl_title control.
         /// </summary>
         /// <remarks>

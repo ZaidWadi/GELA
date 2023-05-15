@@ -22,7 +22,17 @@ namespace GELA_DB.pages
                 con.Open();
                 if (!IsPostBack)
                 {
-
+                    SqlCommand showroom = new SqlCommand("SELECT * from dbo.fxd_tbl_showrooms", con);
+                    SqlDataAdapter sr = new SqlDataAdapter(showroom);
+                    DataTable s_r = new DataTable();
+                    sr.Fill(s_r);
+                    dlst_showroom.DataSource = s_r;
+                    dlst_showroom.DataBind();
+                    dlst_showroom.DataTextField = "showroom_ar";
+                    dlst_showroom.DataValueField = "showrooms_ID";
+                    dlst_showroom.DataBind();
+                    con.Close();
+                    con.Open();
                     SqlCommand prefixes = new SqlCommand("SELECT * from dbo.fxd_tbl_prefixes", con); ///u
                     SqlDataAdapter px = new SqlDataAdapter(prefixes);
                     DataTable p_x = new DataTable();

@@ -32,6 +32,12 @@
                     </tr>
                 <tr><td></td></tr><tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
                 <tr>
+                    <td>
+                        <asp:Label ID="lbl_showroom" runat="server">Showroom:</asp:Label>
+                        <asp:DropDownList ID="dlst_showroom" runat="server"></asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
                      <td>
             <asp:Label ID="lbl_title" runat="server">البادئة: </asp:Label>
             <asp:DropDownList ID="dlst_title" runat="server"></asp:DropDownList>
