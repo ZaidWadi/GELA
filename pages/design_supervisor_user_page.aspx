@@ -84,6 +84,7 @@
  HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="customers_grid_SelectedIndexChanged" OnRowDataBound="customers_grid_RowDataBound" ShowHeaderWhenEmpty="true">
                 <Columns>
                     <asp:BoundField DataField="customer_ID" headertext="customer ID" />
+                    <asp:BoundField DataField="showroom" headertext="Showroom" />
                     <asp:BoundField DataField="prefix" headertext="prefix" />
                     <asp:BoundField DataField="customer_name" headertext="Customer Name" />
                     <asp:BoundField DataField="customer_phone_1" headertext="Customer Phone Number" />
