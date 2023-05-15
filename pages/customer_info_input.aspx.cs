@@ -88,7 +88,8 @@ namespace GELA_DB.pages
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO entry_tbl_customers (prefix,customer_name,customer_phone_1,customer_phone_2,city,area,address_line,national_id,national_id_card_no,building_keeper_phone_no,notes) VALUES(@Title , @Name ,  @PhoneNo_1  ,  @PhoneNo_2 ,  @City,  @Area , @AddressLine , @NationalID , @DocumentNo , @KeeperPhoneNo , @Notes)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO entry_tbl_customers (showroom,prefix,customer_name,customer_phone_1,customer_phone_2,city,area,address_line,national_id,national_id_card_no,building_keeper_phone_no,notes) VALUES(@showroom , @Title , @Name ,  @PhoneNo_1  ,  @PhoneNo_2 ,  @City,  @Area , @AddressLine , @NationalID , @DocumentNo , @KeeperPhoneNo , @Notes)", con);
+            cmd.Parameters.AddWithValue("@showroom", dlst_showroom.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Title", dlst_title.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Name", txtbx_Name.Text);
             cmd.Parameters.AddWithValue("@PhoneNo_1", txtbx_PhoneNo_1.Text);

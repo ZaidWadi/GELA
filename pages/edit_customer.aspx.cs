@@ -128,8 +128,9 @@ namespace GELA_DB.pages
             var customer_ID_out = Session["ID"].ToString();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE dbo.entry_tbl_customers SET prefix=@title,customer_name=@Name,customer_phone_1=@PhoneNo_1,customer_phone_2=@PhoneNo_2,city=@City,area=@Area,address_line=@AddressLine,national_id=@NationalID,national_id_card_no=@DocumentNo,building_keeper_phone_no=@KeeperPhoneNo,notes=@Notes WHERE customer_ID=@ID", con);
+            SqlCommand cmd = new SqlCommand("UPDATE dbo.entry_tbl_customers SET showoom=@showroom prefix=@title,customer_name=@Name,customer_phone_1=@PhoneNo_1,customer_phone_2=@PhoneNo_2,city=@City,area=@Area,address_line=@AddressLine,national_id=@NationalID,national_id_card_no=@DocumentNo,building_keeper_phone_no=@KeeperPhoneNo,notes=@Notes WHERE customer_ID=@ID", con);
             cmd.Parameters.AddWithValue("@ID", customer_ID_out);
+            cmd.Parameters.AddWithValue("@showroom", dlst_showroom.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@title", dlst_title.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@Name", txtbx_Name.Text);
             cmd.Parameters.AddWithValue("@PhoneNo_1", txtbx_PhoneNo_1.Text);
