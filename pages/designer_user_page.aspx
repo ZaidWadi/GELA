@@ -102,6 +102,7 @@
                                </asp:View>
             
                 </asp:MultiView>
+                                     <asp:TextBox ID="txtbx_dbg" runat="server" AutoPostBack="true"></asp:TextBox>    
                             </td>
                         </tr>
               </table>

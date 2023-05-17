@@ -110,7 +110,7 @@ namespace GELA_DB.pages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                Session["cust_id"] = e.Row.Cells[0].ToString();
+                Session["cust_id"] = e.Row.Cells[0].Text;
                 e.Row.Attributes["onclick"] = "window.location.href='customer_info_view.aspx'";
             }
         }

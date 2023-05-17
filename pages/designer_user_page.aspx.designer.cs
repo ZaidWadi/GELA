@@ -166,5 +166,14 @@ namespace GELA_DB.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_err_1;
+
+        /// <summary>
+        /// txtbx_dbg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtbx_dbg;
     }
 }
