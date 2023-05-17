@@ -42,7 +42,7 @@
          </tr>
         <tr>
             <td>
-            <asp:MultiView ID="design_views" runat="server" OnActiveViewChanged="MainView_ActiveViewChanged">
+            <asp:MultiView ID="design_views" runat="server">
                     <asp:View ID="default_view" runat="server">
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
@@ -82,7 +82,6 @@
                 </Columns>
 
                               <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
-                                 
                               </asp:GridView>
                                              </ContentTemplate>
                                      </asp:UpdatePanel>

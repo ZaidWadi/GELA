@@ -39,12 +39,6 @@ namespace GELA_DB.pages
             }
         }
 
-
-        protected void MainView_ActiveViewChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Tab1_Click(object sender, EventArgs e)
         {
             if (Tab1.CssClass == "Clicked_button")
@@ -61,23 +55,6 @@ namespace GELA_DB.pages
             }
         }
 
-
-        protected void edit_customer_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtbx_selected_row_ID.Text))
-            {
-                lbl_err_1.Visible = true;
-            }
-            else
-            {
-                Session["customer_edit_ID"] = txtbx_selected_row_ID.Text;
-                string popup = "window.open ('edit_customer.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
-                ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
-                Session["ID"] = txtbx_selected_row_ID.Text;
-                Session["City"] = txtbx_selected_row_city.Text;
-            }
-        }
-
         protected void new_customer_Click(object sender, EventArgs e)
         {
             string popup = "window.open ('customer_info_input.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
@@ -87,9 +64,7 @@ namespace GELA_DB.pages
         protected void customers_grid_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow customer_row = customers_grid.SelectedRow;
-            txtbx_selected_row_ID.Text = customer_row.Cells[0].Text;
-            txtbx_selected_row_name.Text = customer_row.Cells[2].Text;
-            txtbx_selected_row_city.Text = customer_row.Cells[5].Text;
+            Session["cust_id"] = customer_row.Cells[0].ToString();
         }
 
         protected void customers_view_Load(object sender, EventArgs e)
@@ -111,7 +86,8 @@ namespace GELA_DB.pages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(this.customers_grid, "Select$" + e.Row.RowIndex.ToString());
+                Session["cust_id"] = e.Row.Cells[0].ToString();
+                e.Row.Attributes["onclick"] = "window.location.href='customer_info_view.aspx'";
             }
         }
 
@@ -172,7 +148,7 @@ namespace GELA_DB.pages
             {
                 Tab3.CssClass = "Clicked_button";
                 Tab1.CssClass = "Initial_button";
-                design_views.ActiveViewIndex = 3;
+                design_views.ActiveViewIndex = 2;
             }
         }
 

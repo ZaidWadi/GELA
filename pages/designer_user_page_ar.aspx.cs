@@ -56,27 +56,10 @@ namespace GELA_DB.pages
             else
             {///h
                 Tab1.CssClass = "Clicked_button_ar";
-                Tab2.CssClass = "Initial_button_ar";
                 design_views.ActiveViewIndex = 1;
 
             }
         }
-
-        protected void Tab2_Click(object sender, EventArgs e)
-        {
-            if (Tab2.CssClass == "Clicked_button_ar")
-            {
-                Tab2.CssClass = "Initial_button_ar";
-                design_views.ActiveViewIndex = 0;
-            }
-            else
-            {
-                Tab2.CssClass = "Clicked_button_ar";
-                Tab1.CssClass = "Initial_button_ar";
-                design_views.ActiveViewIndex = 2;
-            }
-        }
-
 
         protected void edit_customer_Click(object sender, EventArgs e)
         {
@@ -127,7 +110,8 @@ namespace GELA_DB.pages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(this.customers_grid, "Select$" + e.Row.RowIndex.ToString());
+                Session["cust_id"] = e.Row.Cells[0].ToString();
+                e.Row.Attributes["onclick"] = "window.location.href='customer_info_view.aspx'";
             }
         }
 

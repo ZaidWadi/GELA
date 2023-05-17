@@ -47,7 +47,7 @@
           </tr>
       <tr>
           <td>
-            <asp:MultiView ID="design_views" runat="server" OnActiveViewChanged="MainView_ActiveViewChanged">
+            <asp:MultiView ID="design_views" runat="server">
                     <asp:View ID="default_view" runat="server">
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
@@ -60,8 +60,7 @@
                  <asp:View ID="customers_view" runat="server" OnLoad="customers_view_Load">
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
-                      <td>
-                                              
+                      <td>          
                            <script>
                                $(document).ready(function () {
                                    $("#search_clients").on("keyup", function () {
@@ -85,18 +84,8 @@
                     <asp:BoundField DataField="prefix" headertext="prefix" />
                     <asp:BoundField DataField="customer_name" headertext="Customer Name" />
                     <asp:BoundField DataField="customer_phone_1" headertext="Customer Phone Number" />
-                    <asp:BoundField DataField="customer_phone_2" headertext="Secondary Phone number" />
-                    <asp:BoundField DataField="city" HeaderText="City" />
-                    <asp:BoundField DataField="area" headertext="Area" />
-                    <asp:BoundField DataField="address_line" headertext="Address Line" />
-                    <asp:BoundField DataField="national_id" headertext="National ID Number"></asp:BoundField>
-                    <asp:BoundField DataField="national_id_card_no" HeaderText="Document Number" />
-                    <asp:BoundField DataField="building_keeper_phone_no" HeaderText="Building Keeper Phone Number" />
-                    <asp:BoundField DataField="notes" HeaderText="Notes" />
                 </Columns>
-
                               <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
-                                 
                               </asp:GridView>
                                         </ContentTemplate>
                                 </asp:UpdatePanel>
@@ -113,12 +102,9 @@
                     </ContentTemplate>
                         </asp:updatepanel>
                      <asp:Button ID="new_customer" runat="server" Text="New Customer" OnClick="new_customer_Click" CssClass="Initial_button" />
-                     <asp:Button ID="edit_customer" runat="server" Text="Edit Custoemr" OnClick="edit_customer_Click" CssClass="Initial_button" />
                      <asp:Button ID="btn_delete_customer" runat="server" Text="Delete Customer" OnClick="btn_delete_customer_Click" CssClass="Initial_button" />  
                      <asp:Label ID="lbl_err_1" runat="server" Text="Please select a customer!" Visible="False" CssClass="wronginfo"></asp:Label>
                                </asp:View>
-            
-               
                 <asp:View ID="employees_view" runat="server" OnLoad="employees_view_Load">
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>

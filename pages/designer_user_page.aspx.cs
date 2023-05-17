@@ -112,7 +112,8 @@ namespace GELA_DB.pages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(this.customers_grid, "Select$" + e.Row.RowIndex.ToString());
+                Session["cust_id"] = e.Row.Cells[0].ToString();
+                e.Row.Attributes["onclick"] = "window.location.href='customer_info_view.aspx'";
             }
         }
 

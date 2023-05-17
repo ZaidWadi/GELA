@@ -11,7 +11,7 @@ namespace GELA_DB.pages
 {
 
 
-    public partial class WebForm40
+    public partial class WebForm53
     {
 
         /// <summary>
@@ -33,138 +33,138 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.ScriptManager scrptmgr_design_sup;
 
         /// <summary>
-        /// btn_lang control.
+        /// lbl_customer_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_lang;
+        protected global::System.Web.UI.WebControls.Label lbl_customer_ID;
 
         /// <summary>
-        /// btn_log_out control.
+        /// btn_edit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_log_out;
+        protected global::System.Web.UI.WebControls.Button btn_edit;
 
         /// <summary>
-        /// btn_sup control.
+        /// dlst_showroom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_sup;
+        protected global::System.Web.UI.WebControls.DropDownList dlst_showroom;
 
         /// <summary>
-        /// Tab1 control.
+        /// dlst_title control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Tab1;
+        protected global::System.Web.UI.WebControls.DropDownList dlst_title;
 
         /// <summary>
-        /// design_views control.
+        /// txtbx_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView design_views;
+        protected global::System.Web.UI.WebControls.TextBox txtbx_name;
 
         /// <summary>
-        /// default_view control.
+        /// txtbx_phone_1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View default_view;
+        protected global::System.Web.UI.WebControls.TextBox txtbx_phone_1;
 
         /// <summary>
-        /// lbl_name control.
+        /// txtbx_phone_2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_name;
+        protected global::System.Web.UI.WebControls.TextBox txtbx_phone_2;
 
         /// <summary>
-        /// customers_view control.
+        /// dlst_city control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View customers_view;
+        protected global::System.Web.UI.WebControls.DropDownList dlst_city;
 
         /// <summary>
-        /// search_customers control.
+        /// dlst_area control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox search_customers;
+        protected global::System.Web.UI.WebControls.DropDownList dlst_area;
 
         /// <summary>
-        /// customers_grid control.
+        /// txtbx_address control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView customers_grid;
+        protected global::System.Web.UI.WebControls.TextBox txtbx_address;
 
         /// <summary>
-        /// txtbx_selected_row_ID control.
+        /// txtbx_nat_id control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtbx_selected_row_ID;
+        protected global::System.Web.UI.WebControls.TextBox txtbx_nat_id;
 
         /// <summary>
-        /// txtbx_selected_row_name control.
+        /// txtbx_botes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtbx_selected_row_name;
+        protected global::System.Web.UI.WebControls.TextBox txtbx_botes;
 
         /// <summary>
-        /// txtbx_selected_row_city control.
+        /// btn_save control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtbx_selected_row_city;
+        protected global::System.Web.UI.WebControls.Button btn_save;
 
         /// <summary>
-        /// new_customer control.
+        /// projects_grid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button new_customer;
+        protected global::System.Web.UI.WebControls.GridView projects_grid;
 
         /// <summary>
-        /// lbl_err_1 control.
+        /// btn_new_project control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_err_1;
+        protected global::System.Web.UI.WebControls.Button btn_new_project;
     }
 }

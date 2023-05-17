@@ -41,13 +41,12 @@
       <tr dir="rtl">
           <td dir="rtl">
           <asp:Button Text="الزبائن" BorderStyle="None" ID="Tab1" CssClass="Initial_button_ar" runat="server" OnClick="Tab1_Click" />   
-          <asp:Button Text="المشاريع" BorderStyle="None" ID="Tab2" CssClass="Initial_button_ar" runat="server" onclick="Tab2_Click"/>
             <asp:Button Text="الموظفين" BorderStyle="None" ID="Tab3" CssClass="Initial_button_ar" runat="server" OnClick="Tab3_Click"/>
               </td>
           </tr>
       <tr>
           <td>
-            <asp:MultiView ID="design_views" runat="server" OnActiveViewChanged="MainView_ActiveViewChanged">
+            <asp:MultiView ID="design_views" runat="server">
                     <asp:View ID="default_view" runat="server">
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
@@ -87,14 +86,6 @@
                     <asp:BoundField DataField="prefix" headertext="البادئة" />
                     <asp:BoundField DataField="customer_name" headertext="الاسم" />
                     <asp:BoundField DataField="customer_phone_1" headertext="رقم الهاتف" />
-                    <asp:BoundField DataField="customer_phone_2" headertext="رقم الهاتف الثانوي" />
-                    <asp:BoundField DataField="city" HeaderText="المدينة" />
-                    <asp:BoundField DataField="area" headertext="المنطقة" />
-                    <asp:BoundField DataField="address_line" headertext="تفاصيل العنوان" />
-                    <asp:BoundField DataField="national_id" headertext="الرقم الوطني"></asp:BoundField>
-                    <asp:BoundField DataField="national_id_card_no" HeaderText="رقم الوثيقة" />
-                    <asp:BoundField DataField="building_keeper_phone_no" HeaderText="رقم حارس المبنى" />
-                    <asp:BoundField DataField="notes" HeaderText="الملاحظات" />
                 </Columns>
 
                               <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
@@ -102,8 +93,7 @@
                               </asp:GridView>
                                   </ContentTemplate>
                          </asp:UpdatePanel>
-                                </div>
-                                    
+                                </div>                                
                                                </ContentTemplate>
                                      </asp:UpdatePanel>
                       </td>
@@ -118,7 +108,6 @@
                     </ContentTemplate>
                         </asp:updatepanel>
                      <asp:Button ID="new_customer" runat="server" Text="اضافة زبون جديد" OnClick="new_customer_Click" CssClass="Initial_button_ar" />
-                     <asp:Button ID="edit_customer" runat="server" Text="التعديل على الزبون" OnClick="edit_customer_Click" CssClass="Initial_button_ar" />
                      <asp:Button ID="btn_delete_customer" runat="server" Text="حذف الزيون" OnClick="btn_delete_customer_Click" CssClass="Initial_button_ar" />  
                      <asp:Label ID="lbl_err_1" runat="server" Text="الرجاء اختيار زبون من القائمة!" Visible="False" CssClass="wronginfo"></asp:Label>
                                </asp:View>
@@ -128,7 +117,7 @@
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
                       <td>
-                                 <br />
+                                 <br/>
 <script>
     $(document).ready(function () {
         $("#search_employees").on("keyup", function () {

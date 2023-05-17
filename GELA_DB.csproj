@@ -208,6 +208,7 @@
     <Content Include="pages\order_details_input_ar.aspx" />
     <Content Include="pages\project_data_input_ar.aspx" />
     <Content Include="pages\project_technical_data_ar.aspx" />
+    <Content Include="pages\customer_info_view.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -706,6 +707,13 @@
     </Compile>
     <Compile Include="pages\project_technical_data_ar.aspx.designer.cs">
       <DependentUpon>project_technical_data_ar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\customer_info_view.aspx.cs">
+      <DependentUpon>customer_info_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\customer_info_view.aspx.designer.cs">
+      <DependentUpon>customer_info_view.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

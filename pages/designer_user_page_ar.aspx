@@ -37,12 +37,11 @@
      <tr>
          <td dir="rtl">
           <asp:Button Text="الزبائن" BorderStyle="None" ID="Tab1" CssClass="Initial_button_ar" runat="server" OnClick="Tab1_Click" />
-          <asp:Button Text="المشاريع" BorderStyle="None" ID="Tab2" CssClass="Initial_button_ar" runat="server" onclick="Tab2_Click"/>
              </td>
          </tr>
         <tr>
             <td>
-            <asp:MultiView ID="design_views" runat="server" OnActiveViewChanged="MainView_ActiveViewChanged">
+            <asp:MultiView ID="design_views" runat="server">
                     <asp:View ID="default_view" runat="server">
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
