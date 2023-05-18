@@ -155,5 +155,15 @@ namespace GELA_DB.pages
         {
             Response.Redirect("designer_user_page.aspx");
         }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GridViewRow row = customers_grid.Rows[rowindex];
+            Session["cust_id"] = row.Cells[1].Text;
+            Response.Redirect("customer_info_view_ar.aspx");
+        }
     }
 }

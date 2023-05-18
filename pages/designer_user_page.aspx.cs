@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -88,11 +89,10 @@ namespace GELA_DB.pages
 
         protected void customers_grid_SelectedIndexChanged(object sender, EventArgs e)
         {
-            GridViewRow customer_row = customers_grid.SelectedRow;
-                Session["cust_id"] = customer_row.Cells[0].Text;
-                txtbx_dbg.Text = customer_row.Cells[0].Text;
-                customer_row.Attributes["onclick"] = "window.location.href='customer_info_view.aspx'";
-            
+            /*
+            GridViewRow customer_row = customers_grid.SelectedRow; 
+            customer_row.Attributes["onclick"] = "Session['cust_id'] = customer_row.Cells[0].Text; window.location.href='customer_info_view.aspx'";
+            */
         }
 
         protected void customers_view_Load(object sender, EventArgs e)
@@ -159,6 +159,20 @@ namespace GELA_DB.pages
         protected void btn_lang_Click(object sender, EventArgs e)
         {
             Response.Redirect("designer_user_page_ar.aspx");
+        }
+
+        protected void customers_grid_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+        }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GridViewRow row = customers_grid.Rows[rowindex];
+            Session["cust_id"] = row.Cells[1].Text;
+            Response.Redirect("customer_info_view.aspx");
         }
     }
 }

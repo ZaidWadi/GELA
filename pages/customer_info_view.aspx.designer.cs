@@ -150,6 +150,24 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Button btn_save;
 
         /// <summary>
+        /// search_projects control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox search_projects;
+
+        /// <summary>
+        /// updt_project_data control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updt_project_data;
+
+        /// <summary>
         /// projects_grid control.
         /// </summary>
         /// <remarks>

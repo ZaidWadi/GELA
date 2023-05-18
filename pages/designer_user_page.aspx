@@ -56,7 +56,6 @@
                     <table style="background-color:whitesmoke; width: 100%; border-width: 1px; border-color: #666; border-style: none">
                     <tr>
                       <td>
-                                         
 <script>
      $(document).ready(function () {
          $("#search_customers").on("keyup", function () {
@@ -73,8 +72,9 @@
                               <asp:UpdatePanel runat="server">
                                          <ContentTemplate>     
                              <asp:GridView ID="customers_grid" ClientInstanceName="customers_grid_client" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
- HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="customers_grid_SelectedIndexChanged"  OnRowDataBound="customers_grid_RowDataBound" ShowHeaderWhenEmpty="true">
+ HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="customers_grid_SelectedIndexChanged"  OnRowDataBound="customers_grid_RowDataBound" ShowHeaderWhenEmpty="true" OnRowCommand="customers_grid_RowCommand">
                 <Columns>
+                    <asp:TemplateField><ItemTemplate><asp:Button runat="server" Text="View" CssClass="Initial_button" OnClick="Unnamed_Click" CommandName="view" CommandArgument="<%# Container.DataItemIndex %>"/></ItemTemplate></asp:TemplateField>
                     <asp:BoundField DataField="customer_ID" headertext="customer ID" />
                     <asp:BoundField DataField="prefix" headertext="prefix" />
                     <asp:BoundField DataField="customer_name" headertext="Customer Name" />
@@ -102,7 +102,6 @@
                                </asp:View>
             
                 </asp:MultiView>
-                                     <asp:TextBox ID="txtbx_dbg" runat="server" AutoPostBack="true"></asp:TextBox>    
                             </td>
                         </tr>
               </table>

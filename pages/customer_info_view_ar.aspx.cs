@@ -93,6 +93,12 @@ namespace GELA_DB.pages
                     }
                     dlst_area.ClearSelection();
                     dlst_area.Items.FindByText(dr_customer.Rows[0]["area"].ToString()).Selected = true;
+                    con.Open();
+                    SqlCommand projects = new SqlCommand("SELECT * FROM dbo.entry_tbl_project_data WHERE customer = @name", con);
+                    projects.Parameters.AddWithValue("@name", txtbx_name.Text);
+                    SqlDataReader projects_dr = projects.ExecuteReader();
+                    projects_grid.DataSource = projects_dr;
+                    projects_grid.DataBind();
                 }
             }
             else

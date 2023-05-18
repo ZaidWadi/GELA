@@ -150,15 +150,6 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.TextBox txtbx_selected_row_city;
 
         /// <summary>
-        /// txtbx_dbg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtbx_dbg;
-
-        /// <summary>
         /// new_customer control.
         /// </summary>
         /// <remarks>

@@ -18,10 +18,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
-    <br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <form id="form1" runat="server">
         <asp:ScriptManager ID="scrptmgr_design_sup" runat="server"></asp:ScriptManager>
-        <div>
+        <div style="background-color:whitesmoke">
+            <h3>Customer's Info:</h3>
+        <br />
             <asp:UpdatePanel runat="server" ChildrenAsTriggers="true">
                             <ContentTemplate>
             <asp:Table runat="server">
@@ -113,8 +115,25 @@
                         <asp:Button ID="btn_save" runat="server" CssClass="Initial_button" Text="Save" OnClick="btn_save_Click" Visible="false"/>                
                     </asp:TableCell>
                 </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>
+                </asp:Table>
+                                <br /><br />
+                                <h3>Customer's Projects:</h3>
+        <br />
+                        <script>
+                           $(document).ready(function () {
+                               $("#search_projects").on("keyup", function () {
+                                   var value = $(this).val().toLowerCase();
+                                   $("#projects_grid tr").filter(function () {
+                                       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                   });
+                               });
+                           });
+                        </script>
+                      <div id="prjct_div" onscroll="SetDivPosition_1()" style="width:1700px;max-height:500px;background-color:whitesmoke;overflow:auto;">
+                          Search: <asp:TextBox ID="search_projects" Font-Size="12pt" runat="server"></asp:TextBox>
+                              <br />
+                          <asp:UpdatePanel ID="updt_project_data" runat="server">
+                              <ContentTemplate>
                         <asp:GridView ID="projects_grid" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
  HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnRowDataBound="projects_grid_RowDataBound" ShowHeaderWhenEmpty="true">
                             <Columns>
@@ -123,10 +142,11 @@
                                 <asp:BoundField DataField="initiation_date" headertext="Initiation Date" />
                             </Columns>
                         </asp:GridView>
+                                  </ContentTemplate>
+                              </asp:UpdatePanel>
                         <asp:Button ID="btn_new_project" runat="server" CssClass="Initial_button" Text="New Project" OnClick="btn_new_project_Click"/>
-                    </asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>
+                    
+            
                                 </ContentTemplate>
                             </asp:UpdatePanel>
         </div>
