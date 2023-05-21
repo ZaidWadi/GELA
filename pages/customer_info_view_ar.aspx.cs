@@ -129,7 +129,7 @@ namespace GELA_DB.pages
 
         protected void btn_new_project_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("project_data_input_ar.aspx");
         }
 
         protected void btn_save_Click(object sender, EventArgs e)
@@ -168,6 +168,15 @@ namespace GELA_DB.pages
             dlst_showroom.Enabled = false;
             dlst_title.Enabled = false;
             btn_save.Visible = false;
+        }
+        protected void btn_view_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GridViewRow row = projects_grid.Rows[rowindex];
+            Session["project_id"] = row.Cells[1].Text;
+            Response.Redirect("project_info_view_ar.aspx");
         }
     }
 }

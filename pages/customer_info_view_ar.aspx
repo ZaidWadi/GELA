@@ -137,6 +137,7 @@
                         <asp:GridView ID="projects_grid" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
  HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnRowDataBound="projects_grid_RowDataBound" ShowHeaderWhenEmpty="true">
                             <Columns>
+                                <asp:TemplateField><ItemTemplate><asp:Button ID="btn_view" runat="server" Text="عرض" CssClass="Initial_button" OnClick="btn_view_Click" /></ItemTemplate></asp:TemplateField>
                                 <asp:BoundField DataField="project_ID" headertext="رقم المشروع" />
                                 <asp:BoundField DataField="project" headertext="المنتج" />
                                 <asp:BoundField DataField="initiation_date" headertext="تاريخ البدء" />
