@@ -428,7 +428,7 @@
                                         </asp:Panel>
                                   </ContentTemplate>
                               </asp:UpdatePanel>
-                        <asp:Button ID="btn_done_cabinets" runat="server" CssClass="Initial_button" Text="انتهى" OnClick="btn_new_project_Click"/>
+                        <asp:Button ID="btn_done_cabinets" runat="server" CssClass="Initial_button" Text="انتهى" OnClick="btn_done_cabinets_Click"/>
         </div>
     </form>
 </body>

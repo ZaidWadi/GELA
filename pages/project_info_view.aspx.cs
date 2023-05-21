@@ -26,7 +26,6 @@ namespace GELA_DB.pages
                 DataTable dt_proj = new DataTable();
                 da_proj.Fill(dt_proj);
                 con.Close();
-                dlst_project.SelectedItem.Text = dt_proj.Rows[0]["project"].ToString();
                 lbl_customer_name.Text = dt_proj.Rows[0]["customer"].ToString();
                 lbl_customer_no.Text = dt_proj.Rows[0]["customer_no"].ToString();
                 lbl_OrderID.Text = dt_proj.Rows[0]["project_ID"].ToString();
@@ -58,6 +57,18 @@ namespace GELA_DB.pages
                         dlst_QAEng.DataBind();
                         dlst_QAEng.Items.FindByText(dt_proj.Rows[0]["QA_eng_name"].ToString()).Selected = true;
                         con.Close();
+                        con.Open();
+                        SqlCommand products = new SqlCommand("SELECT * from dbo.fxd_tbl_products", con);
+                        SqlDataAdapter pr = new SqlDataAdapter(products);
+                        DataTable p_r = new DataTable();
+                        pr.Fill(p_r);
+                        dlst_project.DataSource = p_r;
+                        dlst_project.DataBind();
+                        dlst_project.DataTextField = "product_ar";
+                        dlst_project.DataValueField = "products_ID";
+                        dlst_project.DataBind();
+                        con.Close();
+                        dlst_project.Items.FindByText(dt_proj.Rows[0]["project"].ToString()).Selected = true;
                         con.Open();
                         SqlCommand managers = new SqlCommand("SELECT * from dbo.fxd_tbl_managers", con);
                         SqlDataAdapter ma = new SqlDataAdapter(managers);
@@ -624,6 +635,26 @@ namespace GELA_DB.pages
         }
 
         protected void add_cab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void dlst_product_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void cabinets_grid_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+
+        protected void cabinets_grid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn_done_cabs_Click(object sender, EventArgs e)
         {
 
         }

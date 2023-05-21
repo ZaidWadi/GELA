@@ -537,7 +537,7 @@
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                        <asp:Button ID="btn_done_cabs" runat="server" CssClass="Initial_button" Text="Done" OnClick="btn_new_project_Click"/>
+                        <asp:Button ID="btn_done_cabs" runat="server" CssClass="Initial_button" Text="Done" OnClick="btn_done_cabs_Click"/>
                              </asp:TableCell>
                     </asp:TableRow>
                     </asp:Table>

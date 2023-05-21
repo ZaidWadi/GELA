@@ -26,7 +26,6 @@ namespace GELA_DB.pages
                 DataTable dt_proj = new DataTable();
                 da_proj.Fill(dt_proj);
                 con.Close();
-                dlst_project.SelectedItem.Text = dt_proj.Rows[0]["project"].ToString();
                 lbl_customer_name.Text = dt_proj.Rows[0]["customer"].ToString();
                 lbl_customer_no.Text = dt_proj.Rows[0]["customer_no"].ToString();
                 lbl_OrderID.Text = dt_proj.Rows[0]["project_ID"].ToString();
@@ -69,7 +68,8 @@ namespace GELA_DB.pages
                         dlst_project.DataValueField = "products_ID";
                         dlst_project.DataBind();
                         con.Close();
-                        con.Open();
+                        dlst_project.Items.FindByText(dt_proj.Rows[0]["project"].ToString()).Selected = true;
+                        con.Open();                 
                         SqlCommand managers = new SqlCommand("SELECT * from dbo.fxd_tbl_managers", con);
                         SqlDataAdapter ma = new SqlDataAdapter(managers);
                         DataTable m_a = new DataTable();
@@ -632,6 +632,21 @@ namespace GELA_DB.pages
         {
             pnl_form.Enabled = true;
             btn_done.Visible = true;
+        }
+
+        protected void cabinets_grid_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
+
+        protected void cabinets_grid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btn_done_cabinets_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
