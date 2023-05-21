@@ -55,6 +55,17 @@ namespace GELA_DB.pages
                         dlst_QAEng.DataBind();
                         con.Close();
                         con.Open();
+                        SqlCommand products = new SqlCommand("SELECT * from dbo.fxd_tbl_products", con);
+                        SqlDataAdapter pr = new SqlDataAdapter(products);
+                        DataTable p_r = new DataTable();
+                        pr.Fill(p_r);
+                        dlst_project.DataSource = p_r;
+                        dlst_project.DataBind();
+                        dlst_project.DataTextField = "product_ar";
+                        dlst_project.DataValueField = "products_ID";
+                        dlst_project.DataBind();
+                        con.Close();
+                        con.Open();
                         if (Session["auth"].ToString() == "Design")
                         {
                             SqlCommand cmd_des = new SqlCommand("SELECT * FROM dbo.fxd_tbl_engineers WHERE eng_name_en=@eng_name_en", con);
@@ -147,7 +158,7 @@ namespace GELA_DB.pages
             string project_data_cmd = "UPDATE dbo.entry_tbl_project_data SET project=@project,project_status=@project_status,measuring_eng_name=@measuring_eng_name,measuring_eng_phone_no=@measuring_eng_phone_no,measurements_scan=@measurements_scan,initiation_date=@initiation_date,designer_name=@designer_name,designer_phone_no=@designer_phone_no,QA_eng_name=QA_eng_name,production_order=@production_order,production_manager=@production_manager,notes=@notes WHERE project_ID=@project_id";
             SqlCommand cmd = new SqlCommand(project_data_cmd, con);
             cmd.Parameters.AddWithValue("@project_id", lbl_OrderID.Text);
-            cmd.Parameters.AddWithValue("@project", txtbx_project.Text);
+            cmd.Parameters.AddWithValue("@project", dlst_project.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@project_status", "بانتظار المقاس");
             cmd.Parameters.AddWithValue("@measuring_eng_name", dlst_MeasuringEngName.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@measuring_eng_phone_no", txtbx_MeasuringEngPhone.Text);

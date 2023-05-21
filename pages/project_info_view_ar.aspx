@@ -53,7 +53,7 @@
                          <asp:TableRow>
                         <asp:TableCell>
             <asp:Label ID="lbl_project" runat="server">المنتج: </asp:Label>
-            <asp:TextBox ID="txtbx_project" runat="server"></asp:TextBox>
+            <asp:DropDownList ID="dlst_project" runat="server"></asp:DropDownList>
                             </asp:TableCell>
                         <asp:TableCell>
                             <asp:UpdatePanel ID="UpdatePanel7" runat="server">

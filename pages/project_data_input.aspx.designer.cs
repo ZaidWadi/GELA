@@ -114,13 +114,13 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Label lbl_project;
 
         /// <summary>
-        /// txtbx_project control.
+        /// dlst_project control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtbx_project;
+        protected global::System.Web.UI.WebControls.DropDownList dlst_project;
 
         /// <summary>
         /// UpdatePanel7 control.

@@ -26,7 +26,7 @@ namespace GELA_DB.pages
                 DataTable dt_proj = new DataTable();
                 da_proj.Fill(dt_proj);
                 con.Close();
-                txtbx_project.Text = dt_proj.Rows[0]["project"].ToString();
+                dlst_project.SelectedItem.Text = dt_proj.Rows[0]["project"].ToString();
                 lbl_customer_name.Text = dt_proj.Rows[0]["customer"].ToString();
                 lbl_customer_no.Text = dt_proj.Rows[0]["customer_no"].ToString();
                 lbl_OrderID.Text = dt_proj.Rows[0]["project_ID"].ToString();
@@ -57,6 +57,17 @@ namespace GELA_DB.pages
                         dlst_QAEng.DataValueField = "engineers_ID";
                         dlst_QAEng.DataBind();
                         dlst_QAEng.Items.FindByText(dt_proj.Rows[0]["QA_eng_name"].ToString()).Selected = true;
+                        con.Close();
+                        con.Open();
+                        SqlCommand products = new SqlCommand("SELECT * from dbo.fxd_tbl_products", con);
+                        SqlDataAdapter pr = new SqlDataAdapter(products);
+                        DataTable p_r = new DataTable();
+                        pr.Fill(p_r);
+                        dlst_project.DataSource = p_r;
+                        dlst_project.DataBind();
+                        dlst_project.DataTextField = "product_ar";
+                        dlst_project.DataValueField = "products_ID";
+                        dlst_project.DataBind();
                         con.Close();
                         con.Open();
                         SqlCommand managers = new SqlCommand("SELECT * from dbo.fxd_tbl_managers", con);
@@ -470,7 +481,7 @@ namespace GELA_DB.pages
             cmd.Parameters.AddWithValue("@granite_corners", dlst_GraniteCorners.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@notes", txtbx_Notes.Text);
             cmd.Parameters.AddWithValue("@ID", lbl_customer_no.Text);
-            cmd.Parameters.AddWithValue("@proj", txtbx_project.Text);
+            cmd.Parameters.AddWithValue("@proj", dlst_project.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@meas_eng", dlst_MeasuringEngName.SelectedItem.Text);
             cmd.Parameters.AddWithValue("@meas_eng_ph", txtbx_MeasuringEngPhone.Text);
             cmd.Parameters.AddWithValue("@designer", dlst_DesignerName.SelectedItem.Text);

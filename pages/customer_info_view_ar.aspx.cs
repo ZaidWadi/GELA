@@ -83,7 +83,6 @@ namespace GELA_DB.pages
                         SqlDataAdapter are = new SqlDataAdapter(area);
                         DataTable a_r_e = new DataTable();
                         are.Fill(a_r_e);
-                        dlst_area.Enabled = true;
                         dlst_area.DataSource = a_r_e;
                         dlst_area.DataBind();
                         dlst_area.DataTextField = "area_name_ar";
