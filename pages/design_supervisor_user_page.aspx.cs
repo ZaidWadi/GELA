@@ -61,11 +61,6 @@ namespace GELA_DB.pages
             ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
         }
 
-        protected void customers_grid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GridViewRow customer_row = customers_grid.SelectedRow;
-            Session["cust_id"] = customer_row.Cells[0].ToString();
-        }
 
         protected void customers_view_Load(object sender, EventArgs e)
         {
@@ -79,15 +74,6 @@ namespace GELA_DB.pages
                 customers_grid.DataSource = reader;
                 customers_grid.DataBind();
                 con.Close();
-            }
-        }
-
-        protected void customers_grid_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                Session["cust_id"] = e.Row.Cells[0].Text;
-                e.Row.Attributes["onclick"] = "window.location.href='customer_info_view.aspx'";
             }
         }
 
@@ -204,30 +190,12 @@ namespace GELA_DB.pages
 
         }
 
-
-
         protected void employees_grid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(this.employees_grid, "Select$" + e.Row.RowIndex.ToString());
 
-            }
-        }
-
-
-        protected void btn_view_projects_Click(object sender, EventArgs e)
-        {
-            if (txtbx_employee_name.Text.IsNullOrWhiteSpace())
-            {
-                lbl_choose_employee.Visible = true;
-            }
-            else
-            {
-                Session["department"] = txtbx_dept.Text;
-                Session["employee"] = txtbx_employee_name.Text;
-                string popup = "window.open ('engineer_projects.aspx', 'popup_window', 'width=300,height=100,left=100,top=100,resizable=yes');";
-                ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
             }
         }
 

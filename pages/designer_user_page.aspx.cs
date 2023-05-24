@@ -41,7 +41,6 @@ namespace GELA_DB.pages
 
         }
 
-
         protected void MainView_ActiveViewChanged(object sender, EventArgs e)
         {
 
@@ -61,8 +60,6 @@ namespace GELA_DB.pages
 
             }
         }
-
-
 
         protected void edit_customer_Click(object sender, EventArgs e)
         {
@@ -86,15 +83,6 @@ namespace GELA_DB.pages
             ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
         }
 
-
-        protected void customers_grid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            /*
-            GridViewRow customer_row = customers_grid.SelectedRow; 
-            customer_row.Attributes["onclick"] = "Session['cust_id'] = customer_row.Cells[0].Text; window.location.href='customer_info_view.aspx'";
-            */
-        }
-
         protected void customers_view_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -109,13 +97,6 @@ namespace GELA_DB.pages
                 con.Close();
             }
         }
-
-        protected void customers_grid_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            
-        }
-
-
 
         protected void btn_delete_customer_Click(object sender, EventArgs e)
         {

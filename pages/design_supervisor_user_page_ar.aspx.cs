@@ -84,17 +84,6 @@ namespace GELA_DB.pages
             ClientScript.RegisterStartupScript(GetType(), "script", popup, true);
         }
 
-       
-
-        protected void customers_grid_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            GridViewRow customer_row = customers_grid.SelectedRow;
-            txtbx_selected_row_ID.Text = customer_row.Cells[0].Text;
-            txtbx_selected_row_name.Text = customer_row.Cells[2].Text;
-            txtbx_selected_row_city.Text = customer_row.Cells[5].Text;
-        }
-
         protected void customers_view_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -110,19 +99,6 @@ namespace GELA_DB.pages
             }
             
         }
-
-
-
-        protected void customers_grid_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                Session["cust_id"] = e.Row.Cells[0].Text;
-                e.Row.Attributes["onclick"] = "window.location.href='customer_info_view.aspx'";
-            }
-        }
-
-
 
         protected void employees_view_Load(object sender, EventArgs e)
         {
@@ -153,13 +129,6 @@ namespace GELA_DB.pages
             }
         }
 
-
-
-
-
-
-      
-
         protected void btn_delete_customer_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
@@ -176,8 +145,6 @@ namespace GELA_DB.pages
             customers_grid.DataBind();
             con.Close();
         }
-
-
 
         protected void Tab3_Click(object sender, EventArgs e)
         {
@@ -247,8 +214,6 @@ namespace GELA_DB.pages
 
         }
 
-
-
         protected void employees_grid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -257,7 +222,6 @@ namespace GELA_DB.pages
 
             }
         }
-
 
         protected void btn_view_projects_Click(object sender, EventArgs e)
         {
@@ -274,13 +238,11 @@ namespace GELA_DB.pages
             }
         }
 
-
         protected void btn_log_out_Click(object sender, EventArgs e)
         {
             Session["auth"] = null;
             Response.Redirect("login_page_ar.aspx");
         }
-
 
         protected void btn_add_new_cabinet_Click(object sender, EventArgs e)
         {
@@ -303,7 +265,6 @@ namespace GELA_DB.pages
         {
             Response.Redirect("design_supervisor_user_page.aspx");
         }
-
 
         protected void btn_export_to_excel_Click(object sender, EventArgs e)
         {

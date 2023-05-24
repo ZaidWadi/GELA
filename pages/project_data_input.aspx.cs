@@ -168,8 +168,7 @@ namespace GELA_DB.pages
             cmd.Parameters.AddWithValue("@notes", txtbx_Notes.Text);
             cmd.ExecuteNonQuery();
             con.Close();
-            Response.Write("<script>window.close();</" + "script>");
-            Response.End();
+            Response.Redirect("customer_info_view.aspx");
         }
 
         protected void dlst_DesignerName_SelectedIndexChanged(object sender, EventArgs e)

@@ -79,7 +79,7 @@
                              <Triggers><asp:AsyncPostBackTrigger ControlID="customers_grid" /></Triggers>
                              <ContentTemplate>
                                 <asp:GridView ID="customers_grid" ClientInstanceName="customers_grid_client" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
- HeaderStyle-CssClass="header" RowStyle-CssClass="rows" OnSelectedIndexChanged="customers_grid_SelectedIndexChanged" OnRowDataBound="customers_grid_RowDataBound" ShowHeaderWhenEmpty="true">
+ HeaderStyle-CssClass="header" RowStyle-CssClass="rows" ShowHeaderWhenEmpty="true">
                 <Columns>
                     <asp:TemplateField><ItemTemplate><asp:Button runat="server" Text="عرض" CssClass="Initial_button" OnClick="Unnamed_Click" CommandName="view" CommandArgument="<%# Container.DataItemIndex %>"/></ItemTemplate></asp:TemplateField>
                     <asp:BoundField DataField="customer_ID" headertext="رقم التعريف" />

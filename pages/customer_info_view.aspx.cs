@@ -129,6 +129,8 @@ namespace GELA_DB.pages
 
         protected void btn_new_project_Click(object sender, EventArgs e)
         {
+            Session["ID"] = lbl_customer_ID.Text;
+            Session["Name"] = txtbx_name.Text;
             Response.Redirect("project_data_input.aspx");
         }
 
