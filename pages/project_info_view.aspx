@@ -518,8 +518,8 @@
                             <asp:GridView ID="cabinets_grid" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
  HeaderStyle-CssClass="header" RowStyle-CssClass="rows" ShowHeaderWhenEmpty="true" Width="100%" OnRowDataBound="cabinets_grid_RowDataBound" OnSelectedIndexChanged="cabinets_grid_SelectedIndexChanged">
                         <Columns>
-                            <asp:BoundField DataField="cabinet_entry_ID" HeaderText="Cabinet ID" />
-                            <asp:BoundField DataField="product" HeaderText="Cabinet" />
+                            <asp:BoundField DataField="cabinet_entry_ID" HeaderText="Furniture ID" />
+                            <asp:BoundField DataField="product" HeaderText="Furniture" />
                             <asp:BoundField DataField="width" HeaderText="Width" />
                             <asp:BoundField DataField="accessories" HeaderText="Accessories" />
                             <asp:BoundField DataField="devices" HeaderText="Devices" />
