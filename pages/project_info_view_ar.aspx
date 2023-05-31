@@ -404,9 +404,221 @@
                                 <asp:Button ID="btn_edit_cabs" runat="server" Text="تعديل الخزائن" CssClass="Initial_button_ar" OnClick="btn_edit_Click"/>
                             </asp:TableCell>
                         </asp:TableRow>
+                <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:MultiView ID="furniture_views" runat="server">
+                                    <asp:View runat="server" ID="view_kitchen" OnLoad="view_kitchen_Load">
+                                        <fieldset class="loginpagefieldset">
+                <asp:Table ID="order_entry" runat="server" CssClass="borderspaces">
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_product" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_product" runat="server">الخزانة:</asp:Label>
+                                    <asp:DropDownList ID="dlst_product" runat="server" ToolTip="Select" AutoPostBack="true" OnSelectedIndexChanged="dlst_product_SelectedIndexChanged"></asp:DropDownList>
+                                        <script>
+                                            $(document).ready(function () { $("#dlst_product").select2(); });
+                                        </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="lbl_width" runat="server">العرض:</asp:Label>
+                            <asp:TextBox ID="txtbx_width" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_accessories" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_accessories" runat="server">الاكسسوارات:</asp:Label>
+                                    <asp:DropDownList ID="dlst_accessories" runat="server" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_accessories").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                            <asp:UpdatePanel runat="server">
+                                <Triggers><asp:AsyncPostBackTrigger ControlID="dlst_accessories" /></Triggers>
+                                <ContentTemplate>
+                                    <asp:TextBox ID="selected_accessory" runat="server" Visible="false"></asp:TextBox>
+                                    </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_devices" runat="server">
+                                <Triggers><asp:AsyncPostBackTrigger ControlID="dlst_product" /></Triggers>
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_devices" runat="server">الأجهزة:</asp:Label>
+                                    <asp:DropDownList ID="dlst_devices" runat="server" Enabled="false" AutoPostBack="true" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_devices").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                            <asp:UpdatePanel runat="server">
+                                <Triggers><asp:AsyncPostBackTrigger ControlID="dlst_devices" /></Triggers>
+                                <ContentTemplate>
+                            <asp:TextBox ID="selected_device" runat="server" Visible="false"></asp:TextBox>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_lighting" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_lighting" runat="server">الإنارة:</asp:Label>
+                                    <asp:DropDownList ID="dlst_lighting" runat="server" ToolTip="Select"></asp:DropDownList>                                     
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_lighting").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_lighting_pos" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_lighting_pos" runat="server">موقع الانارة:</asp:Label>
+                                    <asp:DropDownList ID="dlst_lighting_pos" runat="server" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_lighting_pos").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                         <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_lighting_place" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_lighting_place" runat="server">فرزة الانارة:</asp:Label>
+                                    <asp:DropDownList ID="dlst_lighting_place" runat="server" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_lighting_place").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="lbl_quantity" runat="server">الكمية:</asp:Label>
+                            <asp:TextBox ID="txtbx_quantity" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    </asp:Table>
+                                            </fieldset>
+                                    </asp:View>
+                                    <asp:View runat="server" ID="view_furnature" OnLoad="view_furnature_Load">
+                                        <fieldset class="loginpagefieldset">
+                <asp:Table ID="tbl_furniture" runat="server" CssClass="borderspaces">
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:UpdatePanel ID="upd_furniture" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_piece" runat="server">المنتج:</asp:Label>
+                                    <asp:DropDownList ID="dlst_piece" runat="server" ToolTip="Select" AutoPostBack="true" OnSelectedIndexChanged="dlst_piece_SelectedIndexChanged"></asp:DropDownList>
+                                        <script>
+                                            $(document).ready(function () { $("#dlst_piece").select2(); });
+                                        </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="lbl_width_frn" runat="server">العرض:</asp:Label>
+                            <asp:TextBox ID="txtbx_width_frn" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                         <asp:TableCell>
+                            <asp:Label ID="lbl_length" runat="server">الطول:</asp:Label>
+                            <asp:TextBox ID="txtbx_length" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_accessories_frn" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_acc_frn" runat="server">الاكسسوارات:</asp:Label>
+                                    <asp:DropDownList ID="dlst_acc_frn" runat="server" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_acc_frn").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                            <asp:UpdatePanel runat="server">
+                                <Triggers><asp:AsyncPostBackTrigger ControlID="dlst_acc_frn" /></Triggers>
+                                <ContentTemplate>
+                                    <asp:TextBox ID="txtbx_acc" runat="server" Visible="false"></asp:TextBox>
+                                    </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                <Triggers><asp:AsyncPostBackTrigger ControlID="dlst_piece" /></Triggers>
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_devices_frn" runat="server">الأجهزة:</asp:Label>
+                                    <asp:DropDownList ID="dlst_dev_frn" runat="server" Enabled="false" AutoPostBack="true" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_dev_frn").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                            <asp:UpdatePanel runat="server">
+                                <Triggers><asp:AsyncPostBackTrigger ControlID="dlst_dev_frn" /></Triggers>
+                                <ContentTemplate>
+                            <asp:TextBox ID="txtbx_dev_frn" runat="server" Visible="false"></asp:TextBox>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_lighting_frn" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_lighting_frn" runat="server">الإنارة:</asp:Label>
+                                    <asp:DropDownList ID="dlst_lighting_frn" runat="server" ToolTip="Select"></asp:DropDownList>                                     
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_lighting_frn").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_light_pos_frn" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_light_pos_frn" runat="server">موقع الانارة:</asp:Label>
+                                    <asp:DropDownList ID="dlst_light_pos_frn" runat="server" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_light_pos_frn").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                         <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_light_place_frn" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_light_place_frn" runat="server">فرزة الانارة:</asp:Label>
+                                    <asp:DropDownList ID="dlst_light_place_frn" runat="server" ToolTip="Select"></asp:DropDownList>
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_light_place_frn").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="lbl_quantity_frn" runat="server">الكمية:</asp:Label>
+                            <asp:TextBox ID="txtbx_quantity_frn" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    </asp:Table>
+                                            </fieldset>
+                                    </asp:View>
+                                </asp:MultiView>
+                                </asp:TableCell>
+                        </asp:TableRow>
                     </asp:Table>
             <br />
-            <h3>الخزائن:</h3>
+            <h3>الأثاث:</h3>
             <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
                                         <asp:Panel ID="pnl_cabinets" runat="server">

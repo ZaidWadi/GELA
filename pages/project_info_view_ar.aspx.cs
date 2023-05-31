@@ -29,6 +29,14 @@ namespace GELA_DB.pages
                 lbl_customer_name.Text = dt_proj.Rows[0]["customer"].ToString();
                 lbl_customer_no.Text = dt_proj.Rows[0]["customer_no"].ToString();
                 lbl_OrderID.Text = dt_proj.Rows[0]["project_ID"].ToString();
+                if (dlst_project.SelectedItem.Text == "مطبخ")
+                {
+                    furniture_views.ActiveViewIndex= 0;
+                }
+                else
+                {
+                    furniture_views.ActiveViewIndex = 1;
+                }
                 if (!IsPostBack)
                 {
                     if (lbl_customer_no.Text != null)
@@ -636,7 +644,7 @@ namespace GELA_DB.pages
 
         protected void cabinets_grid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-
+            
         }
 
         protected void cabinets_grid_SelectedIndexChanged(object sender, EventArgs e)
@@ -647,6 +655,46 @@ namespace GELA_DB.pages
         protected void btn_done_cabinets_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void dlst_piece_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void view_kitchen_Load(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd_kitchen = new SqlCommand("SELECT * FROM dbo.fxd_tbl_furniture WHERE room_code_1=@k or room_code_2=@k or room_code_3=@k", con);
+            cmd_kitchen.Parameters.AddWithValue("@k", "k");
+            SqlDataReader dr_kitchen = cmd_kitchen.ExecuteReader();
+            if (dr_kitchen.Read())
+            {
+                dlst_product.DataSource = dr_kitchen;
+                dlst_product.DataBind();
+                dlst_product.DataTextField = "piece_ar";
+                dlst_product.DataValueField = "pieces_ID";
+                dlst_product.DataBind();
+            }
+        }
+
+        protected void view_furnature_Load(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd_furniture = new SqlCommand("SELECT * FROM dbo.fxd_tbl_furniture WHERE (room_code_1=@f or room_code_1=@d) or (room_code_2=@f or room_code_2=@d) or (room_code_3=@f or room_code_3=@d)", con);
+            cmd_furniture.Parameters.AddWithValue("@f", "f");
+            cmd_furniture.Parameters.AddWithValue("@d", "d");
+            SqlDataReader dr_furniture = cmd_furniture.ExecuteReader();
+            if (dr_furniture.Read())
+            {
+                dlst_product.DataSource = dr_furniture;
+                dlst_product.DataBind();
+                dlst_product.DataTextField = "piece_ar";
+                dlst_product.DataValueField = "pieces_ID";
+                dlst_product.DataBind();
+            }
         }
     }
 }
