@@ -399,22 +399,24 @@
             </asp:UpdatePanel>
             <br /><br />
             <asp:Table runat="server">
-            <asp:TableRow>
+                        <asp:TableRow>
                             <asp:TableCell>
-                                <asp:Button ID="btn_edit_cabs" runat="server" Text="Edit Cabinets" CssClass="Initial_button_ar" OnClick="btn_edit_Click"/>
+                                <asp:Button ID="btn_edit_cabs" runat="server" Text="Edit Furniture" CssClass="Initial_button_ar" OnClick="btn_edit_cabs_Click"/>
                             </asp:TableCell>
                         </asp:TableRow>
-                    </asp:Table>
-            <br />
-            <h3>Cabinets:</h3>
-            <br />
-            <fieldset class="loginpagefieldset">
+                <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:UpdatePanel runat="server"><ContentTemplate>
+                                <asp:Panel runat="server" ID="pnl_furniture" Enabled="false">
+                                <asp:MultiView ID="furniture_views" runat="server">
+                                    <asp:View runat="server" ID="view_kitchen" OnLoad="view_kitchen_Load">
+                                        <fieldset class="loginpagefieldset">
                 <asp:Table ID="order_entry" runat="server" CssClass="borderspaces">
                     <asp:TableRow>
                         <asp:TableCell>
                             <asp:UpdatePanel ID="updt_product" runat="server">
                                 <ContentTemplate>
-                                    <asp:Label ID="lbl_product" runat="server">Product:</asp:Label>
+                                    <asp:Label ID="lbl_product" runat="server">Cabinet:</asp:Label>
                                     <asp:DropDownList ID="dlst_product" runat="server" ToolTip="Select" AutoPostBack="true" OnSelectedIndexChanged="dlst_product_SelectedIndexChanged"></asp:DropDownList>
                                         <script>
                                             $(document).ready(function () { $("#dlst_product").select2(); });
@@ -479,7 +481,7 @@
                         <asp:TableCell>
                             <asp:UpdatePanel ID="updt_lighting_pos" runat="server">
                                 <ContentTemplate>
-                                    <asp:Label ID="lbl_lighting_pos" runat="server">Lighting Position:</asp:Label>
+                                    <asp:Label ID="lbl_lighting_pos" runat="server">Lighting position:</asp:Label>
                                     <asp:DropDownList ID="dlst_lighting_pos" runat="server" ToolTip="Select"></asp:DropDownList>
                                     <script>
                                         $(document).ready(function () { $("#dlst_lighting_pos").select2(); });
@@ -490,7 +492,7 @@
                          <asp:TableCell>
                             <asp:UpdatePanel ID="updt_lighting_place" runat="server">
                                 <ContentTemplate>
-                                    <asp:Label ID="lbl_lighting_place" runat="server">Lighting Place:</asp:Label>
+                                    <asp:Label ID="lbl_lighting_place" runat="server">Lighting location:</asp:Label>
                                     <asp:DropDownList ID="dlst_lighting_place" runat="server" ToolTip="Select"></asp:DropDownList>
                                     <script>
                                         $(document).ready(function () { $("#dlst_lighting_place").select2(); });
@@ -505,27 +507,79 @@
                             <asp:TextBox ID="txtbx_quantity" runat="server"></asp:TextBox>
                         </asp:TableCell>
                     </asp:TableRow>
-                     <asp:TableRow>
+                    </asp:Table>
+                                            <asp:Button ID="btn_add_cab" runat="server" Text="Add" CssClass="Initial_button_ar" OnClick="btn_add_cab_Click" />
+                                            </fieldset>
+                                    </asp:View>
+                                    <asp:View runat="server" ID="view_furnature" OnLoad="view_furnature_Load">
+                                        <fieldset class="loginpagefieldset">
+                <asp:Table ID="tbl_furniture" runat="server" CssClass="borderspaces">
+                    <asp:TableRow>
                         <asp:TableCell>
-                            <asp:Button ID="add_cab" runat="server" Text="Add" OnClick="add_cab_Click" />
+                            <asp:UpdatePanel ID="upd_furniture" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_piece" runat="server">Furniture:</asp:Label>
+                                    <asp:DropDownList ID="dlst_piece" runat="server" ToolTip="Select" AutoPostBack="true" OnSelectedIndexChanged="dlst_piece_SelectedIndexChanged"></asp:DropDownList>
+                                        <script>
+                                            $(document).ready(function () { $("#dlst_piece").select2(); });
+                                        </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="lbl_width_frn" runat="server">Width:</asp:Label>
+                            <asp:TextBox ID="txtbx_width_frn" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                         <asp:TableCell>
+                            <asp:Label ID="lbl_length" runat="server">Length:</asp:Label>
+                            <asp:TextBox ID="txtbx_length" runat="server"></asp:TextBox>
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
+                            <asp:UpdatePanel ID="updt_lighting_frn" runat="server">
+                                <ContentTemplate>
+                                    <asp:Label ID="lbl_lighting_frn" runat="server">Lighting:</asp:Label>
+                                    <asp:DropDownList ID="dlst_lighting_frn" runat="server" ToolTip="Select"></asp:DropDownList>                                     
+                                    <script>
+                                        $(document).ready(function () { $("#dlst_lighting_frn").select2(); });
+                                    </script>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="lbl_quantity_frn" runat="server">الكمية:</asp:Label>
+                            <asp:TextBox ID="txtbx_quantity_frn" runat="server"></asp:TextBox>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    </asp:Table>
+                                            <asp:Button ID="btn_add_frn" runat="server" Text="Add" CssClass="Initial_button_ar" OnClick="btn_add_frn_Click" />
+                                            </fieldset>
+                                    </asp:View>
+                                </asp:MultiView>
+                                    </asp:Panel>
+                                    </ContentTemplate></asp:UpdatePanel>
+                                </asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
+            <br />
+            <h3>الأثاث:</h3>
             <asp:UpdatePanel runat="server">
                                     <ContentTemplate>
-                                        <asp:Panel ID="pnl_cabinets" runat="server">
+                                        <asp:Panel ID="pnl_cabinets" runat="server">       
                             <asp:GridView ID="cabinets_grid" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
  HeaderStyle-CssClass="header" RowStyle-CssClass="rows" ShowHeaderWhenEmpty="true" Width="100%" OnRowDataBound="cabinets_grid_RowDataBound" OnSelectedIndexChanged="cabinets_grid_SelectedIndexChanged">
                         <Columns>
-                            <asp:BoundField DataField="cabinet_entry_ID" HeaderText="Furniture ID" />
-                            <asp:BoundField DataField="product" HeaderText="Furniture" />
+                            <asp:TemplateField><ItemTemplate><asp:Button ID="btn_delete" runat="server" Text="Delete" CssClass="Initial_button" OnClick="btn_delete_Click" /></ItemTemplate></asp:TemplateField>
+                            <asp:BoundField DataField="cabinet_entry_ID" HeaderText="Piece No" />
+                            <asp:BoundField DataField="product" HeaderText="Piece" />
                             <asp:BoundField DataField="width" HeaderText="Width" />
+                            <asp:BoundField DataField="length" HeaderText="Length" />
                             <asp:BoundField DataField="accessories" HeaderText="Accessories" />
                             <asp:BoundField DataField="devices" HeaderText="Devices" />
-                            <asp:BoundField DataField="lighting" HeaderText="Lighting" />
-                            <asp:BoundField DataField="lighting_position" HeaderText="Lighting Position" />
-                            <asp:BoundField DataField="lighting_location_type" HeaderText="Lighting Location Type" />
+                            <asp:BoundField DataField="lighting" HeaderText="Lighting Type" />
                             <asp:BoundField DataField="quantity" HeaderText="Quantity" />
                         </Columns>
                                 <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />
@@ -533,15 +587,7 @@
                                         </asp:Panel>
                                   </ContentTemplate>
                               </asp:UpdatePanel>
-                              </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                        <asp:Button ID="btn_done_cabs" runat="server" CssClass="Initial_button" Text="Done" OnClick="btn_done_cabs_Click"/>
-                             </asp:TableCell>
-                    </asp:TableRow>
-                    </asp:Table>
-                </fieldset>
+                        <asp:Button ID="btn_done_cabinets" runat="server" CssClass="Initial_button" Text="Done" OnClick="btn_done_cabinets_Click"/>
         </div>
     </form>
 </body>

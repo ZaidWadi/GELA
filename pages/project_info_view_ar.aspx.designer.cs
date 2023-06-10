@@ -978,6 +978,15 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Button btn_edit_cabs;
 
         /// <summary>
+        /// pnl_furniture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl_furniture;
+
+        /// <summary>
         /// furniture_views control.
         /// </summary>
         /// <remarks>
@@ -1221,6 +1230,15 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.TextBox txtbx_quantity;
 
         /// <summary>
+        /// btn_add_cab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_add_cab;
+
+        /// <summary>
         /// view_furnature control.
         /// </summary>
         /// <remarks>
@@ -1302,78 +1320,6 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.TextBox txtbx_length;
 
         /// <summary>
-        /// updt_accessories_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updt_accessories_frn;
-
-        /// <summary>
-        /// lbl_acc_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_acc_frn;
-
-        /// <summary>
-        /// dlst_acc_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlst_acc_frn;
-
-        /// <summary>
-        /// txtbx_acc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtbx_acc;
-
-        /// <summary>
-        /// UpdatePanel4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel4;
-
-        /// <summary>
-        /// lbl_devices_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_devices_frn;
-
-        /// <summary>
-        /// dlst_dev_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlst_dev_frn;
-
-        /// <summary>
-        /// txtbx_dev_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtbx_dev_frn;
-
-        /// <summary>
         /// updt_lighting_frn control.
         /// </summary>
         /// <remarks>
@@ -1401,60 +1347,6 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.DropDownList dlst_lighting_frn;
 
         /// <summary>
-        /// updt_light_pos_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updt_light_pos_frn;
-
-        /// <summary>
-        /// lbl_light_pos_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_light_pos_frn;
-
-        /// <summary>
-        /// dlst_light_pos_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlst_light_pos_frn;
-
-        /// <summary>
-        /// updt_light_place_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updt_light_place_frn;
-
-        /// <summary>
-        /// lbl_light_place_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_light_place_frn;
-
-        /// <summary>
-        /// dlst_light_place_frn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dlst_light_place_frn;
-
-        /// <summary>
         /// lbl_quantity_frn control.
         /// </summary>
         /// <remarks>
@@ -1471,6 +1363,15 @@ namespace GELA_DB.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtbx_quantity_frn;
+
+        /// <summary>
+        /// btn_add_frn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_add_frn;
 
         /// <summary>
         /// pnl_cabinets control.

@@ -38,7 +38,7 @@
                     <asp:TableRow>
                         <asp:TableCell>
                             <asp:Label ID="auto_id" runat="server" Visible="false"></asp:Label>
-            <asp:Label ID="order_id" runat="server">ؤقم المشروع: </asp:Label>
+            <asp:Label ID="order_id" runat="server">رقم المشروع: </asp:Label>
             <asp:Label ID="lbl_OrderID" runat="server"></asp:Label><br />
                             </asp:TableCell>
                             <asp:TableCell>
@@ -401,11 +401,14 @@
             <asp:Table runat="server">
                         <asp:TableRow>
                             <asp:TableCell>
-                                <asp:Button ID="btn_edit_cabs" runat="server" Text="تعديل الخزائن" CssClass="Initial_button_ar" OnClick="btn_edit_Click"/>
+                                <asp:Button ID="btn_edit_cabs" runat="server" Text="تعديل الخزائن" CssClass="Initial_button_ar" OnClick="btn_edit_cabs_Click"/>
                             </asp:TableCell>
                         </asp:TableRow>
                 <asp:TableRow>
                             <asp:TableCell>
+                                <asp:UpdatePanel runat="server">
+                                    <ContentTemplate>
+                                        <asp:Panel runat="server" ID="pnl_furniture" Enabled="false">
                                 <asp:MultiView ID="furniture_views" runat="server">
                                     <asp:View runat="server" ID="view_kitchen" OnLoad="view_kitchen_Load">
                                         <fieldset class="loginpagefieldset">
@@ -506,6 +509,7 @@
                         </asp:TableCell>
                     </asp:TableRow>
                     </asp:Table>
+                                            <asp:Button ID="btn_add_cab" runat="server" Text="اضافة" CssClass="Initial_button" OnClick="btn_add_cab_Click" />
                                             </fieldset>
                                     </asp:View>
                                     <asp:View runat="server" ID="view_furnature" OnLoad="view_furnature_Load">
@@ -534,71 +538,12 @@
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>
-                            <asp:UpdatePanel ID="updt_accessories_frn" runat="server">
-                                <ContentTemplate>
-                                    <asp:Label ID="lbl_acc_frn" runat="server">الاكسسوارات:</asp:Label>
-                                    <asp:DropDownList ID="dlst_acc_frn" runat="server" ToolTip="Select"></asp:DropDownList>
-                                    <script>
-                                        $(document).ready(function () { $("#dlst_acc_frn").select2(); });
-                                    </script>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                            <asp:UpdatePanel runat="server">
-                                <Triggers><asp:AsyncPostBackTrigger ControlID="dlst_acc_frn" /></Triggers>
-                                <ContentTemplate>
-                                    <asp:TextBox ID="txtbx_acc" runat="server" Visible="false"></asp:TextBox>
-                                    </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-                                <Triggers><asp:AsyncPostBackTrigger ControlID="dlst_piece" /></Triggers>
-                                <ContentTemplate>
-                                    <asp:Label ID="lbl_devices_frn" runat="server">الأجهزة:</asp:Label>
-                                    <asp:DropDownList ID="dlst_dev_frn" runat="server" Enabled="false" AutoPostBack="true" ToolTip="Select"></asp:DropDownList>
-                                    <script>
-                                        $(document).ready(function () { $("#dlst_dev_frn").select2(); });
-                                    </script>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                            <asp:UpdatePanel runat="server">
-                                <Triggers><asp:AsyncPostBackTrigger ControlID="dlst_dev_frn" /></Triggers>
-                                <ContentTemplate>
-                            <asp:TextBox ID="txtbx_dev_frn" runat="server" Visible="false"></asp:TextBox>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
                             <asp:UpdatePanel ID="updt_lighting_frn" runat="server">
                                 <ContentTemplate>
                                     <asp:Label ID="lbl_lighting_frn" runat="server">الإنارة:</asp:Label>
                                     <asp:DropDownList ID="dlst_lighting_frn" runat="server" ToolTip="Select"></asp:DropDownList>                                     
                                     <script>
                                         $(document).ready(function () { $("#dlst_lighting_frn").select2(); });
-                                    </script>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:UpdatePanel ID="updt_light_pos_frn" runat="server">
-                                <ContentTemplate>
-                                    <asp:Label ID="lbl_light_pos_frn" runat="server">موقع الانارة:</asp:Label>
-                                    <asp:DropDownList ID="dlst_light_pos_frn" runat="server" ToolTip="Select"></asp:DropDownList>
-                                    <script>
-                                        $(document).ready(function () { $("#dlst_light_pos_frn").select2(); });
-                                    </script>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>
-                        </asp:TableCell>
-                         <asp:TableCell>
-                            <asp:UpdatePanel ID="updt_light_place_frn" runat="server">
-                                <ContentTemplate>
-                                    <asp:Label ID="lbl_light_place_frn" runat="server">فرزة الانارة:</asp:Label>
-                                    <asp:DropDownList ID="dlst_light_place_frn" runat="server" ToolTip="Select"></asp:DropDownList>
-                                    <script>
-                                        $(document).ready(function () { $("#dlst_light_place_frn").select2(); });
                                     </script>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
@@ -611,9 +556,13 @@
                         </asp:TableCell>
                     </asp:TableRow>
                     </asp:Table>
+                                            <asp:Button ID="btn_add_frn" runat="server" Text="اضافة" CssClass="Initial_button" OnClick="btn_add_frn_Click" />
                                             </fieldset>
                                     </asp:View>
                                 </asp:MultiView>
+                                            </asp:Panel>
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
                                 </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
@@ -625,14 +574,14 @@
                             <asp:GridView ID="cabinets_grid" runat="server" AutoGenerateColumns="false" CssClass="mydatagrid" PagerStyle-CssClass="pager"
  HeaderStyle-CssClass="header" RowStyle-CssClass="rows" ShowHeaderWhenEmpty="true" Width="100%" OnRowDataBound="cabinets_grid_RowDataBound" OnSelectedIndexChanged="cabinets_grid_SelectedIndexChanged">
                         <Columns>
-                            <asp:BoundField DataField="cabinet_entry_ID" HeaderText="رقم الخزانة" />
-                            <asp:BoundField DataField="product" HeaderText="اسم الخزانة" />
+                            <asp:TemplateField><ItemTemplate><asp:Button ID="btn_delete" runat="server" Text="Delete" CssClass="Initial_button" OnClick="btn_delete_Click" /></ItemTemplate></asp:TemplateField>
+                            <asp:BoundField DataField="cabinet_entry_ID" HeaderText="رقم القطعة" />
+                            <asp:BoundField DataField="product" HeaderText="اسم القطعة" />
                             <asp:BoundField DataField="width" HeaderText="العرض" />
+                            <asp:BoundField DataField="length" HeaderText="الطول" />
                             <asp:BoundField DataField="accessories" HeaderText="الاكسسوارات" />
                             <asp:BoundField DataField="devices" HeaderText="الأجهزة" />
                             <asp:BoundField DataField="lighting" HeaderText="نوع الإنارة" />
-                            <asp:BoundField DataField="lighting_position" HeaderText="موقع الانارة" />
-                            <asp:BoundField DataField="lighting_location_type" HeaderText="فرزة الانارة" />
                             <asp:BoundField DataField="quantity" HeaderText="الكمية" />
                         </Columns>
                                 <SelectedRowStyle BackColor="LightGreen" ForeColor="DarkGreen" Font-Bold="true" />

@@ -421,6 +421,20 @@ namespace GELA_DB.pages
                     dlst_faucet.DataBind();
                     con.Close();
                     dlst_faucet.Items.FindByText(dt_grab.Rows[0]["faucet"].ToString()).Selected = true;
+                    if (dlst_project.SelectedItem.Text == "مطبخ")
+                    {
+                        furniture_views.ActiveViewIndex = 0;
+                    }
+                    else
+                    {
+                        furniture_views.ActiveViewIndex = 1;
+                    }
+                    con.Open();
+                    SqlCommand cmd_frn = new SqlCommand("SELECT * FROM dbo.entry_tbl_order WHERE project_no=@project_no", con);
+                    cmd_frn.Parameters.AddWithValue("@project_no", project_id);
+                    SqlDataReader dr_frn = cmd_frn.ExecuteReader();
+                        cabinets_grid.DataSource = dr_frn;
+                        cabinets_grid.DataBind();
                 }
             }
             else
@@ -490,7 +504,7 @@ namespace GELA_DB.pages
             cmd.Parameters.AddWithValue("@prod_man", dlst_ProdManger.SelectedItem.Text);
             cmd.ExecuteNonQuery();
             con.Close();
-            pnl_form.Enabled=false;
+            pnl_form.Enabled = false;
             btn_done.Visible = false;
         }
 
@@ -634,16 +648,6 @@ namespace GELA_DB.pages
             btn_done.Visible = true;
         }
 
-        protected void add_cab_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void dlst_product_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void cabinets_grid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
 
@@ -654,8 +658,251 @@ namespace GELA_DB.pages
 
         }
 
-        protected void btn_done_cabs_Click(object sender, EventArgs e)
+        protected void btn_done_cabinets_Click(object sender, EventArgs e)
         {
+            pnl_furniture.Enabled = false;
+        }
+
+        protected void dlst_piece_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void view_kitchen_Load(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            if (!IsPostBack) { 
+            con.Open();
+            SqlCommand cmd_kitchen = new SqlCommand("SELECT * FROM dbo.fxd_tbl_furniture WHERE room_code_1=@k or room_code_2=@k or room_code_3=@k", con);
+            cmd_kitchen.Parameters.AddWithValue("@k", "k");
+            SqlDataAdapter da_kitchen = new SqlDataAdapter(cmd_kitchen);
+            DataTable dt_kitchen = new DataTable();
+            da_kitchen.Fill(dt_kitchen);
+            dlst_product.DataSource = dt_kitchen;
+            dlst_product.DataBind();
+            dlst_product.DataTextField = "piece_ar";
+            dlst_product.DataValueField = "pieces_ID";
+            dlst_product.DataBind();
+            con.Close();
+            con.Open();
+            SqlCommand accessories = new SqlCommand("SELECT * FROM dbo.fxd_tbl_accessories", con);
+            SqlDataAdapter acc = new SqlDataAdapter(accessories);
+            DataTable a_c_c = new DataTable();
+            acc.Fill(a_c_c);
+            dlst_accessories.DataSource = a_c_c;
+            dlst_accessories.DataBind();
+            dlst_accessories.DataTextField = "fullacc";
+            dlst_accessories.DataValueField = "accessories_ID";
+            dlst_accessories.DataBind();
+            con.Close();
+            con.Open();
+            SqlCommand lighting = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_types", con);
+            SqlDataAdapter lig = new SqlDataAdapter(lighting);
+            DataTable l_i_g = new DataTable();
+            lig.Fill(l_i_g);
+            dlst_lighting.DataSource = l_i_g;
+            dlst_lighting.DataBind();
+            dlst_lighting.DataTextField = "lighting_type_ar";
+            dlst_lighting.DataValueField = "lighting_type_ID";
+            dlst_lighting.DataBind();
+            con.Close();
+            con.Open();
+            SqlCommand lighting_pos = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_position", con);
+            SqlDataAdapter lp = new SqlDataAdapter(lighting_pos);
+            DataTable l_p = new DataTable();
+            lp.Fill(l_p);
+            dlst_lighting_pos.DataSource = l_p;
+            dlst_lighting_pos.DataBind();
+            dlst_lighting_pos.DataTextField = "lighting_pos_ar";
+            dlst_lighting_pos.DataValueField = "lighting_pos_ID";
+            dlst_lighting_pos.DataBind();
+            con.Close();
+            con.Open();
+            SqlCommand lighting_place = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_cab_type", con);
+            SqlDataAdapter lpl = new SqlDataAdapter(lighting_place);
+            DataTable l_p_l = new DataTable();
+            lpl.Fill(l_p_l);
+            dlst_lighting_place.DataSource = l_p_l;
+            dlst_lighting_place.DataBind();///o
+            dlst_lighting_place.DataTextField = "lighting_cab_type_ar";
+            dlst_lighting_place.DataValueField = "lighting_cab_type_ID";
+            dlst_lighting_place.DataBind();
+            con.Close();
+            }
+        }
+
+        protected void view_furnature_Load(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            if (!IsPostBack) { 
+                con.Open();
+                SqlCommand cmd_furniture = new SqlCommand("SELECT * FROM dbo.fxd_tbl_furniture WHERE (room_code_1=@f or room_code_1=@d) or (room_code_2=@f or room_code_2=@d) or (room_code_3=@f or room_code_3=@d)", con);
+                cmd_furniture.Parameters.AddWithValue("@f", "f");
+                cmd_furniture.Parameters.AddWithValue("@d", "d");
+                SqlDataAdapter da_furniture = new SqlDataAdapter(cmd_furniture);
+                DataTable dt_furniture = new DataTable();
+                da_furniture.Fill(dt_furniture);
+                dlst_piece.DataSource = dt_furniture;
+                dlst_piece.DataBind();
+                dlst_piece.DataTextField = "piece_ar";
+                dlst_piece.DataValueField = "pieces_ID";
+                dlst_piece.DataBind();
+                con.Close();
+                con.Open();
+                SqlCommand lighting = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_types", con);
+                SqlDataAdapter lig = new SqlDataAdapter(lighting);
+                DataTable l_i_g = new DataTable();
+                lig.Fill(l_i_g);
+                dlst_lighting_frn.DataSource = l_i_g;
+                dlst_lighting_frn.DataBind();
+                dlst_lighting_frn.DataTextField = "lighting_type_ar";
+                dlst_lighting_frn.DataValueField = "lighting_type_ID";
+                dlst_lighting_frn.DataBind();
+                con.Close();
+
+            }
+        }
+        protected void dlst_product_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SELECT * FROM dbo.fxd_tbl_cabinet_full_names WHERE cabinet_full_name = @name", con);
+            cmd.Parameters.AddWithValue("name", dlst_product.SelectedItem.Text);
+            SqlDataReader dr = cmd.ExecuteReader();
+            ///grabs cabinet device status from table
+            if (dr.Read())
+            {
+                if (dr["device_status"].ToString() == "Y")
+                {
+                    dr.Close();
+                    dlst_devices.Enabled = true;
+                    SqlCommand devices = new SqlCommand("SELECT * FROM dbo.fxd_tbl_devices", con);
+                    SqlDataAdapter dev = new SqlDataAdapter(devices);
+                    DataTable d_e_v = new DataTable();
+                    dev.Fill(d_e_v);
+                    dlst_devices.DataSource = d_e_v;
+                    dlst_devices.DataBind();
+                    dlst_devices.DataTextField = "fulldev";
+                    dlst_devices.DataValueField = "devices_ID";
+                    dlst_devices.DataBind();
+                    con.Close();
+                } ///unlocks device selection if the cabinet has devices
+                else
+                {
+                    dlst_devices.SelectedIndex = -1;
+                    dlst_devices.Enabled = false;
+                }
+            }
+        }
+
+        protected void btn_delete_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            GridViewRow gvr = (GridViewRow)btn.NamingContainer;
+            int rowindex = gvr.RowIndex;
+            GridViewRow row = cabinets_grid.Rows[rowindex];
+            var cab_id = row.Cells[1].Text;
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd_delete = new SqlCommand("DELETE FROM dbo.entry_tbl_order WHERE cabinet_entry_ID = @id", con);
+            cmd_delete.Parameters.AddWithValue("@id", cab_id);
+            cmd_delete.ExecuteNonQuery();
+            con.Close();
+            con.Open();
+            SqlCommand cmd_frn = new SqlCommand("SELECT * FROM dbo.entry_tbl_order WHERE project_no=@project_no", con);
+            cmd_frn.Parameters.AddWithValue("@project_no", Session["project_id"].ToString());
+            SqlDataReader dr_frn = cmd_frn.ExecuteReader();
+                cabinets_grid.DataSource = dr_frn;
+                cabinets_grid.DataBind();
+        }
+
+        protected void btn_edit_cabs_Click(object sender, EventArgs e)
+        {
+            pnl_furniture.Enabled = true;
+        }
+
+        protected void btn_add_frn_Click(object sender, EventArgs e)
+        {
+            decimal width = decimal.Parse(txtbx_width_frn.Text);
+            if (decimal.Parse(txtbx_width_frn.Text) >= 20)
+            {
+                width = decimal.Parse(txtbx_width_frn.Text) / 100;
+            }
+            decimal length = decimal.Parse(txtbx_length.Text);
+            if (decimal.Parse(txtbx_length.Text) >= 20)
+            {
+                length = decimal.Parse(txtbx_length.Text) / 100;
+            }
+            string light = "";
+            if (dlst_lighting_frn.SelectedItem.Text != null && dlst_lighting_frn.Enabled != false && dlst_lighting_frn.SelectedItem.Text != "لا يوجد إنارة")
+            {
+                light = dlst_lighting_frn.SelectedItem.Text;
+            }
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd_add = new SqlCommand("INSERT INTO dbo.entry_tbl_order (project_no,product,width,length,lighting,quantity) VALUES(@project_no,@product,@width,@length,@lighting,@quantity)", con);
+            cmd_add.Parameters.AddWithValue("@project_no", Session["project_id"].ToString());
+            cmd_add.Parameters.AddWithValue("@product", dlst_piece.SelectedItem.Text);
+            cmd_add.Parameters.AddWithValue("@width", width);
+            cmd_add.Parameters.AddWithValue("@length", length);
+            cmd_add.Parameters.AddWithValue("@lighting", light);
+            cmd_add.Parameters.AddWithValue("@quantity", txtbx_quantity_frn.Text);
+            cmd_add.ExecuteNonQuery();
+            con.Close();
+            con.Open();
+            SqlCommand cmd_frn = new SqlCommand("SELECT * FROM dbo.entry_tbl_order WHERE project_no=@project_no", con);
+            cmd_frn.Parameters.AddWithValue("@project_no", Session["project_id"].ToString());
+            SqlDataReader dr_frn = cmd_frn.ExecuteReader();
+                cabinets_grid.DataSource = dr_frn;
+                cabinets_grid.DataBind();
+            con.Close();
+        }
+
+        protected void btn_add_cab_Click(object sender, EventArgs e)
+        {
+            string device = "";
+            if (dlst_devices.Enabled != false && dlst_devices.SelectedItem.Text != null)
+            {
+                device = dlst_devices.SelectedItem.Text;
+            }
+            string accessory = "";
+            if (dlst_accessories.Enabled != false && dlst_accessories.SelectedItem.Text != null)
+            {
+                accessory = dlst_accessories.SelectedItem.Text;
+            }
+            decimal width = decimal.Parse(txtbx_width.Text);
+            if (decimal.Parse(txtbx_width.Text) >= 20)
+            {
+                width = decimal.Parse(txtbx_width.Text) / 100;
+            }
+            string light_pos = "";
+            string light_loc = "";
+            if (dlst_lighting.SelectedItem.Text != "لا يوجد إنارة")
+            {
+                light_pos = dlst_lighting_pos.SelectedItem.Text;
+                light_loc = dlst_lighting_place.SelectedItem.Text;
+            }
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd_add = new SqlCommand("INSERT INTO dbo.entry_tbl_order (project_no,product,width,accessories,devices,lighting,lighting_position,lighting_location_type,quantity) VALUES(@project_no,@product,@width,@accessories,@devices,@lighting,@lighting_position,@lighting_location_type,@quantity)", con);
+            cmd_add.Parameters.AddWithValue("@project_no", Session["project_id"].ToString());
+            cmd_add.Parameters.AddWithValue("@product", dlst_product.SelectedItem.Text);
+            cmd_add.Parameters.AddWithValue("@width", width);
+            cmd_add.Parameters.AddWithValue("@accessories", accessory);
+            cmd_add.Parameters.AddWithValue("@devices", device);
+            cmd_add.Parameters.AddWithValue("@lighting", dlst_lighting.SelectedItem.Text);
+            cmd_add.Parameters.AddWithValue("@lighting_position", light_pos);
+            cmd_add.Parameters.AddWithValue("@lighting_location_type", light_loc);
+            cmd_add.Parameters.AddWithValue("@quantity", txtbx_quantity.Text);
+            cmd_add.ExecuteNonQuery();
+            con.Close();
+            con.Open();
+            SqlCommand cmd_frn = new SqlCommand("SELECT * FROM dbo.entry_tbl_order WHERE project_no=@project_no", con);
+            cmd_frn.Parameters.AddWithValue("@project_no", Session["project_id"].ToString());
+            SqlDataReader dr_frn = cmd_frn.ExecuteReader();
+                cabinets_grid.DataSource = dr_frn;
+                cabinets_grid.DataBind();
+            con.Close();
 
         }
     }

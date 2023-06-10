@@ -978,6 +978,33 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.Button btn_edit_cabs;
 
         /// <summary>
+        /// pnl_furniture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnl_furniture;
+
+        /// <summary>
+        /// furniture_views control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView furniture_views;
+
+        /// <summary>
+        /// view_kitchen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View view_kitchen;
+
+        /// <summary>
         /// order_entry control.
         /// </summary>
         /// <remarks>
@@ -1203,13 +1230,148 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.TextBox txtbx_quantity;
 
         /// <summary>
-        /// add_cab control.
+        /// btn_add_cab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button add_cab;
+        protected global::System.Web.UI.WebControls.Button btn_add_cab;
+
+        /// <summary>
+        /// view_furnature control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View view_furnature;
+
+        /// <summary>
+        /// tbl_furniture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table tbl_furniture;
+
+        /// <summary>
+        /// upd_furniture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upd_furniture;
+
+        /// <summary>
+        /// lbl_piece control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_piece;
+
+        /// <summary>
+        /// dlst_piece control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlst_piece;
+
+        /// <summary>
+        /// lbl_width_frn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_width_frn;
+
+        /// <summary>
+        /// txtbx_width_frn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtbx_width_frn;
+
+        /// <summary>
+        /// lbl_length control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_length;
+
+        /// <summary>
+        /// txtbx_length control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtbx_length;
+
+        /// <summary>
+        /// updt_lighting_frn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updt_lighting_frn;
+
+        /// <summary>
+        /// lbl_lighting_frn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_lighting_frn;
+
+        /// <summary>
+        /// dlst_lighting_frn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dlst_lighting_frn;
+
+        /// <summary>
+        /// lbl_quantity_frn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_quantity_frn;
+
+        /// <summary>
+        /// txtbx_quantity_frn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtbx_quantity_frn;
+
+        /// <summary>
+        /// btn_add_frn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_add_frn;
 
         /// <summary>
         /// pnl_cabinets control.
@@ -1230,12 +1392,12 @@ namespace GELA_DB.pages
         protected global::System.Web.UI.WebControls.GridView cabinets_grid;
 
         /// <summary>
-        /// btn_done_cabs control.
+        /// btn_done_cabinets control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_done_cabs;
+        protected global::System.Web.UI.WebControls.Button btn_done_cabinets;
     }
 }
