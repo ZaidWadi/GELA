@@ -734,20 +734,42 @@ namespace GELA_DB.pages
 
         protected void view_furnature_Load(object sender, EventArgs e)
         {
+            string product = dlst_project.SelectedItem.Text;
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
-            if (!IsPostBack) { 
             con.Open();
-            SqlCommand cmd_furniture = new SqlCommand("SELECT * FROM dbo.fxd_tbl_furniture WHERE (room_code_1=@f or room_code_1=@d) or (room_code_2=@f or room_code_2=@d) or (room_code_3=@f or room_code_3=@d)", con);
-            cmd_furniture.Parameters.AddWithValue("@f", "f");
-            cmd_furniture.Parameters.AddWithValue("@d", "d");
-            SqlDataAdapter da_furniture = new SqlDataAdapter(cmd_furniture);
-            DataTable dt_furniture = new DataTable();
-            da_furniture.Fill(dt_furniture);
+            SqlCommand cmd_get_project_id = new SqlCommand("SELECT * FROM dbo.fxd_tbl_products WHERE product_ar = @product", con);
+            cmd_get_project_id.Parameters.AddWithValue("@product", product);
+            SqlDataReader dr_get_project_id = cmd_get_project_id.ExecuteReader();
+            string pr_id = "f";
+            if (dr_get_project_id.Read())
+            {
+                pr_id = dr_get_project_id[3].ToString();
+            }
+            con.Close();
+            if (!IsPostBack) { 
+                con.Open();
+                SqlCommand cmd_furniture = new SqlCommand("SELECT * FROM dbo.fxd_tbl_furniture WHERE room_code_1=@f or room_code_2=@f or room_code_3=@f ", con);
+                cmd_furniture.Parameters.AddWithValue("@f", pr_id);
+                SqlDataAdapter da_furniture = new SqlDataAdapter(cmd_furniture);
+                DataTable dt_furniture = new DataTable();
+                da_furniture.Fill(dt_furniture);
                 dlst_piece.DataSource = dt_furniture;
-            dlst_piece.DataBind();
-            dlst_piece.DataTextField = "piece_ar";
-            dlst_piece.DataValueField = "pieces_ID";
                 dlst_piece.DataBind();
+                dlst_piece.DataTextField = "piece_ar";
+                dlst_piece.DataValueField = "pieces_ID";
+                dlst_piece.DataBind();
+                con.Close();
+                con.Open();
+                SqlCommand lighting = new SqlCommand("SELECT * FROM dbo.fxd_tbl_lighting_types", con);
+                SqlDataAdapter lig = new SqlDataAdapter(lighting);
+                DataTable l_i_g = new DataTable();
+                lig.Fill(l_i_g);
+                dlst_lighting_frn.DataSource = l_i_g;
+                dlst_lighting_frn.DataBind();
+                dlst_lighting_frn.DataTextField = "lighting_type_ar";
+                dlst_lighting_frn.DataValueField = "lighting_type_ID";
+                dlst_lighting_frn.DataBind();
+                con.Close();
             }
         }
         protected void dlst_product_SelectedIndexChanged(object sender, EventArgs e)

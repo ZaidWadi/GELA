@@ -734,11 +734,20 @@ namespace GELA_DB.pages
         protected void view_furnature_Load(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["gela_database_connection"].ConnectionString);
+            string product = dlst_project.SelectedItem.Text;
+            con.Open();
+            SqlCommand cmd_get_project_id = new SqlCommand("SELECT * FROM dbo.fxd_tbl_products WHERE product_ar = @product", con);
+            cmd_get_project_id.Parameters.AddWithValue("@product", product);
+            SqlDataReader dr_get_project_id = cmd_get_project_id.ExecuteReader();
+            string pr_id = "f";
+            if (dr_get_project_id.Read()) { 
+                pr_id = dr_get_project_id[3].ToString();
+            }
+            con.Close();
             if (!IsPostBack) { 
                 con.Open();
-                SqlCommand cmd_furniture = new SqlCommand("SELECT * FROM dbo.fxd_tbl_furniture WHERE (room_code_1=@f or room_code_1=@d) or (room_code_2=@f or room_code_2=@d) or (room_code_3=@f or room_code_3=@d)", con);
-                cmd_furniture.Parameters.AddWithValue("@f", "f");
-                cmd_furniture.Parameters.AddWithValue("@d", "d");
+                SqlCommand cmd_furniture = new SqlCommand("SELECT * FROM dbo.fxd_tbl_furniture WHERE room_code_1=@f or room_code_2=@f or room_code_3=@f ", con);
+                cmd_furniture.Parameters.AddWithValue("@f", pr_id);
                 SqlDataAdapter da_furniture = new SqlDataAdapter(cmd_furniture);
                 DataTable dt_furniture = new DataTable();
                 da_furniture.Fill(dt_furniture);
